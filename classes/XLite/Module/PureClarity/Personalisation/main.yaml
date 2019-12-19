@@ -1,0 +1,11 @@
+version: 5.4.0.5
+type: common
+authorName: 'PureClarity'
+moduleName: 'PureClarity Personalisation'
+description: 'Integration with PureClarity AI-based eCommerce personalisation platform'
+minorRequiredCoreVersion: 0
+dependsOn: {  }
+incompatibleWith: {  }
+skins: {  }
+showSettingsForm: false
+canDisable: true

@@ -1,0 +1,7 @@
+{##
+ # Zone HP-01
+ #}
+
+<div data-pureclarity="{{ this.getBmzData() }}" class="{{ this.getClasses() }}" {% if this.showDebug() is same as (false) %}style="display:none"{% endif %}>
+    {% if this.showDebug() is same as (true) %}<div class="pc-debug-label">{{ this.getZoneId() }}</div>{% endif %}
+</div>

@@ -1,0 +1,43 @@
+{##
+ # Copyright © PureClarity. All rights reserved.
+ # See LICENSE.txt for license details.
+ #
+ # Dashboard - signup widget
+ #}
+<div id="pc-welcome">
+    <div id="pc-marketing-info" class="pc-box">
+        <div class="pc-box-content">
+            <h2>{{ t('Welcome to PureClarity') }}</h2>
+            <p>{{ t('PureClarity, an approved Magento Technology Partner, is the leading AI-based eCommerce personalization platform proven to:') }}</p>
+            <ul>
+                <li>{{ t('Increase online revenue by 27%') }}</li>
+                <li>{{ t('Increase online conversion by 72%') }}</li>
+                <li>{{ t('Increase average order value by 16%') }}</li>
+            </ul>
+            <p>{{ t('Features include Personalized real-time AI Recommenders, Personalized Marketing Merchandising and Campaigns, Personalization within Email and Personalization within Search') }}</p>
+        </div>
+    </div>
+    <div id="pc-sign-up" class="pc-box">
+        <div class="pc-box-title-bar"><h3>{{ t('Sign up for a free 14 day trial') }}</h3></div>
+        <div class="pc-box-content">
+            <p>{{ t('Try for Free today and increase your online revenue by 27%') }}</p>
+            <ul>
+                <li>{{ t('Access to all PureClarity features') }}</li>
+                <li>{{ t('Access to PureClarity Academy') }}</li>
+                <li>{{ t('Step by Step implementation guide') }}</li>
+                <li>{{ t('Full support if needed') }}</li>
+                <li>{{ t('No credit card required') }}</li>
+            </ul>
+            <div id="pc-signup-button">
+                {{ widget('\\XLite\\Module\\PureClarity\\Personalisation\\View\\Admin\\Dashboard\\Button\\Signup', label='Sign up', redirect_url='') }}
+            </div>
+        </div>
+    </div>
+    <div id="pc-existing-account" class="pc-box">
+        <div class="pc-box-title-bar"><h3>{{ t('Already have an account?') }}</h3></div>
+        <div class="pc-box-content">
+            <p>{{ t('Enter your account details to get started') }}</p>
+            {{ widget('\\XLite\\Module\\PureClarity\\Personalisation\\View\\Model\\Admin\\Dashboard\\Account') }}
+        </div>
+    </div>
+</div>

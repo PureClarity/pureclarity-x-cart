@@ -1,0 +1,195 @@
+# Copyright © PureClarity. All rights reserved.
+# See LICENSE.txt for license details.
+
+XLite\Model\LanguageLabel:
+  - { name: "Google Feed URL: X", translations: [{ code: en, label: "Google Feed URL: <a href=\"{{url}}\">{{url}}</a>" }] }
+  - { name: "Generate feed", translations: [{ code: en, label: "Generate feed" }] }
+
+XLite\Model\Config:
+  - name: pc_enabled
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 100
+    translations:
+      - code: en
+        option_name: 'Enable PureClarity Personalisation'
+  - name: pc_access_key
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Text
+    orderby: 200
+    translations:
+      - code: en
+        option_name: 'Access Key'
+  - name: pc_secret_key
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Password
+    orderby: 300
+    translations:
+      - code: en
+        option_name: 'Secret Key'
+  - name: pc_region
+    category: PureClarity\Personalisation
+    type: XLite\Module\PureClarity\Personalisation\View\FormField\Region
+    orderby: 400
+    translations:
+      - code: en
+        option_name: 'Region'
+  - name: pc_header_feeds
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Separator\Regular
+    orderby: 500
+    translations:
+      - code: en
+        option_name: 'Feeds'
+  - name: pc_feeds_nightly
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 600
+    translations:
+      - code: en
+        option_name: 'Send Nightly Feeds'
+  - name: pc_feeds_deltas
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 700
+    translations:
+      - code: en
+        option_name: 'Send Deltas'
+  - name: pc_header_brand_feeds
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Separator\Regular
+    orderby: 715
+    translations:
+      - code: en
+        option_name: 'Brand Feed'
+  - name: pc_feeds_brands
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: false
+    orderby: 725
+    translations:
+      - code: en
+        option_name: 'Enable Brand Feed'
+  - name: pc_feeds_brands_parent
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Select\Category
+    orderby: 750
+    translations:
+      - code: en
+        option_name: 'Brand Feed Parent Category'
+  - name: pc_header_product_feeds
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Separator\Regular
+    orderby: 775
+    translations:
+      - code: en
+        option_name: 'Product Feed'
+  - name: pc_feeds_product_oos_exclude
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: false
+    orderby: 785
+    translations:
+      - code: en
+        option_name: 'Exclude out of stock Products'
+  - name: pc_header_zones
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Separator\Regular
+    orderby: 800
+    translations:
+      - code: en
+        option_name: 'Zones'
+  - name: pc_zone_debug
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 900
+    translations:
+      - code: en
+        option_name: 'Enable Zone Debug'
+  - name: pc_zone_hp01
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    orderby: 1000
+    translations:
+      - code: en
+        option_name: 'Enable Zone HP-01'
+  - name: pc_zone_hp02
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1100
+    translations:
+      - code: en
+        option_name: 'Enable Zone HP-02'
+  - name: pc_zone_hp03
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1200
+    translations:
+      - code: en
+        option_name: 'Enable Zone HP-03'
+  - name: pc_zone_hp04
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1300
+    translations:
+      - code: en
+        option_name: 'Enable Zone HP-04'
+  - name: pc_zone_pp01
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1400
+    translations:
+      - code: en
+        option_name: 'Enable Zone PP-01'
+  - name: pc_zone_pp02
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1500
+    translations:
+      - code: en
+        option_name: 'Enable Zone PP-02'
+  - name: pc_zone_bp01
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1600
+    translations:
+      - code: en
+        option_name: 'Enable Zone BP-01'
+  - name: pc_zone_bp02
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1700
+    translations:
+      - code: en
+        option_name: 'Enable Zone BP-02'
+  - name: pc_zone_oc01
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1800
+    translations:
+      - code: en
+        option_name: 'Enable Zone OC-01'
+  - name: pc_zone_oc02
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1900
+    translations:
+      - code: en
+        option_name: 'Enable Zone OC-02'
+
+XLite\Model\Task:
+  - owner: XLite\Module\PureClarity\Personalisation\Core\Task\Delta
+  - owner: XLite\Module\PureClarity\Personalisation\Core\Task\FeedRunner

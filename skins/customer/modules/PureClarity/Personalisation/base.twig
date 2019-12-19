@@ -1,0 +1,24 @@
+{##
+ # PureClarity Master function
+ #}
+
+<script type="text/javascript">
+    (function(w, d, s, u, f) {
+        w['PureClarityObject'] = f;
+        w[f] = w[f] || function() {(w[f].q = w[f].q || []).push(arguments)};
+        var p = d.createElement(s), h = d.getElementsByTagName(s)[0];
+        p.src = u;p.async=1;h.parentNode.insertBefore(p, h);
+    })(window, document, 'script', '{{ this.getClientScriptUrl() }}', '_pc');
+
+    _pc('page_view', {{ this.getPageViewContext()|raw }});
+    _pc('currency', 'GBP');
+
+    {% if this.doLogoffEvent() is same as (true) %}
+        _pc('customer_logout');
+    {% endif %}
+
+
+    {% if this.doOrderEvent() is same as (true) %}
+        _pc('order', {{ this.getOrderEventData()|raw }});
+    {% endif %}
+</script>
