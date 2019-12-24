@@ -6,46 +6,55 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Zones;
 
-use XLite\Module\PureClarity\Personalisation\Core\Pureclarity;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 
 /**
- * Common widget extention.
- * This widget is used only to link additional css and js files to the page
+ * Zone abstract class
+ *
+ * Default view class for all PureClarity Zones
  */
 abstract class AZone extends \XLite\View\AView
 {
+    /** @var string $zoneId */
     protected $zoneId = '';
 
     /**
+     * Returns any DATA for this Zone for the "data-pureclarity" attribute
      * @return string
      */
-    public function getBmzData()
+    public function getBmzData() : string
     {
         return 'bmz:' . $this->zoneId;
     }
 
     /**
+     * Returns the classes for this Zone
+     *
      * @return string
      */
-    public function getClasses()
+    public function getClasses() : string
     {
         return $this->showDebug() ? 'pc-debug' : '';
     }
 
     /**
+     * Returns the ID for this Zone
+     *
      * @return string
      */
-    public function getZoneId()
+    public function getZoneId() : string
     {
         return $this->zoneId;
     }
 
     /**
-     * @return string
+     * Returns whether zone debug is enabled
+     *
+     * @return bool
      */
-    public function showDebug()
+    public function showDebug() : bool
     {
-        return Pureclarity::getInstance()->isZoneDebugEnabled();
+        return PureClarity::getInstance()->isZoneDebugEnabled();
     }
 
     /**
@@ -53,20 +62,19 @@ abstract class AZone extends \XLite\View\AView
      *
      * @return string
      */
-    protected function getDefaultTemplate()
+    protected function getDefaultTemplate() : string
     {
         return 'modules/PureClarity/Personalisation/zone.twig';
     }
 
     /**
-     * Return widget default template
+     * Returns whether this Widget should be visible or not
      *
-     * @return string
+     * @return bool
      */
-    protected function isVisible()
+    protected function isVisible() : bool
     {
-
-        $pc = Pureclarity::getInstance();
+        $pc = PureClarity::getInstance();
         return $pc->isActive() && $pc->isZoneActive($this->zoneId);
     }
 }

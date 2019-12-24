@@ -11,7 +11,7 @@ use PureClarity\Api\Feed\Type\Category as CategoryFeed;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Category\Data\Row;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Category\Data\Feed;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Runner as FeedRunner;
-use XLite\Module\PureClarity\Personalisation\Core\Pureclarity;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 use PureClarity\Api\Feed\Feed as PureClarityFeed;
 
 /**
@@ -30,14 +30,14 @@ class Runner extends Singleton
         $feedDataHandler = Feed::getInstance();
         $rowDataHandler = Row::getInstance();
 
-        $pc = Pureclarity::getInstance();
-        $accessKey = $pc->getConfig(Pureclarity::CONFIG_ACCESS_KEY);
-        $secretKey = $pc->getConfig(Pureclarity::CONFIG_SECRET_KEY);
-        $region = $pc->getConfig(Pureclarity::CONFIG_REGION);
+        $pc = PureClarity::getInstance();
+        $accessKey = $pc->getConfig(PureClarity::CONFIG_ACCESS_KEY);
+        $secretKey = $pc->getConfig(PureClarity::CONFIG_SECRET_KEY);
+        $region = $pc->getConfig(PureClarity::CONFIG_REGION);
         $categoryFeed = new CategoryFeed($accessKey, $secretKey, $region);
 
         $feedRunner->runFeed(
-            PureClarityFeed::FEED_TYPE_PRODUCT,
+            PureClarityFeed::FEED_TYPE_CATEGORY,
             $feedDataHandler,
             $rowDataHandler,
             $categoryFeed

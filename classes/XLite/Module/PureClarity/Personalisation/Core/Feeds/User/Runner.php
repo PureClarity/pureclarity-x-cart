@@ -11,7 +11,7 @@ use PureClarity\Api\Feed\Type\User as UserFeed;
 use XLite\Base\Singleton;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\User\Data\Feed;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\User\Data\Row;
-use XLite\Module\PureClarity\Personalisation\Core\Pureclarity;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Runner as FeedRunner;
 
 /**
@@ -24,20 +24,20 @@ class Runner extends Singleton
     /**
      * Runs the User feed
      */
-    public function runFeed()
+    public function runFeed() : void
     {
         $feedRunner = FeedRunner::getInstance();
         $feedDataHandler = Feed::getInstance();
         $rowDataHandler = Row::getInstance();
 
-        $pc = Pureclarity::getInstance();
-        $accessKey = $pc->getConfig(Pureclarity::CONFIG_ACCESS_KEY);
-        $secretKey = $pc->getConfig(Pureclarity::CONFIG_SECRET_KEY);
-        $region = $pc->getConfig(Pureclarity::CONFIG_REGION);
+        $pc = PureClarity::getInstance();
+        $accessKey = $pc->getConfig(PureClarity::CONFIG_ACCESS_KEY);
+        $secretKey = $pc->getConfig(PureClarity::CONFIG_SECRET_KEY);
+        $region = $pc->getConfig(PureClarity::CONFIG_REGION);
         $feed = new UserFeed($accessKey, $secretKey, $region);
 
         $feedRunner->runFeed(
-            PureClarityFeed::FEED_TYPE_PRODUCT,
+            PureClarityFeed::FEED_TYPE_USER,
             $feedDataHandler,
             $rowDataHandler,
             $feed

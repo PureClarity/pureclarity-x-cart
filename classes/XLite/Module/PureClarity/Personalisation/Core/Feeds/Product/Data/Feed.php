@@ -7,10 +7,10 @@
 namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Data;
 
 use XLite\Base\Singleton;
-use XLite\Core\Config;
 use XLite\Core\Database;
 use XLite\Model\Product;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedDataInterface;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 
 /**
  * class Feed
@@ -28,8 +28,8 @@ class Feed extends Singleton implements FeedDataInterface
      */
     public function getFeedData() : array
     {
-        $config = Config::getInstance();
-        $excludeOutOfStock = $config->PureClarity->Personalisation->pc_feeds_product_oos_exclude;
+        $pc = PureClarity::getInstance();
+        $excludeOutOfStock = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_PRODUCT_OOS_EXCLUDE);
 
         $qb = Database::getRepo('XLite\Model\Product')->createQueryBuilder();
         $alias = $qb->getMainAlias();

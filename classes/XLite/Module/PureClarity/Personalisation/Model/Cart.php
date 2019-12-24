@@ -6,7 +6,7 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Model;
 
-use XLite\Module\PureClarity\Personalisation\Core\Pureclarity;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 
 abstract class Cart extends \XLite\Model\Cart implements \XLite\Base\IDecorator
 {
@@ -21,7 +21,7 @@ abstract class Cart extends \XLite\Model\Cart implements \XLite\Base\IDecorator
     {
         parent::login($profile);
 
-        if (Pureclarity::getInstance()->isActive()) {
+        if (PureClarity::getInstance()->isActive()) {
             $address = $profile->getBillingAddress();
 
             \XLite\Core\Event::pcLogin(
@@ -46,8 +46,8 @@ abstract class Cart extends \XLite\Model\Cart implements \XLite\Base\IDecorator
     {
         parent::logoff();
 
-        if (Pureclarity::getInstance()->isActive()) {
-            \XLite\Core\Session::getInstance()->pc_logoff = 'customer';
+        if (PureClarity::getInstance()->isActive()) {
+            \XLite\Core\Session::getInstance()->pc_logoff = true;
         }
     }
 }

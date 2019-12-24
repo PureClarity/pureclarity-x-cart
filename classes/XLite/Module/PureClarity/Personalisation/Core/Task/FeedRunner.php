@@ -12,8 +12,8 @@ use XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Runner as Produc
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand\Runner as BrandFeedRunner;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\User\Runner as UserFeedRunner;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Order\Runner as OrderFeedRunner;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 use XLite\Module\PureClarity\Personalisation\Core\State;
-use XLite\Core\Config;
 
 /**
  * Scheduled task that checks for & sends feeds
@@ -21,29 +21,28 @@ use XLite\Core\Config;
 class FeedRunner extends \XLite\Core\Task\Base\Periodic
 {
     /**
-     * Get title
+     * Returns the title of this task
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return static::t('PureClarity Feeds');
     }
 
     /**
-     * Run step
-     *
-     * @return void
+     * Runs any requested feeds
      */
-    protected function runStep()
+    protected function runStep() : void
     {
-        $this->markCronAsRun();
-
-        $state = State::getInstance();
-        $isConfigured = $state->getStateValue('is_configured');
-        if ($isConfigured === '1') {
-            $this->checkRequestedFeeds();
-            $this->checkNightlyFeed();
+        $pc = PureClarity::getInstance();
+        if ($pc->isActive()) {
+            $this->markCronAsRun();
+            $isConfigured = State::getInstance()->getStateValue('is_configured');
+            if ($isConfigured === '1') {
+                $this->checkRequestedFeeds();
+                $this->checkNightlyFeed();
+            }
         }
     }
 
@@ -52,7 +51,7 @@ class FeedRunner extends \XLite\Core\Task\Base\Periodic
      *
      * If has_cron_run not set to 1, then a warning appears on the dashboard
      */
-    protected function markCronAsRun()
+    protected function markCronAsRun() : void
     {
         $state = State::getInstance();
         $hasCronRun = $state->getStateValue('has_cron_run');
@@ -64,7 +63,7 @@ class FeedRunner extends \XLite\Core\Task\Base\Periodic
     /**
      * Checks for feeds manually requested via the dashboard
      */
-    protected function checkRequestedFeeds()
+    protected function checkRequestedFeeds() : void
     {
         $state = State::getInstance();
         // Run scheduled Feeds
@@ -79,9 +78,10 @@ class FeedRunner extends \XLite\Core\Task\Base\Periodic
     /**
      * Checks to see if it's the right time to run the nightly feed, and if so, runs all relevant feeds
      */
-    protected function checkNightlyFeed()
+    protected function checkNightlyFeed() : void
     {
-        $nightlyFeeds = Config::getInstance()->PureClarity->Personalisation->pc_feeds_nightly;
+        $pc = PureClarity::getInstance();
+        $nightlyFeeds = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_NIGHTLY);
         if ($nightlyFeeds) {
             $state = State::getInstance();
             $nightlyFeedRun = $state->getStateValue('nightly_feed_run');
@@ -108,7 +108,7 @@ class FeedRunner extends \XLite\Core\Task\Base\Periodic
      *
      * @param string[] $feedTypes
      */
-    protected function sendFeeds($feedTypes)
+    protected function sendFeeds(array $feedTypes)
     {
         if (in_array(Feed::FEED_TYPE_PRODUCT, $feedTypes)) {
             $productFeed = ProductFeedRunner::getInstance();
@@ -137,11 +137,11 @@ class FeedRunner extends \XLite\Core\Task\Base\Periodic
     }
 
     /**
-     * Get period (seconds)
+     * Get recurrence period (seconds)
      *
-     * @return integer
+     * @return int
      */
-    protected function getPeriod()
+    protected function getPeriod() : int
     {
         return \XLite\Core\Task\Base\Periodic::INT_1_MIN;
     }

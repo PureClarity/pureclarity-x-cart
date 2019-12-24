@@ -10,7 +10,7 @@ use XLite\Base\Singleton;
 use XLite\Core\Database;
 use XLite\Model\Category;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedDataInterface;
-use XLite\Module\PureClarity\Personalisation\Core\Pureclarity;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 
 /**
  * class Feed
@@ -27,7 +27,7 @@ class Feed extends Singleton implements FeedDataInterface
     public function getFeedData() : array
     {
         return Database::getRepo('XLite\Model\Category')->findBy([
-            'parent' => Pureclarity::getInstance()->getConfig(Pureclarity::CONFIG_FEEDS_BRAND_PARENT)
+            'parent' => PureClarity::getInstance()->getConfig(PureClarity::CONFIG_FEEDS_BRAND_PARENT)
         ]);
     }
 }

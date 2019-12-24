@@ -11,27 +11,66 @@ use XLite\Core\Config;
 /**
  * Pureclarity product sources class
  */
-class Pureclarity extends \XLite\Base\Singleton
+class PureClarity extends \XLite\Base\Singleton
 {
+    /** @var string */
     const CONFIG_ENABLED                    = 'enabled';
+
+    /** @var string */
     const CONFIG_ACCESS_KEY                 = 'access_key';
+
+    /** @var string */
     const CONFIG_SECRET_KEY                 = 'secret_key';
+
+    /** @var string */
     const CONFIG_REGION                     = 'region';
+
+    /** @var string */
     const CONFIG_FEEDS_NIGHTLY              = 'feeds_nightly';
+
+    /** @var string */
     const CONFIG_FEEDS_DELTAS               = 'feeds_deltas';
+
+    /** @var string */
     const CONFIG_FEEDS_BRAND                = 'feeds_brands';
+
+    /** @var string */
     const CONFIG_FEEDS_BRAND_PARENT         = 'feeds_brands_parent';
+
+    /** @var string */
     const CONFIG_FEEDS_PRODUCT_OOS_EXCLUDE  = 'feeds_product_oos_exclude';
+
+    /** @var string */
     const CONFIG_ZONE_DEBUG                 = 'zone_debug';
+
+    /** @var string */
     const CONFIG_ZONE_HP01                  = 'zone_HP-01';
+
+    /** @var string */
     const CONFIG_ZONE_HP02                  = 'zone_HP-02';
+
+    /** @var string */
     const CONFIG_ZONE_HP03                  = 'zone_HP-03';
+
+    /** @var string */
     const CONFIG_ZONE_HP04                  = 'zone_HP-04';
+
+    /** @var string */
     const CONFIG_ZONE_PP01                  = 'zone_PP-01';
+
+    /** @var string */
     const CONFIG_ZONE_PP02                  = 'zone_PP-02';
+
+    /** @var string */
     const CONFIG_ZONE_BP01                  = 'zone_BP-01';
+
+    /** @var string */
     const CONFIG_ZONE_BP02                  = 'zone_BP-02';
+
+    /** @var string */
     const CONFIG_ZONE_OC01                  = 'zone_OC-01';
+
+    /** @var string */
     const CONFIG_ZONE_OC02                  = 'zone_OC-02';
 
     /**
@@ -40,17 +79,19 @@ class Pureclarity extends \XLite\Base\Singleton
     protected $config;
 
     /**
+     * Returns whether PureClarity is active
+     *
      * @return boolean
      */
-    public function isActive()
+    public function isActive() : bool
     {
         $this->loadConfig();
 
         $active = true;
         if (empty($this->config[self::CONFIG_ENABLED]) ||
-            empty($this->config['access_key']) ||
-            empty($this->config['secret_key']) ||
-            empty($this->config['region'])
+            empty($this->config[self::CONFIG_ACCESS_KEY]) ||
+            empty($this->config[self::CONFIG_SECRET_KEY]) ||
+            empty($this->config[self::CONFIG_REGION])
         ) {
             $active = false;
         }
@@ -59,42 +100,58 @@ class Pureclarity extends \XLite\Base\Singleton
     }
 
     /**
+     * Returns whether zone debugging is enabled
+     *
      * @return boolean
      */
-    public function isZoneDebugEnabled()
+    public function isZoneDebugEnabled() : bool
     {
         $this->loadConfig();
         return $this->config[self::CONFIG_ZONE_DEBUG] ? true : false;
     }
 
     /**
+     * Returns whether the provided zone is active
+     *
      * @param string $zone
      * @return bool
      */
-    public function isZoneActive($zone)
+    public function isZoneActive(string $zone) : bool
     {
         $this->loadConfig();
         return isset($this->config['zone_' . $zone]) ? (bool) $this->config['zone_' . $zone] : false;
     }
 
     /**
+     * Returns the config setting for the given key
+     *
      * @param string $key
-     * @return mixed
+     * @return string
      */
-    public function getConfig($key)
+    public function getConfig(string $key) : string
     {
         $this->loadConfig();
-        return isset($this->config[$key]) ? $this->config[$key] : false;
+        return isset($this->config[$key]) ? $this->config[$key] : '';
+    }
+
+    /**
+     * Returns a bool representation of a config setting that is a yes/no flag
+     *
+     * @param string $key
+     * @return boolean
+     */
+    public function getConfigFlag(string $key) : bool
+    {
+        $this->loadConfig();
+        return isset($this->config[$key]) ? (bool)$this->config[$key] : false;
     }
 
     /**
      * Loads & caches config
-     *
-     * @param bool $force
      */
-    protected function loadConfig($force = false)
+    protected function loadConfig() : void
     {
-        if ($this->config === null || $force === true) {
+        if ($this->config === null) {
             $this->config = [];
             $config = Config::getInstance()->PureClarity->Personalisation;
             $this->config[self::CONFIG_ENABLED]                    = $config->pc_enabled;
