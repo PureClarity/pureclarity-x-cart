@@ -8,6 +8,13 @@
 <div id="pc-thanks">
     <p>{{ t('Thank you for installing the PureClarity plugin for X-Cart.') }}</p>
     <p>{{ t('Please follow the 3 steps below to get up and running with PureClarity') }}</p>
+    {% if this.getCronState() is not same as ('1') %}
+        <p class="pc-warning">
+            {{ t('Note: Feeds are submitted using scheduled tasks. Please ensure these are enabled.') }}
+            {{ t('See ') }}
+            <a href="https://kb.x-cart.com/general_setup/installation/server/cron_tasks.html" target="_blank">{{ t('scheduled task documentation') }}</a>
+        </p>
+    {% endif %}
 </div>
 <div id="pc-layer1">
     <div id="pc-step1" class="pc-box">
@@ -43,7 +50,6 @@
         <div class="pc-box-title-bar"><h3>{{ t('Data Feeds') }}</h3></div>
         <div class="pc-box-content">
             <p>{{ t('Full data feeds are sent nightly to PureClarity to ensure data is up to date in our system, below is the status of each of the data feed types:') }}</p>
-            <input id="pc-feed-info-store" type="hidden" value="<?= $block->escapeQuote($block->escapeHtml($defaultStoreId)) ?>" />
             <p class="pc-feed">
                 <span class="pc-feedName">{{ t('Products') }}:</span>
                 <span id="pc-productFeedStatusClass" class="pc-feed-status-icon {{ this.getProductFeedStatusClass() }}"></span>
