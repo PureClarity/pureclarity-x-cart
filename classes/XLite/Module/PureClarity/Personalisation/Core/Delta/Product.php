@@ -8,38 +8,44 @@ namespace XLite\Module\PureClarity\Personalisation\Core\Delta;
 
 use PureClarity\Api\Delta\Type\Product as ProductDelta;
 use XLite\Base\Singleton;
-use XLite\Core\Config;
 use XLite\Core\Database;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Data;
+use XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Data\Row;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 use XLite\Module\PureClarity\Personalisation\Core\State;
 use XLite\Module\PureClarity\Personalisation\Model\Product\Delta;
 
 /**
- * class Runner
+ * class Product
  *
- * PureClarity Product Feed Runner class
+ * PureClarity Product Delta class
  */
 class Product extends Singleton
 {
-    public function runDelta()
+    /**
+     * Runs the product delta
+     */
+    public function runDelta() : void
     {
         try {
-            $enabled = Config::getInstance()->PureClarity->Personalisation->pc_enabled;
-            $accessKey = Config::getInstance()->PureClarity->Personalisation->pc_access_key;
-            $secretKey = Config::getInstance()->PureClarity->Personalisation->pc_secret_key;
-            $region = Config::getInstance()->PureClarity->Personalisation->pc_region;
+            $pc = PureClarity::getInstance();
+            $active = $pc->isActive();
+            $deltasEnabled = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_DELTAS);
 
-            if (empty($enabled) || empty($accessKey) || empty($secretKey) || empty($region)) {
+            if ($deltasEnabled === false || $active === false) {
                 return;
             }
 
-            $productData = Data::getInstance();
+            $productData = Row::getInstance();
             $deltaRepo = Database::getRepo('XLite\Module\PureClarity\Personalisation\Model\Product\Delta');
             $deltas = $deltaRepo->findAll();
             $productRepo = Database::getRepo('XLite\Model\Product');
 
             if (count($deltas) > 0) {
-                $deltaHandler = new ProductDelta($accessKey, $secretKey, $region);
+                $deltaHandler = new ProductDelta(
+                    $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_DELTAS),
+                    $pc->getConfig(PureClarity::CONFIG_SECRET_KEY),
+                    $pc->getConfig(PureClarity::CONFIG_REGION)
+                );
 
                 foreach ($deltas as $delta) {
                     /** @var $delta Delta */
@@ -56,7 +62,7 @@ class Product extends Singleton
                         if (!$product) {
                             $deltaHandler->addDelete($delta->getterProperty('productId'));
                         } else {
-                            $data = $productData->getProductData($product);
+                            $data = $productData->getRowData($product);
                             if ($data !== null) {
                                 $deltaHandler->addData($data);
                             } else {
