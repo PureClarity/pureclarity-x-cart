@@ -6,13 +6,23 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Model\Admin\Dashboard;
 
-use XLite\Model\AEntity;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 use XLite\View\Button\AButton;
 use XLite\View\Button\Submit;
 use XLite\View\Model\AModel;
 
+/**
+ * Class Feeds
+ *
+ * Form Model for Feeds popup form on configured dashboard page
+ */
 class Feeds extends AModel
 {
+    /**
+     * Default schema for the Existing Account form
+     *
+     * @var array
+     */
     protected $schemaDefault = [
         'product' => [
             self::SCHEMA_CLASS => 'XLite\View\FormField\Input\Checkbox',
@@ -47,25 +57,47 @@ class Feeds extends AModel
     ];
 
     /**
-     * @return AEntity|null
+     * Removes brand field if brand feed is not enabled
+     *
+     * @return void
      */
-    protected function getDefaultModelObject()
+    protected function defineFormFields()
     {
-        return null;
+        $pc = PureClarity::getInstance();
+        $brandFeedEnabled = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_BRAND);
+        $brandParent = $pc->getConfig(PureClarity::CONFIG_FEEDS_BRAND_PARENT);
+
+        if ($brandFeedEnabled === false || empty($brandParent)) {
+            unset($this->schemaDefault['brand']);
+        }
+
+        parent::defineFormFields();
     }
 
     /**
+     * No object needed as this is not a normal form (i.e. no data object related to this, as it's not it's own entity)
+     */
+    protected function getDefaultModelObject() : void
+    {
+        return;
+    }
+
+    /**
+     * Gets the main form class for this form
+     *
      * @return string
      */
-    protected function getFormClass()
+    protected function getFormClass() : string
     {
         return 'XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard\Feeds';
     }
 
     /**
+     * Defines the button on this form
+     *
      * @return array
      */
-    protected function getFormButtons()
+    protected function getFormButtons() : array
     {
         $result = parent::getFormButtons();
 
@@ -80,10 +112,10 @@ class Feeds extends AModel
     }
 
     /**
-     * @return string|null
+     * No button panel class needed here, as we've got our own styling
      */
-    protected function getButtonPanelClass()
+    protected function getButtonPanelClass() : void
     {
-        return null;
+        return;
     }
 }
