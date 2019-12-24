@@ -23,7 +23,7 @@ XLite\Model\Config:
         option_name: 'Access Key'
   - name: pc_secret_key
     category: PureClarity\Personalisation
-    type: XLite\View\FormField\Input\Password
+    type: XLite\View\FormField\Input\PasswordWithValue
     orderby: 300
     translations:
       - code: en
