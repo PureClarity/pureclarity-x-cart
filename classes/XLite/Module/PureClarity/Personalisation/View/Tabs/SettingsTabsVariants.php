@@ -9,7 +9,7 @@ namespace XLite\Module\PureClarity\Personalisation\View\Tabs;
 /**
  * Tabs related to PureClarity
  */
-class SettingsTabsVariants extends SettingsTabs implements \XLite\Base\IDecorator
+class SettingsTabsVariants extends \XLite\Module\PureClarity\Personalisation\View\Tabs\SettingsTabs implements \XLite\Base\IDecorator
 {
     /**
      * Adds pureclarity_dashboard as an allowed target, so it displays on that target
