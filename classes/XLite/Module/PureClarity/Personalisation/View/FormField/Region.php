@@ -10,16 +10,16 @@ use PureClarity\Api\Resource\Regions;
 use XLite\View\FormField\Select\Regular;
 
 /**
- * Shipping table type
+ * PureClarity Region Selector
  */
 class Region extends Regular
 {
     /**
-     * getDefaultOptions
+     * Gets Regions from PureClarity PHP SDK as options for the select field
      *
      * @return array
      */
-    protected function getDefaultOptions()
+    protected function getDefaultOptions() : array
     {
         $pcRegions = Regions::getRegionLabels();
 

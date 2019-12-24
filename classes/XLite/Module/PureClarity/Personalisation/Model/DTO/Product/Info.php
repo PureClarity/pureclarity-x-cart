@@ -14,6 +14,9 @@ use XLite\Model\Product;
  */
 abstract class Info extends \XLite\Model\DTO\Product\Info implements \XLite\Base\IDecorator
 {
+    /**
+     * @param mixed|\XLite\Model\Product $object
+     */
     protected function init($object)
     {
         parent::init($object);

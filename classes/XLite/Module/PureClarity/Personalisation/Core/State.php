@@ -10,7 +10,9 @@ use XLite\Base\Singleton;
 use XLite\Core\Database;
 
 /**
+ * Class State
  *
+ * Handles getting and saving to the pureclarity_state table using the relevant X-Cart Repo
  */
 class State extends Singleton
 {

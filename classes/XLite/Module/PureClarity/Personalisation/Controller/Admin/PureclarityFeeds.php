@@ -6,13 +6,16 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
 
+use PureClarity\Api\Feed\Feed;
 use XLite\Controller\Admin\AAdmin;
 use XLite\Core\Request;
 use XLite\Core\TopMessage;
 use XLite\Module\PureClarity\Personalisation\Core\State;
 
 /**
- * PureClarity Dashboard Page
+ * Class PureclarityFeeds
+ *
+ * PureClarity Feed Request ajax Page Controller
  */
 class PureclarityFeeds extends AAdmin
 {
@@ -21,39 +24,43 @@ class PureclarityFeeds extends AAdmin
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return static::t('Send PureClarity Feeds');
     }
 
     /**
-     * Does a signup request
+     * "request" action
+     *
+     * Takes the post from the manual feed run form and
+     * saves the request to the pureclarity_state table to be picked up by the cron task
      */
-    public function doActionRequest()
+    public function doActionRequest() : void
     {
         $request = Request::getInstance();
 
         $feedTypes = [];
 
         if ($request->product) {
-            $feedTypes[] = 'product';
+            $feedTypes[] = Feed::FEED_TYPE_PRODUCT;
         }
 
         if ($request->category) {
-            $feedTypes[] = 'category';
+            $feedTypes[] = Feed::FEED_TYPE_CATEGORY;
         }
 
         if ($request->user) {
-            $feedTypes[] = 'user';
+            $feedTypes[] = Feed::FEED_TYPE_USER;
         }
 
         if ($request->brand) {
-            $feedTypes[] = 'brand';
+            $feedTypes[] = Feed::FEED_TYPE_BRAND;
         }
 
         if ($request->order) {
-            $feedTypes[] = 'order';
+            $feedTypes[] = Feed::FEED_TYPE_ORDER;
         }
+
         if (empty($feedTypes)) {
             TopMessage::getInstance()->add(
                 static::t('Please choose one or more feeds to send to PureClarity'),

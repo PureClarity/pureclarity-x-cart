@@ -7,16 +7,16 @@
 namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard;
 
 /**
- * Pureclarity Dashboard
+ * Pureclarity Dashboard - Configured Page View
  */
 class Configured extends \XLite\View\AView
 {
     /**
-     * Return list of targets allowed for this widget
+     * Adds pureclarity_dashboard as an allowed target, so it displays on that target
      *
      * @return array
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $result = parent::getAllowedTargets();
         $result[] = 'pureclarity_dashboard';
@@ -25,11 +25,11 @@ class Configured extends \XLite\View\AView
     }
 
     /**
-     * Return templates directory name
+     * Returns the .twig template file for this view
      *
      * @return string
      */
-    protected function getDefaultTemplate()
+    protected function getDefaultTemplate() : string
     {
         return 'modules/PureClarity/Personalisation/admin/dashboard/configured.twig';
     }

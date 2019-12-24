@@ -7,18 +7,18 @@
 namespace XLite\Module\PureClarity\Personalisation\View\Tabs;
 
 /**
- * Tabs related to payment settings
+ * Tabs related to PureClarity
  *
  * @ListChild (list="admin.center", zone="admin")
  */
 class SettingsTabs extends \XLite\View\Tabs\ATabs
 {
     /**
-     * Returns the list of targets where this widget is available
+     * Adds pureclarity_settings as an allowed target, so it displays on that target
      *
-     * @return string
+     * @return array
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $list = parent::getAllowedTargets();
         $list[] = 'pureclarity_settings';
@@ -27,9 +27,11 @@ class SettingsTabs extends \XLite\View\Tabs\ATabs
     }
 
     /**
+     * Adds Settings Tab
+     *
      * @return array
      */
-    protected function defineTabs()
+    protected function defineTabs() : array
     {
         return [
             'pureclarity_settings'   => [

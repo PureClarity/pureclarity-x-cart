@@ -7,16 +7,16 @@
 namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard\Button;
 
 /**
- * Product selection in popup
+ * PureClarity Dashboard - Feed submission popup button
  */
 class Feeds extends \XLite\View\Button\APopupButton
 {
     /**
-     * getJSFiles
+     * Adds Feeds popup button JS to the Dashboard page
      *
      * @return array
      */
-    public function getJSFiles()
+    public function getJSFiles() : array
     {
         $list = parent::getJSFiles();
         $list[] = 'modules/PureClarity/Personalisation/admin/dashboard/js/feeds.js';
@@ -25,23 +25,11 @@ class Feeds extends \XLite\View\Button\APopupButton
     }
 
     /**
-     * getCSSFiles
+     * Parameters to use in AJAX for popup HTML
      *
      * @return array
      */
-    public function getCSSFiles()
-    {
-        $list = parent::getCSSFiles();
-
-        return $list;
-    }
-
-    /**
-     * Return URL parameters to use in AJAX popup
-     *
-     * @return array
-     */
-    protected function prepareURLParams()
+    protected function prepareURLParams() : array
     {
         return array(
             'target' => 'pureclarity_feeds',
@@ -54,17 +42,17 @@ class Feeds extends \XLite\View\Button\APopupButton
      *
      * @return string
      */
-    protected function getClass()
+    protected function getClass() : string
     {
         return parent::getClass() . ' popup-pureclarity-feeds';
     }
 
     /**
-     * getDefaultLabel
+     * Returns the default label for the button
      *
      * @return string
      */
-    protected function getDefaultLabel()
+    protected function getDefaultLabel() : string
     {
         return 'Run Feeds Manually';
     }

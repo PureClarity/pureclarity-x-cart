@@ -6,7 +6,6 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Core\Task;
 
-use XLite\Core\Database;
 use XLite\Module\PureClarity\Personalisation\Core\Delta\Product as ProductDelta;
 
 /**
@@ -15,31 +14,29 @@ use XLite\Module\PureClarity\Personalisation\Core\Delta\Product as ProductDelta;
 class Delta extends \XLite\Core\Task\Base\Periodic
 {
     /**
-     * Get title
+     * Returns the title of this task
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return static::t('PureClarity Deltas');
     }
 
     /**
-     * Run step
-     *
-     * @return void
+     * Run the PureClarity Product Delta
      */
-    protected function runStep()
+    protected function runStep() : void
     {
         ProductDelta::getInstance()->runDelta();
     }
 
     /**
-     * Get period (seconds)
+     * Get recurrence period (seconds)
      *
-     * @return integer
+     * @return int
      */
-    protected function getPeriod()
+    protected function getPeriod() : int
     {
         return \XLite\Core\Task\Base\Periodic::INT_1_MIN;
     }

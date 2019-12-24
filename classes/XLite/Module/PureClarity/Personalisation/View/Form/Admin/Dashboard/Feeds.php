@@ -6,19 +6,39 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard;
 
+/**
+ * Class Feeds
+ *
+ * Form class for Feeds popup form on dashboard page
+ */
 class Feeds extends \XLite\View\Form\AForm
 {
-    protected function getDefaultTarget()
+    /**
+     * Returns target for this form to submit to
+     *
+     * @return string
+     */
+    protected function getDefaultTarget() : string
     {
         return 'pureclarity_feeds';
     }
 
-    protected function getDefaultAction()
+    /**
+     * Returns action on the target for this form to post to
+     *
+     * @return string
+     */
+    protected function getDefaultAction() : string
     {
         return 'request';
     }
 
-    protected function getClassName()
+    /**
+     * Returns class for form
+     *
+     * @return string
+     */
+    protected function getClassName() : string
     {
         return parent::getClassName() . ' pureclarity-feeds';
     }

@@ -8,134 +8,50 @@ namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
 
 use XLite\Controller\Admin\AAdmin;
 use XLite\Core\Database;
-use XLite\Core\EventTask;
-use XLite\Core\Request;
-use XLite\Core\TopMessage;
-use XLite\Module\XC\GoogleFeed\Logic\Feed\Generator;
 
 /**
- * PureClarity Settings Page
+ * Class PureclaritySettings
+ *
+ * PureClarity Settings Page Controller
  */
 class PureclaritySettings extends AAdmin
 {
     /**
-     * Return the current page title
+     * Returns page title
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return static::t('PureClarity Settings');
     }
 
     /**
-     * Check - generation process is not-finished or not
-     *
-     * @return boolean
-     */
-    public function isFeedGenerationNotFinished()
-    {
-        $eventName = Generator::getEventName();
-        $state = Database::getRepo('XLite\Model\TmpVar')->getEventState($eventName);
-
-        return $state
-            && in_array(
-                $state['state'],
-                array(EventTask::STATE_STANDBY, EventTask::STATE_IN_PROGRESS)
-            )
-            && !Database::getRepo('XLite\Model\TmpVar')->getVar($this->getGenerationCancelFlagVarName());
-    }
-
-    /**
-     * Check - generation process is finished or not
-     *
-     * @return boolean
-     */
-    public function isGenerationFinished()
-    {
-        return !$this->isFeedGenerationNotFinished();
-    }
-
-    /**
-     * Get export cancel flag name
-     *
-     * @return string
-     */
-    protected function getGenerationCancelFlagVarName()
-    {
-        return Generator::getCancelFlagVarName();
-    }
-
-    /**
-     * Manually generate sitemap
+     * Updates the PureClarity module settings
      *
      * @return void
      */
-    protected function doActionGenerate()
-    {
-        if ($this->isGenerationFinished()) {
-            Generator::run([]);
-        }
-
-        $this->setReturnURL(
-            $this->buildURL('google_feed')
-        );
-    }
-
-    /**
-     * Update module settings
-     *
-     * @return void
-     */
-    protected function doActionUpdate()
+    protected function doActionUpdate() : void
     {
         $this->getModelForm()->performAction('update');
-
-        \XLite\Module\XC\GoogleFeed\Core\Task\FeedUpdater::setRenewalPeriod(
-            \XLite\Core\Config::getInstance()->XC->GoogleFeed->renewal_frequency
-        );
     }
 
     /**
-     * getModelFormClass
+     * Returns default Settings model, no PureClarity-specific one needed
      *
      * @return string
      */
-    protected function getModelFormClass()
+    protected function getModelFormClass() : string
     {
         return 'XLite\View\Model\Settings';
     }
 
     /**
-     * Preprocessor for no-action run
-     *
-     * @return void
-     */
-    protected function doNoAction()
-    {
-        $request = Request::getInstance();
-
-        if ($request->generation_completed) {
-            TopMessage::addInfo('Feed generation has been completed successfully.');
-
-            $this->setReturnURL(
-                $this->buildURL('google_feed')
-            );
-        } elseif ($request->generation_failed) {
-            TopMessage::addError('Feed generation has been stopped.');
-
-            $this->setReturnURL(
-                $this->buildURL('google_feed')
-            );
-        }
-    }
-
-    /**
-     * Returns shipping options
+     * Returns all PureClarity settings (see install.yaml)
      *
      * @return array
      */
-    public function getOptions()
+    public function getOptions() : array
     {
         return $this->executeCachedRuntime(function () {
             return Database::getRepo('\XLite\Model\Config')
@@ -144,11 +60,11 @@ class PureclaritySettings extends AAdmin
     }
 
     /**
-     * Get options category
+     * Get options category (see install.yaml)
      *
      * @return string
      */
-    protected function getOptionsCategory()
+    protected function getOptionsCategory() : string
     {
         return 'PureClarity\Personalisation';
     }

@@ -9,7 +9,9 @@ namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
 use XLite\Controller\Admin\AAdmin;
 
 /**
- * PureClarity Dashboard Page
+ * Class PureclaritySignup
+ *
+ * PureClarity Signup form Page Controller
  */
 class PureclaritySignup extends AAdmin
 {
@@ -18,7 +20,7 @@ class PureclaritySignup extends AAdmin
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return static::t('Account Setup');
     }

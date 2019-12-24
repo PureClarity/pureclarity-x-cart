@@ -7,10 +7,6 @@
 namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
 
 use XLite\Controller\Admin\AAdmin;
-use XLite\Core\Request;
-use XLite\Core\TopMessage;
-use XLite\Module\PureClarity\Personalisation\Core\State;
-
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Category\Runner as CategoryFeedRunner;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Runner as ProductFeedRunner;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand\Runner as BrandFeedRunner;
@@ -28,7 +24,7 @@ class PureclarityFeedsRun extends AAdmin
      */
     public function doNoAction()
     {
-        UserFeedRunner::getInstance()->runFeed();
+        ProductFeedRunner::getInstance()->runFeed();
         die();
     }
 }

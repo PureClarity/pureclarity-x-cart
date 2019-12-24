@@ -18,9 +18,11 @@ use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedRowDataInterface;
 class Row extends Singleton implements FeedRowDataInterface
 {
     /**
+     * Processes the provided User into an array in the format required for the PureClarity User Feed
+     *
      * @param object|Profile $row
      *
-     * @return mixed[]|null
+     * @return mixed[]
      */
     public function getRowData($row) : array
     {

@@ -7,24 +7,16 @@
 namespace XLite\Module\PureClarity\Personalisation\View\Menu\Admin;
 
 /**
- * Top menu widget
+ * Class LeftMenu
+ *
+ * Decorator of \XLite\View\Menu\Admin\LeftMenu
+ *
+ * Adds PureClarity menu option as a "Content" submenu item
  */
 abstract class LeftMenu extends \XLite\View\Menu\Admin\LeftMenu implements \XLite\Base\IDecorator
 {
     /**
-     * Define and set handler attributes; initialize handler
-     *
-     * @param array $params Handler params OPTIONAL
-     */
-    public function __construct(array $params = [])
-    {
-        parent::__construct($params);
-
-        $this->relatedTargets['pureclarity'][] = 'pureclarity';
-    }
-
-    /**
-     * Define items
+     * Adds PureClarity menu option as a "Content" submenu item
      *
      * @return array
      */

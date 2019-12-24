@@ -11,11 +11,18 @@ use XLite\Controller\Admin\AAdmin;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Status;
 
 /**
- * PureClarity Dashboard Page
+ * Class PureclarityFeedProgress
+ *
+ * PureClarity Feed Progress AJAX Page Controller
  */
 class PureclarityFeedProgress extends AAdmin
 {
-    public function doNoAction()
+    /**
+     * Default AJAX action
+     *
+     * Checks the current status of all feeds and outputs as json string used by JS to update the display
+     */
+    public function doNoAction() : void
     {
         $feedStatus = Status::getInstance();
 

@@ -9,18 +9,16 @@ namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard;
 use XLite\View\SimpleDialog;
 
 /**
- * Add shipping method dialog widget
- *
- * @ListChild (list="admin.center", zone="admin")
+ * Pureclarity Dashboard - Feeds Popup View
  */
 class Feeds extends SimpleDialog
 {
     /**
-     * Return list of allowed targets
+     * Adds pureclarity_feeds as an allowed target, so it displays on that target
      *
      * @return array
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $list = parent::getAllowedTargets();
         $list[] = 'pureclarity_feeds';
@@ -29,11 +27,11 @@ class Feeds extends SimpleDialog
     }
 
     /**
-     * Return file name for the center part template
+     * Returns the .twig template file for this view
      *
      * @return string
      */
-    protected function getBody()
+    protected function getBody() : string
     {
         return 'modules/PureClarity/Personalisation/admin/dashboard/feeds.twig';
     }

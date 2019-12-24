@@ -9,16 +9,16 @@ namespace XLite\Module\PureClarity\Personalisation\View\Admin;
 use XLite\View\AView;
 
 /**
- * Pureclarity Dashboard
+ * Pureclarity Dashboard View
  */
 class PureclarityDashboard extends AView
 {
     /**
-     * Return list of targets allowed for this widget
+     * Adds pureclarity_dashboard as an allowed target, so it displays on that target
      *
      * @return array
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $result = parent::getAllowedTargets();
         $result[] = 'pureclarity_dashboard';
@@ -27,21 +27,21 @@ class PureclarityDashboard extends AView
     }
 
     /**
-     * Return templates directory name
+     * Returns the PureClarity module templates directory
      *
      * @return string
      */
-    protected function getDir()
+    protected function getDir() : string
     {
         return 'modules/PureClarity/Personalisation/admin/dashboard';
     }
 
     /**
-     * Get a list of CSS files required to display the widget properly
+     * Gets the current list of CSS for the overall View and adds the js for this view to it
      *
      * @return array
      */
-    public function getCSSFiles()
+    public function getCSSFiles() : array
     {
         $list = parent::getCSSFiles();
         $list[] = $this->getDir() . '/css/dashboard.css';
@@ -50,24 +50,11 @@ class PureclarityDashboard extends AView
     }
 
     /**
-     * Get a list of CSS files required to display the widget properly
-     *
-     * @return array
-     */
-    public function getJSFiles()
-    {
-        $list = parent::getJSFiles();
-        $list[] = $this->getDir() . '/js/dashboard.js';
-
-        return $list;
-    }
-
-    /**
-     * Return templates directory name
+     * Returns the .twig template file for this view
      *
      * @return string
      */
-    protected function getDefaultTemplate()
+    protected function getDefaultTemplate() : string
     {
         return 'modules/PureClarity/Personalisation/admin/dashboard.twig';
     }

@@ -22,7 +22,7 @@ class Status extends Singleton
      *
      * @return mixed[]
      */
-    public function checkStatus()
+    public function checkStatus() : array
     {
         $result = [
             'error' => '',

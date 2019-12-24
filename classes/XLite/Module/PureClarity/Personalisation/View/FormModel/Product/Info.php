@@ -7,10 +7,19 @@
 namespace XLite\Module\PureClarity\Personalisation\View\FormModel\Product;
 
 /**
- * Product form model
+ * Class Info
+ *
+ * Decorator of \XLite\View\FormModel\Product\Info
+ *
+ * Adds PureClarity form fields to product edit page
  */
 abstract class Info extends \XLite\View\FormModel\Product\Info implements \XLite\Base\IDecorator
 {
+    /**
+     * Adds PureClarity form fields to product edit form definition
+     *
+     * @return array
+     */
     protected function defineFields()
     {
         $schema = parent::defineFields();
@@ -60,6 +69,8 @@ abstract class Info extends \XLite\View\FormModel\Product\Info implements \XLite
     }
 
     /**
+     * Adds PureClarity section to product edit page
+     *
      * @return array
      */
     protected function defineSections()

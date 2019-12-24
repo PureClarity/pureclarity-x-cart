@@ -16,9 +16,13 @@ use XLite\Module\PureClarity\Personalisation\Core\Dashboard\State;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Status;
 use XLite\Module\PureClarity\Personalisation\Core\Signup\Process;
 use XLite\Module\PureClarity\Personalisation\Core\Signup\Request as SignupRequest;
+use XLite\Module\PureClarity\Personalisation\Main;
+use XLite\Module\PureClarity\Personalisation\Core\State as PureClarityState;
 
 /**
- * PureClarity Dashboard Page
+ * Class PureclarityDashboard
+ *
+ * PureClarity Dashboard Page Controller
  */
 class PureclarityDashboard extends AAdmin
 {
@@ -27,7 +31,7 @@ class PureclarityDashboard extends AAdmin
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return static::t('PureClarity Dashboard');
     }
@@ -37,24 +41,39 @@ class PureclarityDashboard extends AAdmin
      *
      * @return string
      */
-    public function getDashboardState()
+    public function getDashboardState() : string
     {
         $state = State::getInstance();
         return $state->getState();
     }
 
     /**
+     * Return the current page title
+     *
      * @return string
      */
-    public function getVersion()
+    public function getCronState() : string
     {
-        return '1.0.0';
+        $state = PureClarityState::getInstance();
+        return $state->getStateValue('has_cron_run');
     }
 
     /**
+     * Returns the current version of the Module
+     *
      * @return string
      */
-    public function getProductFeedStatusClass()
+    public function getVersion() : string
+    {
+        return Main::getVersion();
+    }
+
+    /**
+     * Returns the class to use for the Product feed status display
+     *
+     * @return string
+     */
+    public function getProductFeedStatusClass() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_PRODUCT);
@@ -62,9 +81,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the label to use for the Product feed status display
+     *
      * @return string
      */
-    public function getProductFeedStatusLabel()
+    public function getProductFeedStatusLabel() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_PRODUCT);
@@ -72,9 +93,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the class to use for the Category feed status display
+     *
      * @return string
      */
-    public function getCategoryFeedStatusClass()
+    public function getCategoryFeedStatusClass() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_CATEGORY);
@@ -82,9 +105,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the label to use for the Category feed status display
+     *
      * @return string
      */
-    public function getCategoryFeedStatusLabel()
+    public function getCategoryFeedStatusLabel() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_CATEGORY);
@@ -92,9 +117,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the class to use for the Brand feed status display
+     *
      * @return string
      */
-    public function getBrandFeedStatusClass()
+    public function getBrandFeedStatusClass() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_BRAND);
@@ -102,9 +129,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the label to use for the Brand feed status display
+     *
      * @return string
      */
-    public function getBrandFeedStatusLabel()
+    public function getBrandFeedStatusLabel() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_BRAND);
@@ -112,9 +141,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the class to use for the User feed status display
+     *
      * @return string
      */
-    public function getUserFeedStatusClass()
+    public function getUserFeedStatusClass() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_USER);
@@ -122,9 +153,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the label to use for the User feed status display
+     *
      * @return string
      */
-    public function getUserFeedStatusLabel()
+    public function getUserFeedStatusLabel() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_USER);
@@ -132,9 +165,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the class to use for the Order feed status display
+     *
      * @return string
      */
-    public function getOrdersFeedStatusClass()
+    public function getOrdersFeedStatusClass() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_ORDER);
@@ -142,9 +177,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the label to use for the Order feed status display
+     *
      * @return string
      */
-    public function getOrdersFeedStatusLabel()
+    public function getOrdersFeedStatusLabel() : string
     {
         $feedStatus = Status::getInstance();
         $productFeed = $feedStatus->getFeedStatus(Feed::FEED_TYPE_ORDER);
@@ -152,9 +189,11 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
-     * @return string
+     * Returns whether the PureClarity feeds are currently in progress
+     *
+     * @return bool
      */
-    public function getAreFeedsInProgress()
+    public function getAreFeedsInProgress() : bool
     {
         $feedStatus = Status::getInstance();
         return $feedStatus->getAreFeedsInProgress([
@@ -171,15 +210,15 @@ class PureclarityDashboard extends AAdmin
      *
      * @return string
      */
-    public function getConfigureUrl()
+    public function getConfigureUrl() : string
     {
         return $this->buildURL('pureclarity_settings', '', []);
     }
 
     /**
-     * Links an existing account
+     * Links the module to an existing account
      */
-    public function doActionLinkAccount()
+    public function doActionLinkAccount() : void
     {
         $request = Request::getInstance();
 
@@ -202,13 +241,21 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
-     * Does a signup request
+     * Sends a signup request to PureClarity
      */
-    public function doActionSignup()
+    public function doActionSignup() : void
     {
         $request = Request::getInstance();
 
-        $time = new \DateTime('now', Converter::getTimeZone());
+        try {
+            $time = new \DateTime('now', Converter::getTimeZone());
+            $timeZone = $time->getTimezone()->getName();
+            if ($timeZone === 'UTC') {
+                $timeZone = 'Europe\London';
+            }
+        } catch (\Exception $e) {
+            $timeZone = 'Europe\London';
+        }
 
         $params = [
             'firstname' => $request->first_name,
@@ -220,7 +267,7 @@ class PureclarityDashboard extends AAdmin
             'store_name' => $request->store_name,
             'region' => $request->region,
             'currency' => \XLite::getInstance()->getCurrency()->getCode(),
-            'timezone' => $time->getTimezone()->getName(),
+            'timezone' => $timeZone,
             'platform' => 'magento2'
         ];
         

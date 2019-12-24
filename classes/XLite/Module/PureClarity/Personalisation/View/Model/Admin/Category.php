@@ -7,12 +7,16 @@
 namespace XLite\Module\PureClarity\Personalisation\View\Model\Admin;
 
 /**
- * Category model widget extention
+ * Class Category
+ *
+ * Decorator of \XLite\View\Model\Category
+ *
+ * Adds PureClarity custom fields to Category form
  */
 class Category extends \XLite\View\Model\Category implements \XLite\Base\IDecorator
 {
     /**
-     * OG widgets into the default section
+     * Add PureClarity fields to Category form
      *
      * @param array $params
      * @param array $sections

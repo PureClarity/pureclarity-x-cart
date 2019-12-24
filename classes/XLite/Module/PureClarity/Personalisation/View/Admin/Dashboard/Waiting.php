@@ -9,16 +9,16 @@ namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard;
 use XLite\View\AView;
 
 /**
- * Pureclarity Dashboard
+ * Pureclarity Dashboard - Waiting View
  */
 class Waiting extends AView
 {
     /**
-     * Get a list of CSS files required to display the widget properly
+     * Gets the current list of JS for the overall View and adds the js for this view to it
      *
      * @return array
      */
-    public function getJSFiles()
+    public function getJSFiles() : array
     {
         $list = parent::getJSFiles();
         $list[] = $this->getDir() . '/js/waiting.js';
@@ -27,21 +27,21 @@ class Waiting extends AView
     }
 
     /**
-     * Return templates directory name
+     * Returns the PureClarity module templates directory
      *
      * @return string
      */
-    protected function getDir()
+    protected function getDir() : string
     {
         return 'modules/PureClarity/Personalisation/admin/dashboard';
     }
 
     /**
-     * Return list of targets allowed for this widget
+     * Adds pureclarity_dashboard as an allowed target, so it displays on that target
      *
      * @return array
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $result = parent::getAllowedTargets();
         $result[] = 'pureclarity_dashboard';
@@ -50,11 +50,11 @@ class Waiting extends AView
     }
 
     /**
-     * Return templates directory name
+     * Returns the .twig template file for this view
      *
      * @return string
      */
-    protected function getDefaultTemplate()
+    protected function getDefaultTemplate() : string
     {
         return 'modules/PureClarity/Personalisation/admin/dashboard/waiting.twig';
     }

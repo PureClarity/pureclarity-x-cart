@@ -18,6 +18,8 @@ use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedRowDataInterface;
 class Row extends Singleton implements FeedRowDataInterface
 {
     /**
+     * Processes the provided Category into an array in the format required for the PureClarity Brand Feed
+     *
      * @param object|Category $row
      *
      * @return mixed[]

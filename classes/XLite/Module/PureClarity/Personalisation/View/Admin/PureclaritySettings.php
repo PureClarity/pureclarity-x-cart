@@ -7,16 +7,16 @@
 namespace XLite\Module\PureClarity\Personalisation\View\Admin;
 
 /**
- * Pureclarity Settings
+ * Pureclarity Settings View
  */
 class PureclaritySettings extends \XLite\View\Dialog
 {
     /**
-     * Return list of targets allowed for this widget
+     * Adds pureclarity_settings as an allowed target, so it displays on that target
      *
      * @return array
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $result = parent::getAllowedTargets();
         $result[] = 'pureclarity_settings';
@@ -25,11 +25,11 @@ class PureclaritySettings extends \XLite\View\Dialog
     }
 
     /**
-     * Return templates directory name
+     * Returns the PureClarity module templates directory
      *
      * @return string
      */
-    protected function getDir()
+    protected function getDir() : string
     {
         return 'modules/PureClarity/Personalisation/admin';
     }

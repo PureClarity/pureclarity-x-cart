@@ -9,16 +9,16 @@ namespace XLite\Module\PureClarity\Personalisation\View\FormField;
 use XLite\View\FormField\Separator\ASeparator;
 
 /**
- * \XLite\View\FormField\Separator\Regular
+ * PureClarity SubHeader, for signup form (as there's JS that removes normal separator headers from popups)
  */
 class SubHeader extends ASeparator
 {
     /**
-     * Return field template
+     * Returns the PureClarity module templates directory
      *
      * @return string
      */
-    protected function getDir()
+    protected function getDir() : string
     {
         return 'modules/PureClarity/Personalisation/admin/form_field/separator';
     }

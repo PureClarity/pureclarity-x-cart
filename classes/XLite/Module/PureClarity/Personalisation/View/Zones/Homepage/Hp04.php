@@ -15,14 +15,15 @@ use XLite\Module\PureClarity\Personalisation\View\Zones\AZone;
  */
 class Hp04 extends AZone
 {
+    /** @var string $zoneId */
     protected $zoneId = 'HP-04';
 
     /**
-     * Return list of allowed targets
+     * Adds main as an allowed target, so it displays on the home page
      *
      * @return string[]
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $result = parent::getAllowedTargets();
         $result[] = 'main';

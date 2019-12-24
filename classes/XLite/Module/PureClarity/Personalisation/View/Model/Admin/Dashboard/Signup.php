@@ -16,8 +16,18 @@ use XLite\View\Button\Submit;
 use XLite\View\Model\AModel;
 use XLite\Core\Session;
 
+/**
+ * Class Signup
+ *
+ * Form Model for Signup popup form on default dashboard page
+ */
 class Signup extends AModel
 {
+    /**
+     * Schema for "About you" section of the form
+     *
+     * @var array
+     */
     protected $schemaYou = [
         'sep_about_you_header' => [
             self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalisation\View\FormField\SubHeader',
@@ -44,12 +54,17 @@ class Signup extends AModel
             self::SCHEMA_REQUIRED  => true,
         ],
         'password' => [
-            self::SCHEMA_CLASS     => 'XLite\View\FormField\Input\Password',
+            self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalisation\View\FormField\Password',
             self::SCHEMA_LABEL     => 'Password',
             self::SCHEMA_REQUIRED  => true,
         ],
     ];
 
+    /**
+     * Schema for "About the store" section of the form
+     *
+     * @var array
+     */
     protected $schemaStore = [
         'sep_about_store_header' => [
             self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalisation\View\FormField\SubHeader',
@@ -61,7 +76,7 @@ class Signup extends AModel
             self::SCHEMA_REQUIRED  => true,
         ],
         'url' => [
-            self::SCHEMA_CLASS     => 'XLite\View\FormField\Input\Text',
+            self::SCHEMA_CLASS     => 'XLite\View\FormField\Input\Text\URL',
             self::SCHEMA_LABEL     => 'URL',
             self::SCHEMA_REQUIRED  => true,
         ],
@@ -81,7 +96,7 @@ class Signup extends AModel
     ];
 
     /**
-     * Save current form reference and sections list, and initialize the cache
+     * Adds the custom sections to the form
      *
      * @param array $params   Widget params OPTIONAL
      * @param array $sections Sections list OPTIONAL
@@ -95,14 +110,18 @@ class Signup extends AModel
     }
 
     /**
-     * @return AEntity|null
+     * No object needed as this is not a normal form (i.e. no data object related to this, as it's not it's own entity)
      */
-    protected function getDefaultModelObject()
+    protected function getDefaultModelObject() : void
     {
-        return null;
+        return;
     }
 
     /**
+     * Returns the default value for the provided field name
+     *
+     * Will either return a calculated default value (on first load) or from session (if submitted with errors)
+     *
      * @param string $name
      * @return mixed|string
      * @throws Exception
@@ -155,6 +174,9 @@ class Signup extends AModel
                 case 'timezone':
                     $time = new \DateTime('now', Converter::getTimeZone());
                     $value = $time->getTimezone()->getName();
+                    if ($value == 'UTC') {
+                        $value = 'Europe/London';
+                    }
                     break;
                 case 'url':
                     $domain = ConfigParser::getOptions(['host_details', 'http_host']);
@@ -168,17 +190,21 @@ class Signup extends AModel
     }
 
     /**
+     * Gets the main form class for this form
+     *
      * @return string
      */
-    protected function getFormClass()
+    protected function getFormClass() : string
     {
         return 'XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard\Signup';
     }
 
     /**
+     * Defines the button on this form
+     *
      * @return array
      */
-    protected function getFormButtons()
+    protected function getFormButtons() : array
     {
         $result = parent::getFormButtons();
 
@@ -193,10 +219,10 @@ class Signup extends AModel
     }
 
     /**
-     * @return string|null
+     * No button panel class needed here, as we've got our own styling
      */
-    protected function getButtonPanelClass()
+    protected function getButtonPanelClass() : void
     {
-        return null;
+        return;
     }
 }

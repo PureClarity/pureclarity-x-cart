@@ -15,14 +15,15 @@ use XLite\Module\PureClarity\Personalisation\View\Zones\AZone;
  */
 class Pp02 extends AZone
 {
+    /** @var string $zoneId */
     protected $zoneId = 'PP-02';
 
     /**
-     * Return list of allowed targets
+     * Adds product as an allowed target, so it displays on the product details page
      *
      * @return string[]
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $result = parent::getAllowedTargets();
         $result[] = 'product';

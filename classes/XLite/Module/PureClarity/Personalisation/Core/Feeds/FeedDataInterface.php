@@ -9,7 +9,9 @@ namespace XLite\Module\PureClarity\Personalisation\Core\Feeds;
 interface FeedDataInterface
 {
     /**
-     * @return mixed[]
+     * Should return an array of objects to be used in the feed generation process
+     *
+     * @return object[]
      */
     public function getFeedData() : array;
 }

@@ -7,16 +7,16 @@
 namespace XLite\Module\PureClarity\Personalisation\View\Tabs;
 
 /**
- * Tabs related to payment settings
+ * Tabs related to PureClarity
  */
-class SettingsTabsVariants extends \XLite\Module\PureClarity\Personalisation\View\Tabs\SettingsTabs implements \XLite\Base\IDecorator
+class SettingsTabsVariants extends SettingsTabs implements \XLite\Base\IDecorator
 {
     /**
-     * Returns the list of targets where this widget is available
+     * Adds pureclarity_dashboard as an allowed target, so it displays on that target
      *
-     * @return string
+     * @return array
      */
-    public static function getAllowedTargets()
+    public static function getAllowedTargets() : array
     {
         $list = parent::getAllowedTargets();
         $list[] = 'pureclarity_dashboard';
@@ -25,9 +25,11 @@ class SettingsTabsVariants extends \XLite\Module\PureClarity\Personalisation\Vie
     }
 
     /**
+     * Adds Dashboard Tab
+     *
      * @return array
      */
-    protected function defineTabs()
+    protected function defineTabs() : array
     {
         $tabs = parent::defineTabs();
         $tabs['pureclarity_dashboard'] = [

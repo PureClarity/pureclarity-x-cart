@@ -7,7 +7,7 @@
 namespace XLite\Module\PureClarity\Personalisation\Model\Repo;
 
 /**
- * Source repository
+ * State repository
  */
 class State extends \XLite\Model\Repo\ARepo
 {

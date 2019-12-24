@@ -11,10 +11,18 @@ use XLite\Module\PureClarity\Personalisation\Core\Signup\Process;
 use XLite\Module\PureClarity\Personalisation\Core\Signup\Status;
 
 /**
- * PureClarity Dashboard Page
+ * Class PureclaritySignupProgress
+ *
+ * PureClarity Signup progress check ajax call Controller
  */
 class PureclaritySignupProgress extends AAdmin
 {
+    /**
+     * Default AJAX action
+     *
+     * Checks the current status of the PureClarity signup request
+     * and returns a JSON string to be used by JS to update the display
+     */
     public function doNoAction()
     {
         $error = '';

@@ -6,13 +6,22 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Model\Admin\Dashboard;
 
-use XLite\Model\AEntity;
 use XLite\View\Button\AButton;
 use XLite\View\Button\Submit;
 use XLite\View\Model\AModel;
 
+/**
+ * Class Account
+ *
+ * Form Model for Existing Account form on default dashboard page
+ */
 class Account extends AModel
 {
+    /**
+     * Default schema for the Existing Account form
+     *
+     * @var array
+     */
     protected $schemaDefault = [
         'access_key' => [
             self::SCHEMA_CLASS      => 'XLite\View\FormField\Input\Text',
@@ -38,25 +47,29 @@ class Account extends AModel
     ];
 
     /**
-     * @return AEntity|null
+     * No object needed as this is not a normal form (i.e. no data object related to this, as it's not it's own entity)
      */
-    protected function getDefaultModelObject()
+    protected function getDefaultModelObject() : void
     {
-        return null;
+        return;
     }
 
     /**
+     * Gets the main form class for this form
+     *
      * @return string
      */
-    protected function getFormClass()
+    protected function getFormClass() : string
     {
         return 'XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard\Account';
     }
 
     /**
+     * Defines the button on this form
+     *
      * @return array
      */
-    protected function getFormButtons()
+    protected function getFormButtons() : array
     {
         $result = parent::getFormButtons();
 
@@ -71,10 +84,10 @@ class Account extends AModel
     }
 
     /**
-     * @return string|null
+     * No button panel class needed here, as we've got our own styling
      */
-    protected function getButtonPanelClass()
+    protected function getButtonPanelClass() : void
     {
-        return null;
+        return;
     }
 }

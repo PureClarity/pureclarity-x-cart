@@ -12,29 +12,34 @@ use XLite\Module\PureClarity\Personalisation\Core\State as CoreState;
 /**
  * Class State
  *
- * Dashboard State ViewModel
+ * Calculates the Dashboard State to determine what content to display
  */
 class State extends Singleton
 {
+    /** @var string */
     const STATE_NOT_CONFIGURED = 'not_configured';
+
+    /** @var string */
     const STATE_WAITING = 'waiting';
+
+    /** @var string */
     const STATE_CONFIGURED = 'configured';
 
     /** @var bool $isNotConfigured */
-    private $isNotConfigured;
+    protected $isNotConfigured;
 
     /** @var bool $signupStarted */
-    private $signupStarted;
+    protected $signupStarted;
 
     /** @var CoreState $state */
-    private $state;
+    protected $state;
 
     /**
      * Returns current dashboard state
      *
      * @return string
      */
-    public function getState()
+    public function getState() : string
     {
         if ($this->isNotConfigured()) {
             return self::STATE_NOT_CONFIGURED;
@@ -50,7 +55,7 @@ class State extends Singleton
      *
      * @return boolean
      */
-    public function isNotConfigured()
+    public function isNotConfigured() : bool
     {
         return ($this->getIsNotConfigured() === true && $this->getSignupStarted() === false);
     }
@@ -60,15 +65,17 @@ class State extends Singleton
      *
      * @return boolean
      */
-    public function isWaiting()
+    public function isWaiting() : bool
     {
         return ($this->getIsNotConfigured() === true && $this->getSignupStarted() === true);
     }
 
     /**
+     * Returns whether the dashboard is in the "not configured" state
+     *
      * @return bool
      */
-    private function getIsNotConfigured()
+    protected function getIsNotConfigured() : bool
     {
         if ($this->isNotConfigured === null) {
             $state = $this->getStateValue('is_configured');
@@ -79,9 +86,11 @@ class State extends Singleton
     }
 
     /**
+     * Returns whether a signup request has started
+     *
      * @return bool
      */
-    private function getSignupStarted()
+    protected function getSignupStarted() : bool
     {
         if ($this->signupStarted === null) {
             $signupState = $this->getStateValue('signup_request');
@@ -97,7 +106,7 @@ class State extends Singleton
      * @param string $nameKey
      * @return string
      */
-    private function getStateValue(string $nameKey) : string
+    protected function getStateValue(string $nameKey) : string
     {
         if ($this->state === null) {
             $this->state = CoreState::getInstance();

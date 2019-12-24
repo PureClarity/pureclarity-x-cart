@@ -13,7 +13,7 @@ use XLite\Module\PureClarity\Personalisation\Core\State;
 /**
  * Class Request
  *
- * model for submitting signup requests to PureClarity
+ * Model for submitting signup requests to PureClarity
  */
 class Request extends Singleton
 {
@@ -24,7 +24,7 @@ class Request extends Singleton
      *
      * @return mixed[]
      */
-    public function sendRequest($params)
+    public function sendRequest(array $params) : array
     {
         $signup = new Submit();
         $result = $signup->request($params);
@@ -42,7 +42,7 @@ class Request extends Singleton
      * @param string $requestId
      * @param mixed[] $params
      */
-    protected function saveRequest($requestId, $params)
+    protected function saveRequest(string $requestId, array $params) : void
     {
         $signupData = [
             'id' => $requestId,

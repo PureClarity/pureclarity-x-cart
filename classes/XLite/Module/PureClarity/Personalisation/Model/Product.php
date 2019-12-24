@@ -6,8 +6,6 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Model;
 
-use XLite\Core\Database;
-
 abstract class Product extends \XLite\Model\Product implements \XLite\Base\IDecorator
 {
     /**

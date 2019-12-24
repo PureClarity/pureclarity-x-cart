@@ -6,6 +6,7 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Core\Signup;
 
+use PureClarity\Api\Feed\Feed;
 use XLite\Core\Database;
 use XLite\Core\Translation;
 use XLite\Model\Repo\Config;
@@ -28,7 +29,7 @@ class Process extends \XLite\Base\Singleton
      *
      * @return mixed[]
      */
-    public function processManualConfigure($requestData)
+    public function processManualConfigure(array $requestData) : array
     {
         $result = [
             'errors' => []
@@ -40,7 +41,7 @@ class Process extends \XLite\Base\Singleton
             try {
                 $this->saveConfig($requestData);
                 $this->setConfiguredState();
-                $this->triggerFeeds($requestData);
+                $this->triggerFeeds();
             } catch (\Exception $e) {
                 $result['errors'][] = Translation::lbl('Error processing request: X', ['error' => $e->getMessage()]);
             }
@@ -55,7 +56,7 @@ class Process extends \XLite\Base\Singleton
      * @param mixed[] $requestData
      * @return array
      */
-    protected function validateManualConfigure($requestData)
+    protected function validateManualConfigure(array $requestData) : array
     {
         $errors = [];
 
@@ -81,7 +82,7 @@ class Process extends \XLite\Base\Singleton
      *
      * @return mixed[]
      */
-    public function processAutoSignup($requestData)
+    public function processAutoSignup(array $requestData) : array
     {
         $result = [
             'errors' => []
@@ -91,7 +92,7 @@ class Process extends \XLite\Base\Singleton
             $this->saveConfig($requestData);
             $this->setConfiguredState();
             $this->completeSignup();
-            $this->triggerFeeds($requestData);
+            $this->triggerFeeds();
         } catch (\Exception $e) {
             $result['errors'][] = Translation::lbl('Error processing request: X', ['error' => $e->getMessage()]);
         }
@@ -104,7 +105,7 @@ class Process extends \XLite\Base\Singleton
      *
      * @param mixed[] $requestData
      */
-    protected function saveConfig($requestData)
+    protected function saveConfig(array $requestData) : void
     {
         $this->updateConfig('pc_enabled', '1');
         $this->updateConfig('pc_access_key', $requestData['access_key']);
@@ -114,7 +115,7 @@ class Process extends \XLite\Base\Singleton
         $this->updateConfig('pc_feeds_deltas', '1');
     }
 
-    protected function updateConfig(string $key, string $value)
+    protected function updateConfig(string $key, string $value) : void
     {
         if ($this->configRepo === null) {
             $this->configRepo = Database::getRepo('XLite\Model\Config');
@@ -131,10 +132,8 @@ class Process extends \XLite\Base\Singleton
 
     /**
      * Saves the is_configured flag
-     *
-     * @return void
      */
-    protected function setConfiguredState()
+    protected function setConfiguredState() : void
     {
         $state = State::getInstance();
         $state->setStateValue('is_configured', '1');
@@ -142,27 +141,23 @@ class Process extends \XLite\Base\Singleton
 
     /**
      * Updates the signup request to be complete
-     *
-     * @return void
      */
-    protected function completeSignup()
+    protected function completeSignup() : void
     {
         $state = State::getInstance();
         $state->setStateValue('signup_request', 'complete');
     }
 
     /**
-     * Triggers a run of all feeds
-     *
-     * @param mixed[] $requestData
+     * Triggers a run of feeds needed after signup
      */
-    protected function triggerFeeds($requestData)
+    protected function triggerFeeds() : void
     {
         $feeds = [
-            'product',
-            'category',
-            'user',
-            'orders'
+            Feed::FEED_TYPE_PRODUCT,
+            Feed::FEED_TYPE_CATEGORY,
+            Feed::FEED_TYPE_USER,
+            Feed::FEED_TYPE_ORDER
         ];
 
         $state = State::getInstance();

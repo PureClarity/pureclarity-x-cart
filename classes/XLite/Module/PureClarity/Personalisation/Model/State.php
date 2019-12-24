@@ -12,7 +12,6 @@ namespace XLite\Module\PureClarity\Personalisation\Model;
  */
 class State extends \XLite\Model\AEntity
 {
-
     /**
      * @Id
      * @GeneratedValue (strategy="AUTO")
