@@ -23,9 +23,11 @@ class Row extends Singleton implements FeedRowDataInterface
     protected $excludedCats;
 
     /**
+     * Processes the provided Product into an array in the format required for the PureClarity Product Feed
+     *
      * @param object|Product $row
      *
-     * @return mixed[]|null
+     * @return mixed[]
      */
     public function getRowData($row) : array
     {
@@ -82,6 +84,27 @@ class Row extends Singleton implements FeedRowDataInterface
             'OnOffer' => $row->getPureClarityOnOffer(),
         ];
 
+        if ($row->getSalePriceValue() && $row->getSalePriceValue() !== $row->getPrice()) {
+            $data['SalePrices'] = [
+                $row->getSalePriceValue() . ' ' . $currencyCode
+            ];
+        }
+
+        $variants = $row->getVariants();
+        if ($variants && $variants->count() > 0) {
+            $data['AssociatedSkus'] = [];
+            foreach ($variants as $variant) {
+                /** @var \XLite\Module\XC\ProductVariants\Model\ProductVariant $variant */
+                $data['AssociatedSkus'][] = $variant->getSku() ?: $variant->getVariantId();
+                $data['Prices'][] = $variant->getPrice() . ' ' . $currencyCode;
+                if ($variant->getSalePriceValue() && $variant->getSalePriceValue() !== $variant->getPrice()) {
+                    $data['SalePrices'] = [
+                        $variant->getSalePriceValue() . ' ' . $currencyCode
+                    ];
+                }
+            }
+        }
+
         if ($row->getPureClarityRecommenderStartDate()) {
             $data['StartDate'] = $row->getPureClarityRecommenderStartDate();
         }
@@ -90,29 +113,29 @@ class Row extends Singleton implements FeedRowDataInterface
             $data['EndDate'] = $row->getPureClarityRecommenderEndDate();
         }
 
-        $atts = $row->getAttributeValueS();
+        $selectAttributes = $row->getAttributeValueS();
 
-        foreach ($atts as $att) {
+        foreach ($selectAttributes as $att) {
             /** @var $att \XLite\Model\AttributeValue\AttributeValueSelect */
             $data[str_replace(' ', '_', $att->getAttribute()->getName())] = $att->getAttributeOption()->getName();
         }
 
-        $atts = $row->getAttributeValueH();
+        $hiddenAttributes = $row->getAttributeValueH();
 
-        foreach ($atts as $att) {
+        foreach ($hiddenAttributes as $att) {
             /** @var $att \XLite\Model\AttributeValue\AttributeValueHidden */
             $data[str_replace(' ', '_', $att->getAttribute()->getName())] = $att->getAttributeOption()->getName();
         }
 
-        $atts = $row->getAttributeValueC();
-        foreach ($atts as $att) {
+        $checkboxAttributes = $row->getAttributeValueC();
+        foreach ($checkboxAttributes as $att) {
             /** @var $att \XLite\Model\AttributeValue\AttributeValueCheckbox */
             $data[str_replace(' ', '_', $att->getAttribute()->getName())] = $att->getValue();
         }
 
-        $atts = $row->getAttributeValueT();
+        $textAttributes = $row->getAttributeValueT();
 
-        foreach ($atts as $att) {
+        foreach ($textAttributes as $att) {
             $data[str_replace(' ', '_', $att->getAttribute()->getName())] = $att->getValue();
             /** @var $att \XLite\Model\AttributeValue\AttributeValueText */
         }
@@ -121,6 +144,8 @@ class Row extends Singleton implements FeedRowDataInterface
     }
 
     /**
+     * Gets an array of categories that are marked as having their products excluded from the feed
+     *
      * @return Category[]
      */
     protected function getExcludedCategories()
