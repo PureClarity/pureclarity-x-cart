@@ -1,12 +1,26 @@
 <?php
+/**
+ * Copyright © PureClarity. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
 namespace XLite\Module\PureClarity\Personalisation;
 
+/**
+ * Class Main
+ * @package XLite\Module\PureClarity\Personalisation
+ *
+ * PureClarity Main module class
+ */
 abstract class Main extends \XLite\Module\AModule
 {
+    /**
+     * Initialises the module, to include the PureClarity sdk autoloader
+     */
     public static function init()
     {
         parent::init();
-        include_once LC_DIR_MODULES . 'PureClarity' . LC_DS
+        require_once LC_DIR_MODULES . 'PureClarity' . LC_DS
                                     . 'Personalisation' . LC_DS
                                     . 'lib' . LC_DS . 'php-sdk' . LC_DS
                                     . 'src' . LC_DS . 'autoload.php';
@@ -33,32 +47,12 @@ abstract class Main extends \XLite\Module\AModule
     }
 
     /**
-     * Get module major version
-     *
-     * @return string
-     */
-    public static function getMajorVersion()
-    {
-        return '1.0';
-    }
-
-    /**
-     * Module version
-     *
-     * @return string
-     */
-    public static function getMinorVersion()
-    {
-        return 0;
-    }
-
-    /**
      * Module description
      *
      * @return string
      */
     public static function getDescription()
     {
-        return 'Some description here';
+        return 'Integration with PureClarity AI-based eCommerce personalisation platform';
     }
 }
