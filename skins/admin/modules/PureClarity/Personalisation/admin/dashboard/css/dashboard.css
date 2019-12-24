@@ -1,5 +1,3 @@
-/* vim: set ts=2 sw=2 sts=2 et: */
-
 /**
  * Copyright © PureClarity. All rights reserved.
  * See LICENSE.txt for license details.
@@ -318,13 +316,16 @@
 }
 
 #pureclarity-signup-form .tooltip.bottom {
-  top: 0 !important;
+  top: 44px !important;
   left: unset !important;
+  padding:0;
+  margin-top:0;
 }
 
 #pureclarity-signup-form .tooltip-inner {
-  max-width: 150px;
+  max-width: 245px;
   padding: 3px 8px;
+  line-height: 16px;
 }
 
 #pureclarity-signup-form fieldset:first-of-type {
@@ -333,16 +334,8 @@
   margin-right: 2%;
 }
 
-#pureclarity-signup-form fieldset:first-of-type .tooltip.bottom  {
-  right: 0 !important;
-}
-
 #pureclarity-signup-form fieldset:last-of-type {
   width: 45%;
-}
-
-#pureclarity-signup-form fieldset:last-of-type  .tooltip.bottom {
-  right: -53px !important;
 }
 
 #pureclarity-signup-form .model-form-buttons {
@@ -439,6 +432,10 @@
   font-weight: 300;
   margin-top: 0;
   margin-bottom: 10px;
+}
+
+#pc-dashboard #pc-thanks p.pc-warning {
+  font-size: 15.6px;
 }
 
 #pc-dashboard #pc-layer1 {
