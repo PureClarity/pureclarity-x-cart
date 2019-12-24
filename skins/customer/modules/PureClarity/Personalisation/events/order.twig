@@ -1,0 +1,12 @@
+{##
+ # Copyright © PureClarity. All rights reserved.
+ # See LICENSE.txt for license details.
+ #
+ # PureClarity Event Snippet - Order
+ #
+ # Only on order success page
+ #}
+
+<script type="text/javascript">
+    _pc('order', {{ this.getOrderEventData()|raw }});
+</script>

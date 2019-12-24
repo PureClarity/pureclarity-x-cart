@@ -1,0 +1,13 @@
+{##
+ # Copyright © PureClarity. All rights reserved.
+ # See LICENSE.txt for license details.
+ #
+ # PureClarity Event Snippet - Logout
+ #
+ # Only on page immediately after a log-off
+ #}
+{% if this.doLogoffEvent() is same as (true) %}
+    <script type="text/javascript">
+        _pc('customer_logout');
+    </script>
+{% endif %}

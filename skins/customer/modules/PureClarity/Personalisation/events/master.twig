@@ -1,4 +1,7 @@
 {##
+ # Copyright © PureClarity. All rights reserved.
+ # See LICENSE.txt for license details.
+ #
  # PureClarity Master function
  #}
 
@@ -9,16 +12,4 @@
         var p = d.createElement(s), h = d.getElementsByTagName(s)[0];
         p.src = u;p.async=1;h.parentNode.insertBefore(p, h);
     })(window, document, 'script', '{{ this.getClientScriptUrl() }}', '_pc');
-
-    _pc('page_view', {{ this.getPageViewContext()|raw }});
-    _pc('currency', 'GBP');
-
-    {% if this.doLogoffEvent() is same as (true) %}
-        _pc('customer_logout');
-    {% endif %}
-
-
-    {% if this.doOrderEvent() is same as (true) %}
-        _pc('order', {{ this.getOrderEventData()|raw }});
-    {% endif %}
 </script>

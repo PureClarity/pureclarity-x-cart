@@ -1,0 +1,12 @@
+{##
+ # Copyright © PureClarity. All rights reserved.
+ # See LICENSE.txt for license details.
+ #
+ # PureClarity Event Snippet - Page View
+ #
+ # On all pages with contextual data
+ #}
+
+<script type="text/javascript">
+    _pc('page_view', {{ this.getPageViewContext()|raw }});
+</script>
