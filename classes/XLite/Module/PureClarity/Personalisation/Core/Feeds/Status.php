@@ -6,9 +6,10 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Core\Feeds;
 
+use PureClarity\Api\Feed\Feed;
 use XLite\Base\Singleton;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 use XLite\Module\PureClarity\Personalisation\Core\State;
-use XLite\Core\Config;
 
 /**
  * Class FeedStatus
@@ -18,16 +19,16 @@ use XLite\Core\Config;
 class Status extends Singleton
 {
     /** @var mixed[] $feedStatusData */
-    private $feedStatusData;
+    protected $feedStatusData;
 
-    /** @var array[] $feedErrors */
-    private $feedErrors;
+    /** @var string[] $feedErrors */
+    protected $feedErrors;
 
     /** @var mixed[] $progressData */
-    private $progressData;
+    protected $progressData;
 
     /** @var mixed[] $requestedFeedData */
-    private $requestedFeedData;
+    protected $requestedFeedData;
 
     /**
      * Returns whether any of the feed types provided are currently in progress
@@ -36,7 +37,7 @@ class Status extends Singleton
      *
      * @return bool
      */
-    public function getAreFeedsInProgress($types)
+    public function getAreFeedsInProgress(array $types) : bool
     {
         $inProgress = false;
         foreach ($types as $type) {
@@ -50,41 +51,15 @@ class Status extends Singleton
     }
 
     /**
-     * Returns whether all of the feed types provided are currently disabled
-     *
-     * @param string[] $types
-     *
-     * @return bool
-     */
-    public function getAreFeedsDisabled($types)
-    {
-        $disabled = true;
-        foreach ($types as $type) {
-            $status = $this->getFeedStatus($type);
-            if ($status['enabled'] === true) {
-                $disabled = false;
-                break;
-            }
-        }
-
-        return $disabled;
-    }
-
-    /**
      * Returns the status of the product feed
      *
      * @param string $type
      * @return mixed[]
      */
-    public function getFeedStatus($type)
+    public function getFeedStatus(string $type) : array
     {
         if (!isset($this->feedStatusData[$type])) {
-            $config = Config::getInstance();
-            $enabled = $config->PureClarity->Personalisation->pc_enabled;
-            $accessKey = $config->PureClarity->Personalisation->pc_access_key;
-            $secretKey = $config->PureClarity->Personalisation->pc_secret_key;
-            $region = $config->PureClarity->Personalisation->pc_region;
-            $sendBrandFeed = $config->PureClarity->Personalisation->pc_feeds_brands;
+            $pc = PureClarity::getInstance();
 
             $status = [
                 'enabled' => true,
@@ -94,13 +69,15 @@ class Status extends Singleton
                 'label' => static::t('Not Sent')
             ];
 
-            if (empty($enabled) || empty($accessKey) || empty($secretKey) || empty($region)) {
+            if ($pc->isActive() === false) {
                 $status['enabled'] = false;
                 $status['label'] = static::t('Not Enabled');
                 $status['class'] = 'pc-feed-disabled';
             }
 
-            if ($type === 'brand' &&
+            $sendBrandFeed = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_BRAND);
+
+            if ($type === Feed::FEED_TYPE_BRAND &&
                 $status['enabled'] === true &&
                 empty($sendBrandFeed)
             ) {
@@ -182,7 +159,7 @@ class Status extends Singleton
      * @param string $feedType
      * @return bool
      */
-    private function hasFeedBeenRequested($feedType)
+    protected function hasFeedBeenRequested(string $feedType) : bool
     {
         $requested = false;
         $scheduleData = $this->getScheduledFeedData();
@@ -200,10 +177,14 @@ class Status extends Singleton
      * @param string $feedType
      * @return bool
      */
-    private function getFeedError($feedType)
+    protected function getFeedError(string $feedType) : bool
     {
-        $state = State::getInstance();
-        return $state->getStateValue($feedType . '_feed_error');
+        if ($this->feedErrors === null || !isset($this->feedErrors[$feedType])) {
+            $state = State::getInstance();
+            $this->feedErrors[$feedType] = $state->getStateValue($feedType . '_feed_error');
+        }
+
+        return $this->feedErrors[$feedType];
     }
 
     /**
@@ -212,7 +193,7 @@ class Status extends Singleton
      * @param string $feedType
      * @return bool
      */
-    private function isFeedWaiting($feedType)
+    protected function isFeedWaiting(string $feedType) : bool
     {
         $state = State::getInstance();
         $running = $state->getStateValue('running_feed');
@@ -223,14 +204,14 @@ class Status extends Singleton
      * Gets progress data from the state table
      *
      * @param string $feedType
-     * @return bool|float
+     * @return string
      */
-    private function feedProgress($feedType)
+    protected function feedProgress(string $feedType) : string
     {
         if (!isset($this->progressData[$feedType])) {
-            $this->progressData[$feedType] = '0';
             $state = State::getInstance();
-            $this->progressData[$feedType] = $state->getStateValue($feedType . '_feed_progress');
+            $progress = $state->getStateValue($feedType . '_feed_progress');
+            $this->progressData[$feedType] = empty($progress) ? '0' : $progress;
         }
 
         return $this->progressData[$feedType];
@@ -241,7 +222,7 @@ class Status extends Singleton
      *
      * @return string[]
      */
-    private function getScheduledFeedData()
+    protected function getScheduledFeedData() : array
     {
         if ($this->requestedFeedData === null) {
             $state = State::getInstance();
