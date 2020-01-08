@@ -35,10 +35,19 @@ XLite\Model\Config:
     translations:
       - code: en
         option_name: 'Region'
+  - name: pc_admin_mode
+    category: PureClarity\Personalisation
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 500
+    translations:
+      - code: en
+        option_name: 'Show to Admin users only'
+        option_comment: 'If set to Yes, PureClarity will only be shown on the storefront to users with Admin permissions'
   - name: pc_header_feeds
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Separator\Regular
-    orderby: 500
+    orderby: 600
     translations:
       - code: en
         option_name: 'Feeds'
@@ -46,7 +55,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 600
+    orderby: 700
     translations:
       - code: en
         option_name: 'Send Nightly Feeds'
@@ -54,14 +63,14 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 700
+    orderby: 800
     translations:
       - code: en
         option_name: 'Send Deltas'
   - name: pc_header_brand_feeds
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Separator\Regular
-    orderby: 715
+    orderby: 900
     translations:
       - code: en
         option_name: 'Brand Feed'
@@ -69,21 +78,21 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: false
-    orderby: 725
+    orderby: 1000
     translations:
       - code: en
         option_name: 'Enable Brand Feed'
   - name: pc_feeds_brands_parent
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Select\Category
-    orderby: 750
+    orderby: 1100
     translations:
       - code: en
         option_name: 'Brand Feed Parent Category'
   - name: pc_header_product_feeds
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Separator\Regular
-    orderby: 775
+    orderby: 1200
     translations:
       - code: en
         option_name: 'Product Feed'
@@ -91,14 +100,14 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: false
-    orderby: 785
+    orderby: 1300
     translations:
       - code: en
         option_name: 'Exclude out of stock Products'
   - name: pc_header_zones
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Separator\Regular
-    orderby: 800
+    orderby: 1400
     translations:
       - code: en
         option_name: 'Zones'
@@ -106,14 +115,14 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 900
+    orderby: 1500
     translations:
       - code: en
         option_name: 'Enable Zone Debug'
   - name: pc_zone_hp01
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    orderby: 1000
+    orderby: 1600
     translations:
       - code: en
         option_name: 'Enable Zone HP-01'
@@ -121,7 +130,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1100
+    orderby: 1700
     translations:
       - code: en
         option_name: 'Enable Zone HP-02'
@@ -129,7 +138,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1200
+    orderby: 1800
     translations:
       - code: en
         option_name: 'Enable Zone HP-03'
@@ -137,7 +146,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1300
+    orderby: 1900
     translations:
       - code: en
         option_name: 'Enable Zone HP-04'
@@ -145,7 +154,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1400
+    orderby: 2000
     translations:
       - code: en
         option_name: 'Enable Zone PP-01'
@@ -153,7 +162,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1500
+    orderby: 2100
     translations:
       - code: en
         option_name: 'Enable Zone PP-02'
@@ -161,7 +170,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1600
+    orderby: 2200
     translations:
       - code: en
         option_name: 'Enable Zone BP-01'
@@ -169,7 +178,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1700
+    orderby: 2300
     translations:
       - code: en
         option_name: 'Enable Zone BP-02'
@@ -177,7 +186,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1800
+    orderby: 2400
     translations:
       - code: en
         option_name: 'Enable Zone OC-01'
@@ -185,7 +194,7 @@ XLite\Model\Config:
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
     value: true
-    orderby: 1900
+    orderby: 2500
     translations:
       - code: en
         option_name: 'Enable Zone OC-02'

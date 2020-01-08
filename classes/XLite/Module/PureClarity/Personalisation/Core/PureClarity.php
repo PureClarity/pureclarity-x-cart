@@ -26,6 +26,9 @@ class PureClarity extends \XLite\Base\Singleton
     const CONFIG_REGION                     = 'region';
 
     /** @var string */
+    const CONFIG_ADMIN_MODE                 = 'admin_mode';
+
+    /** @var string */
     const CONFIG_FEEDS_NIGHTLY              = 'feeds_nightly';
 
     /** @var string */
@@ -96,6 +99,13 @@ class PureClarity extends \XLite\Base\Singleton
             $active = false;
         }
 
+        if ($active && $this->getConfigFlag(self::CONFIG_ADMIN_MODE) === true) {
+            $auth = \XLite\Core\Auth::getInstance();
+            if ($auth->isLogged() === false || $auth->getProfile()->isAdmin() === false) {
+                $active = false;
+            }
+        }
+
         return $active;
     }
 
@@ -157,6 +167,7 @@ class PureClarity extends \XLite\Base\Singleton
             $this->config[self::CONFIG_ENABLED]                    = $config->pc_enabled;
             $this->config[self::CONFIG_ACCESS_KEY]                 = $config->pc_access_key;
             $this->config[self::CONFIG_SECRET_KEY]                 = $config->pc_secret_key;
+            $this->config[self::CONFIG_ADMIN_MODE]                 = $config->pc_admin_mode;
             $this->config[self::CONFIG_REGION]                     = $config->pc_region;
             $this->config[self::CONFIG_FEEDS_NIGHTLY]              = $config->pc_feeds_nightly;
             $this->config[self::CONFIG_FEEDS_DELTAS]               = $config->pc_feeds_deltas;
