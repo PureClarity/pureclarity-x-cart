@@ -38,7 +38,7 @@ XLite\Model\Config:
   - name: pc_admin_mode
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 500
     translations:
       - code: en
@@ -114,7 +114,7 @@ XLite\Model\Config:
   - name: pc_zone_debug
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 1500
     translations:
       - code: en
@@ -122,6 +122,7 @@ XLite\Model\Config:
   - name: pc_zone_hp01
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: false
     orderby: 1600
     translations:
       - code: en
@@ -129,7 +130,7 @@ XLite\Model\Config:
   - name: pc_zone_hp02
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 1700
     translations:
       - code: en
@@ -137,7 +138,7 @@ XLite\Model\Config:
   - name: pc_zone_hp03
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 1800
     translations:
       - code: en
@@ -145,7 +146,7 @@ XLite\Model\Config:
   - name: pc_zone_hp04
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 1900
     translations:
       - code: en
@@ -153,7 +154,7 @@ XLite\Model\Config:
   - name: pc_zone_pp01
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 2000
     translations:
       - code: en
@@ -161,7 +162,7 @@ XLite\Model\Config:
   - name: pc_zone_pp02
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 2100
     translations:
       - code: en
@@ -169,7 +170,7 @@ XLite\Model\Config:
   - name: pc_zone_bp01
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 2200
     translations:
       - code: en
@@ -177,7 +178,7 @@ XLite\Model\Config:
   - name: pc_zone_bp02
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 2300
     translations:
       - code: en
@@ -185,7 +186,7 @@ XLite\Model\Config:
   - name: pc_zone_oc01
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 2400
     translations:
       - code: en
@@ -193,7 +194,7 @@ XLite\Model\Config:
   - name: pc_zone_oc02
     category: PureClarity\Personalisation
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: true
+    value: false
     orderby: 2500
     translations:
       - code: en
