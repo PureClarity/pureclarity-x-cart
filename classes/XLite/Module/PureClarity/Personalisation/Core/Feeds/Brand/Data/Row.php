@@ -41,7 +41,7 @@ class Row extends Singleton implements FeedRowDataInterface
             'DisplayName' => $row->getName(),
             'Image' => $resizedURL,
             'Description' => $row->getDescription(),
-            'Link' => $row->getFrontURL()
+            'Link' => html_entity_decode($row->getFrontURL())
         ];
     }
 }

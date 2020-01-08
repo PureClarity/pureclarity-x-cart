@@ -40,7 +40,7 @@ class Row extends Singleton implements FeedRowDataInterface
             'Id' => (string)$row->getId(),
             'DisplayName' => $row->getName(),
             'Image' => $resizedURL,
-            'Link' => $row->getFrontURL(),
+            'Link' => html_entity_decode($row->getFrontURL()),
             'ParentIds' => $this->getParents($row->getId(), $row->getPath()),
             'Description' => $row->getDescription(),
         ];
