@@ -71,7 +71,7 @@ class Row extends Singleton implements FeedRowDataInterface
                 $row->getCommonDescription(),
                 $row->getProcessedBriefDescription()
             ],
-            'Link' => $row->getFrontURL(),
+            'Link' => html_entity_decode($row->getFrontURL()),
             'Image' => $resizedURL,
             'Categories' => $categoryIds,
             'InStock' => $row->isOutOfStock() ? 'false' : 'true',
@@ -105,12 +105,14 @@ class Row extends Singleton implements FeedRowDataInterface
             }
         }
 
-        if ($row->getPureClarityRecommenderStartDate()) {
-            $data['StartDate'] = $row->getPureClarityRecommenderStartDate();
-        }
+        if ($row->getPureClarityRecommenderDateRange()) {
+            if ($row->getPureClarityRecommenderStartDate()) {
+                $data['StartDate'] = date('Y-m-d H:i:s', $row->getPureClarityRecommenderStartDate());
+            }
 
-        if ($row->getPureClarityRecommenderEndDate()) {
-            $data['EndDate'] = $row->getPureClarityRecommenderEndDate();
+            if ($row->getPureClarityRecommenderEndDate()) {
+                $data['EndDate'] = date('Y-m-d H:i:s', $row->getPureClarityRecommenderEndDate());
+            }
         }
 
         $selectAttributes = $row->getAttributeValueS();

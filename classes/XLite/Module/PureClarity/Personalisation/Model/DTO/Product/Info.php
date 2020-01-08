@@ -8,6 +8,7 @@ namespace XLite\Module\PureClarity\Personalisation\Model\DTO\Product;
 
 use XLite\Core\Database;
 use XLite\Model\Product;
+use XLite\Model\DTO\Base\CommonCell;
 
 /**
  * Abstract widget
@@ -21,10 +22,12 @@ abstract class Info extends \XLite\Model\DTO\Product\Info implements \XLite\Base
     {
         parent::init($object);
 
+        $this->pureclarity = new CommonCell([]);
         $this->pureclarity->excludeFromFeed = $object->getPureClarityExcludeFromFeed();
         $this->pureclarity->excludeFromRecommenders = $object->getPureClarityExcludeFromRecommenders();
-        $this->pureclarity->recommenderStartDate = $object->getPureClarityRecommenderStartDate();
-        $this->pureclarity->recommenderEndDate = $object->getPureClarityRecommenderEndDate();
+        $this->pureclarity->recommenderDateRange = $object->getPureClarityRecommenderDateRange();
+        $this->pureclarity->recommenderStartDate = $object->getPureClarityRecommenderStartDate() ?: time();
+        $this->pureclarity->recommenderEndDate = $object->getPureClarityRecommenderEndDate() ?: time();
         $this->pureclarity->newArrival = $object->getPureClarityNewArrival();
         $this->pureclarity->onOffer = $object->getPureClarityOnOffer();
         $this->pureclarity->searchTags = $object->getPureClaritySearchTags();
@@ -40,8 +43,14 @@ abstract class Info extends \XLite\Model\DTO\Product\Info implements \XLite\Base
 
         $object->setPureClarityExcludeFromFeed((boolean) $this->pureclarity->excludeFromFeed);
         $object->setPureClarityExcludeFromRecommenders((boolean) $this->pureclarity->excludeFromRecommenders);
-        $object->setPureClarityRecommenderStartDate($this->pureclarity->recommenderStartDate ?: '');
-        $object->setPureClarityRecommenderEndDate($this->pureclarity->recommenderEndDate ?: '');
+        $object->setPureClarityRecommenderDateRange((boolean) $this->pureclarity->recommenderDateRange);
+        if ($this->pureclarity->recommenderDateRange) {
+            $object->setPureClarityRecommenderStartDate($this->pureclarity->recommenderStartDate ?: '');
+            $object->setPureClarityRecommenderEndDate($this->pureclarity->recommenderEndDate ?: '');
+        } else {
+            $object->setPureClarityRecommenderStartDate('');
+            $object->setPureClarityRecommenderEndDate('');
+        }
         $object->setPureClarityNewArrival((boolean) $this->pureclarity->newArrival);
         $object->setPureClarityOnOffer((boolean) $this->pureclarity->onOffer);
         $object->setPureClaritySearchTags((string) $this->pureclarity->searchTags);

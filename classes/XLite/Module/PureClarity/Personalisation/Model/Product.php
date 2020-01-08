@@ -19,6 +19,11 @@ abstract class Product extends \XLite\Model\Product implements \XLite\Base\IDeco
     protected $pureclarityExcludeFromRecommenders = false;
 
     /**
+     * @Column (type="boolean")
+     */
+    protected $pureclarityRecommenderDateRange = false;
+
+    /**
      * @Column (type="integer")
      */
     protected $pureclarityRecommenderStartDate = '';
@@ -76,6 +81,24 @@ abstract class Product extends \XLite\Model\Product implements \XLite\Base\IDeco
     public function setPureClarityExcludeFromRecommenders($value)
     {
         $this->pureclarityExcludeFromRecommenders = $value;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPureClarityRecommenderDateRange()
+    {
+        return $this->pureclarityRecommenderDateRange;
+    }
+
+    /**
+     * @param bool $value
+     * @return $this|\XLite\Model\Product
+     */
+    public function setPureClarityRecommenderDateRange($value)
+    {
+        $this->pureclarityRecommenderDateRange = $value;
         return $this;
     }
 
