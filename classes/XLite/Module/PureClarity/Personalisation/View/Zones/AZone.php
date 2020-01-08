@@ -77,4 +77,17 @@ abstract class AZone extends \XLite\View\AView
         $pc = PureClarity::getInstance();
         return $pc->isActive() && $pc->isZoneActive($this->zoneId);
     }
+
+    /**
+     * Get a list of JavaScript files required to display the widget properly
+     *
+     * @return array
+     */
+    public function getJSFiles()
+    {
+        $list = parent::getJSFiles();
+        $list[] = 'items_list/items_list.js';
+        $list[] = 'items_list/product/products_list.js';
+        return $list;
+    }
 }
