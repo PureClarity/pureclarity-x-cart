@@ -59,8 +59,7 @@ class ProductView extends AView
     protected function getProductViewContext() : string
     {
         $context = [
-            'product_id' => Request::getInstance()->product_id,
-            'category_id' => Request::getInstance()->category_id
+            'id' => Request::getInstance()->product_id
         ];
 
         return json_encode($context);
