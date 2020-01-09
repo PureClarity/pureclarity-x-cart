@@ -206,7 +206,9 @@ class Row extends Singleton implements FeedRowDataInterface
             foreach ($this->getMemberships() as $membership) {
                 $price = $row->getWholesalePrice($membership);
                 if ($price) {
-                    $this->rowData['GroupPrices'][$membership->getMembershipId()]['Prices'][] = $price;
+                    $this->rowData['GroupPrices'][$membership->getMembershipId()]['Prices'][] = $price
+                                                                                              . ' '
+                                                                                              . $currencyCode;
                 }
             }
 
@@ -262,7 +264,9 @@ class Row extends Singleton implements FeedRowDataInterface
                         );
 
                         if ($price) {
-                            $this->rowData['GroupPrices'][$membership->getMembershipId()]['Prices'][] = $price;
+                            $this->rowData['GroupPrices'][$membership->getMembershipId()]['Prices'][] = $price
+                                                                                                      . ' '
+                                                                                                      . $currencyCode;
                         }
                     }
                 }
