@@ -17,6 +17,7 @@ use XLite\Model\Category;
 use XLite\Model\Membership;
 use XLite\Model\Product;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedRowDataInterface;
+use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 use XLite\Module\XC\ProductVariants\Model\ProductVariant;
 
 /**
@@ -229,10 +230,19 @@ class Row extends Singleton implements FeedRowDataInterface
             $currencyCode = $this->getCurrencyCode();
             $this->rowData['AssociatedSkus'] = [];
 
+            $pc = PureClarity::getInstance();
+            $excludeOutOfStock = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_PRODUCT_OOS_EXCLUDE);
+
             foreach ($variants as $variant) {
                 /** @var ProductVariant $variant */
+
+                if ($excludeOutOfStock && $variant->isOutOfStock()) {
+                    continue;
+                }
+
                 $this->rowData['AssociatedSkus'][] = $variant->getSku() ?: $variant->getVariantId();
                 $this->rowData['Prices'][] = $variant->getPrice() . ' ' . $currencyCode;
+
 
                 if ($variant->getSalePriceValue() && $variant->getSalePriceValue() !== $variant->getPrice()) {
                     $this->rowData['SalePrices'] = [
