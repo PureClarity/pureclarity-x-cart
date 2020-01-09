@@ -6,11 +6,11 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Model\Admin\Dashboard;
 
+use DateTime;
 use Exception;
 use XLite;
 use XLite\Core\ConfigParser;
 use XLite\Core\Converter;
-use XLite\Model\AEntity;
 use XLite\View\Button\AButton;
 use XLite\View\Button\Submit;
 use XLite\View\Model\AModel;
@@ -172,7 +172,7 @@ class Signup extends AModel
                     $value = XLite::getInstance()->getCurrency()->getCode();
                     break;
                 case 'timezone':
-                    $time = new \DateTime('now', Converter::getTimeZone());
+                    $time = new DateTime('now', Converter::getTimeZone());
                     $value = $time->getTimezone()->getName();
                     if ($value == 'UTC') {
                         $value = 'Europe/London';

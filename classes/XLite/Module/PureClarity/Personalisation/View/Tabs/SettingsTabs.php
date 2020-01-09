@@ -6,12 +6,14 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Tabs;
 
+use XLite\View\Tabs\ATabs;
+
 /**
  * Tabs related to PureClarity
  *
  * @ListChild (list="admin.center", zone="admin")
  */
-class SettingsTabs extends \XLite\View\Tabs\ATabs
+class SettingsTabs extends ATabs
 {
     /**
      * Adds pureclarity_settings as an allowed target, so it displays on that target

@@ -6,12 +6,13 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Core\Task;
 
+use XLite\Core\Task\Base\Periodic;
 use XLite\Module\PureClarity\Personalisation\Core\Delta\Product as ProductDelta;
 
 /**
  * Scheduled task that checks for & sends deltas
  */
-class Delta extends \XLite\Core\Task\Base\Periodic
+class Delta extends Periodic
 {
     /**
      * Returns the title of this task
@@ -38,6 +39,6 @@ class Delta extends \XLite\Core\Task\Base\Periodic
      */
     protected function getPeriod() : int
     {
-        return \XLite\Core\Task\Base\Periodic::INT_1_MIN;
+        return Periodic::INT_1_MIN;
     }
 }

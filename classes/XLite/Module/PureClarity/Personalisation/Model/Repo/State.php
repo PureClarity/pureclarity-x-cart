@@ -6,9 +6,11 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Model\Repo;
 
+use XLite\Model\Repo\ARepo;
+
 /**
  * State repository
  */
-class State extends \XLite\Model\Repo\ARepo
+class State extends ARepo
 {
 }

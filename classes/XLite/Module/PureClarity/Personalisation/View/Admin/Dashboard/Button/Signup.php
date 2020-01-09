@@ -6,10 +6,12 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard\Button;
 
+use XLite\View\Button\APopupButton;
+
 /**
  * PureClarity Dashboard - Signup popup button
  */
-class Signup extends \XLite\View\Button\APopupButton
+class Signup extends APopupButton
 {
     /**
      * Adds Feeds popup button JS to the Dashboard page

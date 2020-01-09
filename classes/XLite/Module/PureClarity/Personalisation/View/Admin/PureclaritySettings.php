@@ -6,10 +6,12 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Admin;
 
+use XLite\View\Dialog;
+
 /**
  * Pureclarity Settings View
  */
-class PureclaritySettings extends \XLite\View\Dialog
+class PureclaritySettings extends Dialog
 {
     /**
      * Adds pureclarity_settings as an allowed target, so it displays on that target

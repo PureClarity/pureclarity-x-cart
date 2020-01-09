@@ -6,6 +6,7 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Core\Delta;
 
+use Exception;
 use PureClarity\Api\Delta\Type\Product as ProductDelta;
 use XLite\Base\Singleton;
 use XLite\Core\Database;
@@ -75,7 +76,7 @@ class Product extends Singleton
                 $deltaHandler->send();
                 $deltaRepo->deleteInBatch($deltas);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $state = State::getInstance();
             $state->setStateValue('product_delta_error', $e->getMessage());
         }

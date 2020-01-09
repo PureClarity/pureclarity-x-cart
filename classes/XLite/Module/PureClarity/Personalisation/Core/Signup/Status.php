@@ -6,6 +6,7 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Core\Signup;
 
+use Exception;
 use PureClarity\Api\Signup\Status as SignupStatus;
 use XLite\Base\Singleton;
 use XLite\Module\PureClarity\Personalisation\Core\State;
@@ -39,7 +40,7 @@ class Status extends Singleton
                 $signup = new SignupStatus();
                 $result = $signup->request($signUpRequest);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $result['error'] = $e->getMessage();
         }
 

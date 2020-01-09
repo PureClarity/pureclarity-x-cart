@@ -6,13 +6,15 @@
 
 namespace XLite\Module\PureClarity\Personalisation;
 
+use XLite\Module\AModule;
+
 /**
  * Class Main
  * @package XLite\Module\PureClarity\Personalisation
  *
  * PureClarity Main module class
  */
-abstract class Main extends \XLite\Module\AModule
+abstract class Main extends AModule
 {
     /**
      * Initialises the module, to include the PureClarity sdk autoloader

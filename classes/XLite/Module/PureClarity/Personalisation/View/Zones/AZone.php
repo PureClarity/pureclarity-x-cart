@@ -7,13 +7,14 @@
 namespace XLite\Module\PureClarity\Personalisation\View\Zones;
 
 use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\View\AView;
 
 /**
  * Zone abstract class
  *
  * Default view class for all PureClarity Zones
  */
-abstract class AZone extends \XLite\View\AView
+abstract class AZone extends AView
 {
     /** @var string $zoneId */
     protected $zoneId = '';

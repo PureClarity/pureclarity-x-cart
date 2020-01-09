@@ -6,12 +6,14 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard;
 
+use XLite\View\Form\AForm;
+
 /**
  * Class Feeds
  *
  * Form class for Feeds popup form on dashboard page
  */
-class Feeds extends \XLite\View\Form\AForm
+class Feeds extends AForm
 {
     /**
      * Returns target for this form to submit to

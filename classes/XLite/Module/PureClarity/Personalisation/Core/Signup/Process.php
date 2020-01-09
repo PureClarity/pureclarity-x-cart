@@ -6,7 +6,9 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Core\Signup;
 
+use Exception;
 use PureClarity\Api\Feed\Feed;
+use XLite\Base\Singleton;
 use XLite\Core\Database;
 use XLite\Core\Translation;
 use XLite\Model\Repo\Config;
@@ -17,7 +19,7 @@ use XLite\Module\PureClarity\Personalisation\Core\State;
  *
  * model for processing signup requests
  */
-class Process extends \XLite\Base\Singleton
+class Process extends Singleton
 {
     /** @var Config $coreConfig */
     protected $configRepo;
@@ -42,7 +44,7 @@ class Process extends \XLite\Base\Singleton
                 $this->saveConfig($requestData);
                 $this->setConfiguredState();
                 $this->triggerFeeds();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $result['errors'][] = Translation::lbl('Error processing request: X', ['error' => $e->getMessage()]);
             }
         }
@@ -93,7 +95,7 @@ class Process extends \XLite\Base\Singleton
             $this->setConfiguredState();
             $this->completeSignup();
             $this->triggerFeeds();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $result['errors'][] = Translation::lbl('Error processing request: X', ['error' => $e->getMessage()]);
         }
 

@@ -6,7 +6,10 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
 
+use DateTime;
+use Exception;
 use PureClarity\Api\Feed\Feed;
+use XLite;
 use XLite\Controller\Admin\AAdmin;
 use XLite\Core\Converter;
 use XLite\Core\Request;
@@ -248,12 +251,12 @@ class PureclarityDashboard extends AAdmin
         $request = Request::getInstance();
 
         try {
-            $time = new \DateTime('now', Converter::getTimeZone());
+            $time = new DateTime('now', Converter::getTimeZone());
             $timeZone = $time->getTimezone()->getName();
             if ($timeZone === 'UTC') {
                 $timeZone = 'Europe\London';
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $timeZone = 'Europe\London';
         }
 
@@ -266,7 +269,7 @@ class PureclarityDashboard extends AAdmin
             'url' => $request->url,
             'store_name' => $request->store_name,
             'region' => $request->region,
-            'currency' => \XLite::getInstance()->getCurrency()->getCode(),
+            'currency' => XLite::getInstance()->getCurrency()->getCode(),
             'timezone' => $timeZone,
             'platform' => 'magento2'
         ];

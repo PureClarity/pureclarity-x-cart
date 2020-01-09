@@ -6,6 +6,9 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Controller\Customer;
 
+use Exception;
+use XLite\Core\Event;
+use XLite\Model\Order;
 use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 
 /**
@@ -23,7 +26,7 @@ abstract class Cart extends \XLite\Controller\Customer\Cart implements \XLite\Ba
      *
      * @param boolean $silent
      *
-     * @throws \Exception
+     * @throws Exception
      */
     protected function updateCart($silent = false)
     {
@@ -75,7 +78,7 @@ abstract class Cart extends \XLite\Controller\Customer\Cart implements \XLite\Ba
     /**
      * Triggers PureClarity event to update cart
      *
-     * @param \XLite\Model\Order $cart
+     * @param Order $cart
      */
     protected function triggerPcCartUpdated($cart)
     {
@@ -96,12 +99,12 @@ abstract class Cart extends \XLite\Controller\Customer\Cart implements \XLite\Ba
                         'qty' => $item->getAmount()
                     ]
                 ];
-            };
+            }
 
             $items[] = $itemData;
         }
 
-        \XLite\Core\Event::pcCartUpdated(
+        Event::pcCartUpdated(
             ['items' => $items]
         );
     }

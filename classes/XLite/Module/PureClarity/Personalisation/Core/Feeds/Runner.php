@@ -6,6 +6,7 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Core\Feeds;
 
+use Exception;
 use PureClarity\Api\Feed\Feed;
 use XLite\Base\Singleton;
 use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
@@ -76,7 +77,7 @@ class Runner extends Singleton
 
                 $this->flagFeedEnd($feedType);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->flagFeedError($feedType, $e->getMessage());
         }
     }

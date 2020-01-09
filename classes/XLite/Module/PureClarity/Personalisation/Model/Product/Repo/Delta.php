@@ -6,9 +6,11 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Model\Product\Repo;
 
+use XLite\Model\Repo\ARepo;
+
 /**
  * Product Delta repository
  */
-class Delta extends \XLite\Model\Repo\ARepo
+class Delta extends ARepo
 {
 }

@@ -6,11 +6,13 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Model;
 
+use XLite\Model\AEntity;
+
 /**
  * @Entity
  * @Table  (name="pureclarity_state")
  */
-class State extends \XLite\Model\AEntity
+class State extends AEntity
 {
     /**
      * @Id

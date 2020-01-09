@@ -16,7 +16,7 @@ use XLite\Model\DTO\Base\CommonCell;
 abstract class Info extends \XLite\Model\DTO\Product\Info implements \XLite\Base\IDecorator
 {
     /**
-     * @param mixed|\XLite\Model\Product $object
+     * @param mixed|Product $object
      */
     protected function init($object)
     {
@@ -57,7 +57,7 @@ abstract class Info extends \XLite\Model\DTO\Product\Info implements \XLite\Base
     }
 
     /**
-     * @param \XLite\Model\Product $object
+     * @param Product $object
      * @param array|null           $rawData
      */
     public function afterCreate($object, $rawData = null)
@@ -67,7 +67,7 @@ abstract class Info extends \XLite\Model\DTO\Product\Info implements \XLite\Base
     }
 
     /**
-     * @param \XLite\Model\Product $object
+     * @param Product $object
      * @param array|null           $rawData
      */
     public function afterUpdate($object, $rawData = null)
@@ -77,7 +77,7 @@ abstract class Info extends \XLite\Model\DTO\Product\Info implements \XLite\Base
     }
 
     /**
-     * @param \XLite\Model\Product $product
+     * @param Product $product
      */
     public function processDelta($product)
     {

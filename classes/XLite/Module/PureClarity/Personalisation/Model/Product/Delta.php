@@ -6,11 +6,13 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Model\Product;
 
+use XLite\Model\AEntity;
+
 /**
  * @Entity
  * @Table  (name="pureclarity_product_delta")
  */
-class Delta extends \XLite\Model\AEntity
+class Delta extends AEntity
 {
 
     /**

@@ -7,6 +7,7 @@
 namespace XLite\Module\PureClarity\Personalisation\Core\Task;
 
 use PureClarity\Api\Feed\Feed;
+use XLite\Core\Task\Base\Periodic;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Category\Runner as CategoryFeedRunner;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Runner as ProductFeedRunner;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand\Runner as BrandFeedRunner;
@@ -18,7 +19,7 @@ use XLite\Module\PureClarity\Personalisation\Core\State;
 /**
  * Scheduled task that checks for & sends feeds
  */
-class FeedRunner extends \XLite\Core\Task\Base\Periodic
+class FeedRunner extends Periodic
 {
     /**
      * Returns the title of this task
@@ -143,6 +144,6 @@ class FeedRunner extends \XLite\Core\Task\Base\Periodic
      */
     protected function getPeriod() : int
     {
-        return \XLite\Core\Task\Base\Periodic::INT_1_MIN;
+        return Periodic::INT_1_MIN;
     }
 }

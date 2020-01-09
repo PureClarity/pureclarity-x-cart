@@ -6,6 +6,9 @@
 
 namespace XLite\Module\PureClarity\Personalisation\Model;
 
+use XLite\Core\Event;
+use XLite\Core\Session;
+use XLite\Model\Profile;
 use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 
 abstract class Cart extends \XLite\Model\Cart implements \XLite\Base\IDecorator
@@ -13,23 +16,23 @@ abstract class Cart extends \XLite\Model\Cart implements \XLite\Base\IDecorator
     /**
      * Login operation
      *
-     * @param \XLite\Model\Profile $profile Profile
+     * @param Profile $profile Profile
      *
      * @return void
      */
-    public function login(\XLite\Model\Profile $profile)
+    public function login(Profile $profile)
     {
         parent::login($profile);
 
         if (PureClarity::getInstance()->isActive()) {
             $address = $profile->getBillingAddress();
 
-            \XLite\Core\Event::pcLogin(
+            Event::pcLogin(
                 [
                     'userid' => (string)$profile->getProfileId(),
                     'email' => $profile->getEmail(),
-                    'accid' => '',
-                    'groupid' => $profile->getMembershipId(),
+                    'accid' => $profile->getMembershipId(),
+                    'groupid' => '',
                     'firstname' => $address ? $address->getFirstname() : '',
                     'lastname' => $address ? $address->getLastname() : '',
                 ]
@@ -47,7 +50,7 @@ abstract class Cart extends \XLite\Model\Cart implements \XLite\Base\IDecorator
         parent::logoff();
 
         if (PureClarity::getInstance()->isActive()) {
-            \XLite\Core\Session::getInstance()->pc_logoff = true;
+            Session::getInstance()->pc_logoff = true;
         }
     }
 }

@@ -6,10 +6,12 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard;
 
+use XLite\View\AView;
+
 /**
  * Pureclarity Dashboard - Not Configured View
  */
-class NotConfigured extends \XLite\View\AView
+class NotConfigured extends AView
 {
     /**
      * Adds pureclarity_dashboard as an allowed target, so it displays on that target

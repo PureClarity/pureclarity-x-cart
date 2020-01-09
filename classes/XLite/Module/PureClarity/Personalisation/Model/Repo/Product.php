@@ -7,6 +7,7 @@
 namespace XLite\Module\PureClarity\Personalisation\Model\Repo;
 
 use XLite\Core\Database;
+use XLite\Model\AEntity;
 use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
 
 /**
@@ -21,11 +22,11 @@ abstract class Product extends \XLite\Model\Repo\Product implements \XLite\Base\
     /**
      * Delete single entity
      *
-     * @param \XLite\Model\AEntity|\XLite\Model\Repo\Product $entity Entity to detach
+     * @param AEntity|\XLite\Model\Repo\Product $entity Entity to detach
      *
      * @return void
      */
-    protected function performDelete(\XLite\Model\AEntity $entity)
+    protected function performDelete(AEntity $entity)
     {
         $this->processDelta($entity);
         parent::performDelete($entity);

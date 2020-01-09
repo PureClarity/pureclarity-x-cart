@@ -6,12 +6,14 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard;
 
+use XLite\View\Form\AForm;
+
 /**
  * Class Account
  *
  * Form class for Existing Account form on default dashboard page
  */
-class Account extends \XLite\View\Form\AForm
+class Account extends AForm
 {
     /**
      * Returns target for this form to submit to

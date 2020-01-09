@@ -6,12 +6,14 @@
 
 namespace XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard;
 
+use XLite\View\Form\AForm;
+
 /**
  * Class Signup
  *
  * Form class for Signup popup form on dashboard page
  */
-class Signup extends \XLite\View\Form\AForm
+class Signup extends AForm
 {
     /**
      * Returns target for this form to submit to
