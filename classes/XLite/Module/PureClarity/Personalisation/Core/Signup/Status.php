@@ -12,9 +12,9 @@ use XLite\Base\Singleton;
 use XLite\Module\PureClarity\Personalisation\Core\State;
 
 /**
- * Class Process
+ * Class Status
  *
- * model for processing signup requests
+ * Model for checking the status of signup requests
  */
 class Status extends Singleton
 {

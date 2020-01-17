@@ -522,8 +522,8 @@
 }
 
 #pureclarity-feeds-form form .table-label {
-  padding-top: 0px;
-  padding-right: 0px;
+  padding-top: 0;
+  padding-right: 0;
   width: 100px;
   margin-right: 20px;
 }

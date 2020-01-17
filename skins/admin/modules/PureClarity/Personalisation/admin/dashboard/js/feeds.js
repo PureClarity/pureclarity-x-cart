@@ -54,4 +54,4 @@ jQuery().ready(
       setTimeout(checkFeedProgress, 2000);
     }
   }
-)
+);
