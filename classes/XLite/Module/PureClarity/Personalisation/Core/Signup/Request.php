@@ -29,7 +29,7 @@ class Request extends Singleton
         $signup = new Submit();
         $result = $signup->request($params);
 
-        if ($result['error'] === '') {
+        if (empty($result['errors'])) {
             $this->saveRequest($result['request_id'], $params);
         }
 

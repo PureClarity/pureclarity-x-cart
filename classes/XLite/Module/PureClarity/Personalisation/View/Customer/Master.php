@@ -54,6 +54,7 @@ class Master extends AView
      */
     public function getClientScriptUrl() : string
     {
-        return Endpoints::getClientScriptUrl(PureClarity::getInstance()->getConfig('access_key'));
+        $endpoints = new Endpoints();
+        return $endpoints->getClientScriptUrl(PureClarity::getInstance()->getConfig('access_key'));
     }
 }

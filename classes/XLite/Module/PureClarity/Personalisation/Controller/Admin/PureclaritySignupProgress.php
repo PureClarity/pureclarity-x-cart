@@ -30,8 +30,8 @@ class PureclaritySignupProgress extends AAdmin
         $signupStatus = Status::getInstance();
         $response = $signupStatus->checkStatus();
 
-        if ($response['error']) {
-            $error = $response['error'];
+        if ($response['errors']) {
+            $error = implode(',', $response['errors']);
         } elseif ($response['complete']) {
             $processor = Process::getInstance();
             $result = $processor->processAutoSignup($response['response']);

@@ -8,6 +8,7 @@ namespace XLite\Module\PureClarity\Personalisation\Core\Signup;
 
 use Exception;
 use PureClarity\Api\Feed\Feed;
+use PureClarity\Api\Signup\Status as SignupStatus;
 use XLite\Base\Singleton;
 use XLite\Core\Database;
 use XLite\Core\Translation;
@@ -91,10 +92,21 @@ class Process extends Singleton
         ];
 
         try {
-            $this->saveConfig($requestData);
-            $this->setConfiguredState();
-            $this->completeSignup();
-            $this->triggerFeeds();
+            $state = State::getInstance();
+            $signupString = $state->getStateValue('signup_request');
+
+            if (!empty($signupString)) {
+                $signUpRequest = (array)json_decode($signupString);
+                $requestData['access_key'] = $requestData['AccessKey'];
+                $requestData['secret_key'] = $requestData['SecretKey'];
+                $requestData['region'] = $signUpRequest['region'];
+                $this->saveConfig($requestData);
+                $this->setConfiguredState();
+                $this->completeSignup();
+                $this->triggerFeeds();
+            } else {
+                $result['errors'][] = Translation::lbl('Error processing request');
+            }
         } catch (Exception $e) {
             $result['errors'][] = Translation::lbl('Error processing request: X', ['error' => $e->getMessage()]);
         }
@@ -103,7 +115,7 @@ class Process extends Singleton
     }
 
     /**
-     * Saves the PureClarity credentials to the Magento config
+     * Saves the PureClarity credentials to the X-Cart config
      *
      * @param mixed[] $requestData
      */
@@ -117,6 +129,13 @@ class Process extends Singleton
         $this->updateConfig('pc_feeds_deltas', '1');
     }
 
+    /**
+     * Saves the X-Cart config provided
+     *
+     * @param string $key - config Key
+     * @param string $value - config Value
+     * @return void
+     */
     protected function updateConfig(string $key, string $value) : void
     {
         if ($this->configRepo === null) {

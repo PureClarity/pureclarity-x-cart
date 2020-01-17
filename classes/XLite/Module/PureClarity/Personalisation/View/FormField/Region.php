@@ -21,7 +21,8 @@ class Region extends Regular
      */
     protected function getDefaultOptions() : array
     {
-        $pcRegions = Regions::getRegionLabels();
+        $regionClass = new Regions();
+        $pcRegions = $regionClass->getRegionLabels();
 
         $regions = [];
 
