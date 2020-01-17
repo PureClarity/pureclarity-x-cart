@@ -254,10 +254,10 @@ class PureclarityDashboard extends AAdmin
             $time = new DateTime('now', Converter::getTimeZone());
             $timeZone = $time->getTimezone()->getName();
             if ($timeZone === 'UTC') {
-                $timeZone = 'Europe\London';
+                $timeZone = 'Europe/London';
             }
         } catch (Exception $e) {
-            $timeZone = 'Europe\London';
+            $timeZone = 'Europe/London';
         }
 
         $params = [
@@ -271,7 +271,7 @@ class PureclarityDashboard extends AAdmin
             'region' => $request->region,
             'currency' => XLite::getInstance()->getCurrency()->getCode(),
             'timezone' => $timeZone,
-            'platform' => 'magento2'
+            'platform' => 'xcart'
         ];
         
         $signupSubmit = SignupRequest::getInstance();
