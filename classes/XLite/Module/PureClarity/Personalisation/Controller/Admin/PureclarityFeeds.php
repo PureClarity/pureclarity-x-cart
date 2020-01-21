@@ -72,6 +72,10 @@ class PureclarityFeeds extends AAdmin
 
         $state = State::getInstance();
         $state->setStateValue('requested_feeds', json_encode($feedTypes));
+        foreach ($feedTypes as $feed) {
+            $state->setStateValue($feed . '_feed_error', '');
+        }
+
 
         $this->setReturnURL(
             $this->buildURL('pureclarity_dashboard', '', array())
