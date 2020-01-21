@@ -87,7 +87,7 @@
     <div id="pc-configuration" class="pc-box">
         <div class="pc-box-title-bar"><h3>{{ t('Advanced Configuration') }}</h3></div>
         <div class="pc-box-content">
-            <p>{{ t('You can enable brand feeds, configure placeholder images and more in the PureClarity plugin configuration') }}</p>
+            <p>{{ t('You can enable brand feeds, enable admin only mode and more in the PureClarity plugin configuration') }}</p>
             <p class="pc-button">
                 <a class="regular-button" href="{{ this.getConfigureUrl() }}" title="{{ t('Configure') }}">{{ t('Configure') }}</a>
             </p>
@@ -102,7 +102,7 @@
             </p>
             <p>{{ t('If you have any issues please contact our Support Team at support@pureclarity.com') }}</p>
             <p class="pc-button">
-                <a class="regular-button" href="mailto:support@pureclarity.com?subject=X-Cart%202%20Support%20Issue&body=Plugin%20Version:%20XXX%0D%0AX-Cart%20Version:%20XXXXX%0D%0AStore Name: [PLEASE ENTER]%0D%0A" title="{{ t('Contact support') }}">{{ t('Contact support') }}</a>
+                <a class="regular-button" href="mailto:support@pureclarity.com?subject=X-Cart%202%20Support%20Issue&body=Plugin%20Version:%20{{ this.getVersion() }}%0D%0AX-Cart%20Version:%20{{ this.getXCartVersion() }}%0D%0AStore Name: [PLEASE ENTER]%0D%0A" title="{{ t('Contact support') }}">{{ t('Contact support') }}</a>
             </p>
         </div>
     </div>

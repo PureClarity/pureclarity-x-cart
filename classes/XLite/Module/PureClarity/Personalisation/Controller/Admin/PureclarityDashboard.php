@@ -72,6 +72,16 @@ class PureclarityDashboard extends AAdmin
     }
 
     /**
+     * Returns the current version of the Module
+     *
+     * @return string
+     */
+    public function getXCartVersion() : string
+    {
+        return XLite::getVersion();
+    }
+
+    /**
      * Returns the class to use for the Product feed status display
      *
      * @return string
@@ -215,7 +225,7 @@ class PureclarityDashboard extends AAdmin
      */
     public function getConfigureUrl() : string
     {
-        return $this->buildURL('pureclarity_settings', '', []);
+        return $this->buildURL('pureclarity_settings', '', []) . '#pc-header-zones';
     }
 
     /**
