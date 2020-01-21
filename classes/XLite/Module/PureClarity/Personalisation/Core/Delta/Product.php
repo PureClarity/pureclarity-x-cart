@@ -43,7 +43,7 @@ class Product extends Singleton
 
             if (count($deltas) > 0) {
                 $deltaHandler = new ProductDelta(
-                    $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_DELTAS),
+                    $pc->getConfig(PureClarity::CONFIG_ACCESS_KEY),
                     $pc->getConfig(PureClarity::CONFIG_SECRET_KEY),
                     $pc->getConfig(PureClarity::CONFIG_REGION)
                 );
