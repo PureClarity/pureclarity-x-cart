@@ -287,8 +287,8 @@ class PureclarityDashboard extends AAdmin
         $signupSubmit = SignupRequest::getInstance();
         $result = $signupSubmit->sendRequest($params);
 
-        if ($result['error']) {
-            $error = $result['error'];
+        if ($result['errors']) {
+            $error = implode('', $result['errors']);
             TopMessage::getInstance()->add($error);
             Session::getInstance()->pcSignupParams = $params;
         }
