@@ -7,6 +7,8 @@
 namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand\Data;
 
 use XLite\Base\Singleton;
+use XLite\Core\Converter;
+use XLite\Core\Layout;
 use XLite\Model\Category;
 use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedRowDataInterface;
 
@@ -26,20 +28,29 @@ class Row extends Singleton implements FeedRowDataInterface
      */
     public function getRowData($row) : array
     {
-        $resizedURL = '';
+        $imageUrl = '';
         if ($row->getImage()) {
             list(
                 $usedWidth,
                 $usedHeight,
-                $resizedURL,
+                $imageUrl,
                 $retinaResizedURL
                 ) = $row->getImage()->getResizedURL(244, 244);
+        } else {
+            $url = \XLite::getInstance()->getOptions(['images', 'default_image']);
+            if (!Converter::isURL($url)) {
+                $imageUrl = Layout::getInstance()->getResourceWebPath(
+                    $url,
+                    Layout::WEB_PATH_OUTPUT_FULL,
+                    'frontend'
+                );
+            }
         }
 
         return [
             'Id' => (string)$row->getId(),
             'DisplayName' => $row->getName(),
-            'Image' => $resizedURL,
+            'Image' => $imageUrl,
             'Description' => $row->getDescription(),
             'Link' => html_entity_decode($row->getFrontURL())
         ];

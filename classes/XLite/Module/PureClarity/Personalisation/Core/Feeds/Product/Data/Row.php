@@ -8,7 +8,9 @@ namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Data;
 
 use XLite;
 use XLite\Base\Singleton;
+use XLite\Core\Converter;
 use XLite\Core\Database;
+use XLite\Core\Layout;
 use XLite\Model\AttributeValue\AttributeValueCheckbox;
 use XLite\Model\AttributeValue\AttributeValueHidden;
 use XLite\Model\AttributeValue\AttributeValueSelect;
@@ -169,18 +171,27 @@ class Row extends Singleton implements FeedRowDataInterface
      */
     protected function getProductImageURL($row) : string
     {
-        $imageURL = '';
+        $imageUrl = '';
 
         if ($row->getImage()) {
             list(
                 $usedWidth,
                 $usedHeight,
-                $imageURL,
+                $imageUrl,
                 $retinaResizedURL
                 ) = $row->getImage()->getResizedURL(262, 280);
+        } else {
+            $url = \XLite::getInstance()->getOptions(['images', 'default_image']);
+            if (!Converter::isURL($url)) {
+                $imageUrl = Layout::getInstance()->getResourceWebPath(
+                    $url,
+                    Layout::WEB_PATH_OUTPUT_FULL,
+                    'frontend'
+                );
+            }
         }
 
-        return $imageURL;
+        return $imageUrl;
     }
 
     /**
