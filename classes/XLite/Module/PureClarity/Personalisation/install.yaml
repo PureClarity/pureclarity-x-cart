@@ -75,7 +75,7 @@ XLite\Model\LanguageLabel:
   - { name: "Feeds In Progress", translations: [{ code: en, label: "Feeds In Progress" }] }
   - { name: "Run Feeds Manually", translations: [{ code: en, label: "Run Feeds Manually" }] }
   - { name: "Advanced Configuration", translations: [{ code: en, label: "Advanced Configuration" }] }
-  - { name: "You can enable brand feeds, configure placeholder images and more in the PureClarity plugin configuration", translations: [{ code: en, label: "You can enable brand feeds, configure placeholder images and more in the PureClarity plugin configuration" }] }
+  - { name: "You can enable brand feeds, enable admin only mode and more in the PureClarity plugin configuration", translations: [{ code: en, label: "You can enable brand feeds, enable admin only mode and more in the PureClarity plugin configuration" }] }
   - { name: "Configure", translations: [{ code: en, label: "Configure" }] }
   - { name: "Help", translations: [{ code: en, label: "Help" }] }
   - { name: "We have comprehensive documentation available which will help with any questions you may have", translations: [{ code: en, label: "We have comprehensive documentation available which will help with any questions you may have" }] }
