@@ -1,5 +1,7 @@
-
-/* vim: set ts=2 sw=2 sts=2 et: */
+/**
+ * Copyright © PureClarity. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
 
 function checkStatus() {
     core.get(

@@ -1,8 +1,6 @@
 /**
- * Add payment method JS controller
- *
- * Copyright (c) 2011-present Qualiteam software Ltd. All rights reserved.
- * See https://www.x-cart.com/license-agreement.html for license details.
+ * Copyright © PureClarity. All rights reserved.
+ * See LICENSE.txt for license details.
  */
 
 function PopupButtonSignup()
