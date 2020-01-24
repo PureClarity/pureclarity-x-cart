@@ -55,6 +55,6 @@ abstract class Main extends AModule
      */
     public static function getDescription()
     {
-        return 'Integration with PureClarity AI-based eCommerce personalisation platform';
+        return 'Integration with PureClarity AI-based eCommerce personalization platform';
     }
 }
