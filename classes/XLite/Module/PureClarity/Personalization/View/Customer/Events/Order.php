@@ -91,6 +91,15 @@ class Order extends AView
                         'unitprice' => $item->getPrice(),
                         'children' => []
                     ];
+
+                    if ($variant = $item->getVariant()) {
+                        $orderItems[$item->getItemId()]['children'] = [
+                            [
+                                'sku' => $variant->getSku() ?: $variant->getVariantId(),
+                                'qty' => $item->getAmount()
+                            ]
+                        ];
+                    }
                 }
 
                 $orderData['items'] = array_values($orderItems);
