@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © PureClarity. All rights reserved.
- * See LICENSE.txt for license details.
+ * See LICENSE for license details.
  */
 
 namespace XLite\Module\PureClarity\Personalization\View\Zones\Product;

@@ -1,6 +1,6 @@
 /**
  * Copyright © PureClarity. All rights reserved.
- * See LICENSE.txt for license details.
+ * See LICENSE for license details.
  */
 
 function checkStatus() {
