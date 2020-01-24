@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Model\Admin\Dashboard;
+namespace XLite\Module\PureClarity\Personalization\View\Model\Admin\Dashboard;
 
 use DateTime;
 use Exception;
@@ -30,7 +30,7 @@ class Signup extends AModel
      */
     protected $schemaYou = [
         'sep_about_you_header' => [
-            self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalisation\View\FormField\SubHeader',
+            self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalization\View\FormField\SubHeader',
             self::SCHEMA_LABEL     => 'About you',
         ],
         'first_name' => [
@@ -54,7 +54,7 @@ class Signup extends AModel
             self::SCHEMA_REQUIRED  => true,
         ],
         'password' => [
-            self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalisation\View\FormField\Password',
+            self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalization\View\FormField\Password',
             self::SCHEMA_LABEL     => 'Password',
             self::SCHEMA_REQUIRED  => true,
         ],
@@ -67,7 +67,7 @@ class Signup extends AModel
      */
     protected $schemaStore = [
         'sep_about_store_header' => [
-            self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalisation\View\FormField\SubHeader',
+            self::SCHEMA_CLASS     => 'XLite\Module\PureClarity\Personalization\View\FormField\SubHeader',
             self::SCHEMA_LABEL     => 'About the Store',
         ],
         'store_name' => [
@@ -89,7 +89,7 @@ class Signup extends AModel
             self::SCHEMA_LABEL     => 'Timezone'
         ],
         'region' => [
-            self::SCHEMA_CLASS      => 'XLite\Module\PureClarity\Personalisation\View\FormField\Region',
+            self::SCHEMA_CLASS      => 'XLite\Module\PureClarity\Personalization\View\FormField\Region',
             self::SCHEMA_LABEL      => 'Region',
             self::SCHEMA_REQUIRED   => true,
         ]
@@ -196,7 +196,7 @@ class Signup extends AModel
      */
     protected function getFormClass() : string
     {
-        return 'XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard\Signup';
+        return 'XLite\Module\PureClarity\Personalization\View\Form\Admin\Dashboard\Signup';
     }
 
     /**

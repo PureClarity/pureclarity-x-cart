@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\FormField;
+namespace XLite\Module\PureClarity\Personalization\View\FormField;
 
 use XLite\View\FormField\Separator\ASeparator;
 
@@ -20,7 +20,7 @@ class SubHeader extends ASeparator
      */
     protected function getDir() : string
     {
-        return 'modules/PureClarity/Personalisation/admin/form_field/separator';
+        return 'modules/PureClarity/Personalization/admin/form_field/separator';
     }
 
     /**

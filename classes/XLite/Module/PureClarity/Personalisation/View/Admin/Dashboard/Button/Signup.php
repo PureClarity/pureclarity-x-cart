@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard\Button;
+namespace XLite\Module\PureClarity\Personalization\View\Admin\Dashboard\Button;
 
 use XLite\View\Button\APopupButton;
 
@@ -21,7 +21,7 @@ class Signup extends APopupButton
     public function getJSFiles() : array
     {
         $list = parent::getJSFiles();
-        $list[] = 'modules/PureClarity/Personalisation/admin/dashboard/js/signup.js';
+        $list[] = 'modules/PureClarity/Personalization/admin/dashboard/js/signup.js';
 
         return $list;
     }
@@ -35,7 +35,7 @@ class Signup extends APopupButton
     {
         return array(
             'target' => 'pureclarity_signup',
-            'widget' => '\XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard\Signup'
+            'widget' => '\XLite\Module\PureClarity\Personalization\View\Admin\Dashboard\Signup'
         );
     }
 

@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Model\Product\Repo;
+namespace XLite\Module\PureClarity\Personalization\Model\Product\Repo;
 
 use XLite\Model\Repo\ARepo;
 

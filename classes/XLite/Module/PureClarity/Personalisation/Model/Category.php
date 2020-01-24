@@ -4,9 +4,9 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Model;
+namespace XLite\Module\PureClarity\Personalization\Model;
 
-use \XLite\Module\PureClarity\Personalisation\Core\State;
+use \XLite\Module\PureClarity\Personalization\Core\State;
 
 abstract class Category extends \XLite\Model\Category implements \XLite\Base\IDecorator
 {

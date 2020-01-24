@@ -4,13 +4,13 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\Category\Data;
+namespace XLite\Module\PureClarity\Personalization\Core\Feeds\Category\Data;
 
 use XLite\Base\Singleton;
 use XLite\Core\Converter;
 use XLite\Core\Layout;
 use XLite\Model\Category;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedRowDataInterface;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\FeedRowDataInterface;
 
 /**
  * class Row

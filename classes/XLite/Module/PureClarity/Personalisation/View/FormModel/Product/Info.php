@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\FormModel\Product;
+namespace XLite\Module\PureClarity\Personalization\View\FormModel\Product;
 
 /**
  * Class Info

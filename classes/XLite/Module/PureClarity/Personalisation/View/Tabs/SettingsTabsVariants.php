@@ -4,12 +4,12 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Tabs;
+namespace XLite\Module\PureClarity\Personalization\View\Tabs;
 
 /**
  * Tabs related to PureClarity
  */
-class SettingsTabsVariants extends \XLite\Module\PureClarity\Personalisation\View\Tabs\SettingsTabs implements \XLite\Base\IDecorator
+class SettingsTabsVariants extends \XLite\Module\PureClarity\Personalization\View\Tabs\SettingsTabs implements \XLite\Base\IDecorator
 {
     /**
      * Adds pureclarity_dashboard as an allowed target, so it displays on that target
@@ -35,7 +35,7 @@ class SettingsTabsVariants extends \XLite\Module\PureClarity\Personalisation\Vie
         $tabs['pureclarity_dashboard'] = [
             'weight'   => 50,
             'title'    => static::t('Dashboard'),
-            'widget' => 'XLite\Module\PureClarity\Personalisation\View\Admin\PureclarityDashboard',
+            'widget' => 'XLite\Module\PureClarity\Personalization\View\Admin\PureclarityDashboard',
         ];
 
         return $tabs;

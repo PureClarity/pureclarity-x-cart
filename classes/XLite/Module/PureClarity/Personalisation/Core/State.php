@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core;
+namespace XLite\Module\PureClarity\Personalization\Core;
 
 use XLite\Base\Singleton;
 use XLite\Core\Database;
@@ -24,7 +24,7 @@ class State extends Singleton
      */
     public function getStateValue(string $nameKey) : string
     {
-        $repo = Database::getRepo('XLite\Module\PureClarity\Personalisation\Model\State');
+        $repo = Database::getRepo('XLite\Module\PureClarity\Personalization\Model\State');
         $row = $repo->findOneBy(['name' => $nameKey]);
 
         $state = '';
@@ -43,7 +43,7 @@ class State extends Singleton
      */
     public function setStateValue(string $nameKey, string $value)
     {
-        $repo = Database::getRepo('XLite\Module\PureClarity\Personalisation\Model\State');
+        $repo = Database::getRepo('XLite\Module\PureClarity\Personalization\Model\State');
         $row = $repo->findOneBy(['name' => $nameKey]);
 
         if (!empty($row)) {

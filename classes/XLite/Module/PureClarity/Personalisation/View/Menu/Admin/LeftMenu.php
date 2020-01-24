@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Menu\Admin;
+namespace XLite\Module\PureClarity\Personalization\View\Menu\Admin;
 
 /**
  * Class LeftMenu

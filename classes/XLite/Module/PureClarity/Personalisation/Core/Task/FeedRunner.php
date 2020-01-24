@@ -4,17 +4,17 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Task;
+namespace XLite\Module\PureClarity\Personalization\Core\Task;
 
 use PureClarity\Api\Feed\Feed;
 use XLite\Core\Task\Base\Periodic;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Category\Runner as CategoryFeedRunner;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Runner as ProductFeedRunner;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand\Runner as BrandFeedRunner;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\User\Runner as UserFeedRunner;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Order\Runner as OrderFeedRunner;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
-use XLite\Module\PureClarity\Personalisation\Core\State;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Category\Runner as CategoryFeedRunner;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Product\Runner as ProductFeedRunner;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Brand\Runner as BrandFeedRunner;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\User\Runner as UserFeedRunner;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Order\Runner as OrderFeedRunner;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\State;
 
 /**
  * Scheduled task that checks for & sends feeds

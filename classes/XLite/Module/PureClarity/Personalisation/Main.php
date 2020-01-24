@@ -4,13 +4,13 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation;
+namespace XLite\Module\PureClarity\Personalization;
 
 use XLite\Module\AModule;
 
 /**
  * Class Main
- * @package XLite\Module\PureClarity\Personalisation
+ * @package XLite\Module\PureClarity\Personalization
  *
  * PureClarity Main module class
  */
@@ -23,7 +23,7 @@ abstract class Main extends AModule
     {
         parent::init();
         require_once LC_DIR_MODULES . 'PureClarity' . LC_DS
-                                    . 'Personalisation' . LC_DS
+                                    . 'Personalization' . LC_DS
                                     . 'lib' . LC_DS . 'php-sdk' . LC_DS
                                     . 'src' . LC_DS . 'autoload.php';
     }
@@ -45,7 +45,7 @@ abstract class Main extends AModule
      */
     public static function getModuleName()
     {
-        return 'PureClarity Personalisation';
+        return 'PureClarity Personalization';
     }
 
     /**

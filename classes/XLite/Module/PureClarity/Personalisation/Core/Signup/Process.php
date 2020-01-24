@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Signup;
+namespace XLite\Module\PureClarity\Personalization\Core\Signup;
 
 use Exception;
 use PureClarity\Api\Feed\Feed;
@@ -13,7 +13,7 @@ use XLite\Base\Singleton;
 use XLite\Core\Database;
 use XLite\Core\Translation;
 use XLite\Model\Repo\Config;
-use XLite\Module\PureClarity\Personalisation\Core\State;
+use XLite\Module\PureClarity\Personalization\Core\State;
 
 /**
  * Class Process
@@ -143,7 +143,7 @@ class Process extends Singleton
         }
 
         /** @var \XLite\Model\Config $config */
-        $config = $this->configRepo->findOneBy(array('name' => $key, 'category' => 'PureClarity\Personalisation'));
+        $config = $this->configRepo->findOneBy(array('name' => $key, 'category' => 'PureClarity\Personalization'));
 
         $this->configRepo->update(
             $config,

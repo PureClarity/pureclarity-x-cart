@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core;
+namespace XLite\Module\PureClarity\Personalization\Core;
 
 use XLite\Base\Singleton;
 use XLite\Core\Auth;
@@ -165,7 +165,7 @@ class PureClarity extends Singleton
     {
         if ($this->config === null) {
             $this->config = [];
-            $config = Config::getInstance()->PureClarity->Personalisation;
+            $config = Config::getInstance()->PureClarity->Personalization;
             $this->config[self::CONFIG_ENABLED]                    = $config->pc_enabled;
             $this->config[self::CONFIG_ACCESS_KEY]                 = $config->pc_access_key;
             $this->config[self::CONFIG_SECRET_KEY]                 = $config->pc_secret_key;

@@ -4,13 +4,13 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand\Data;
+namespace XLite\Module\PureClarity\Personalization\Core\Feeds\Brand\Data;
 
 use XLite\Base\Singleton;
 use XLite\Core\Database;
 use XLite\Model\Category;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedDataInterface;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\FeedDataInterface;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 
 /**
  * class Feed

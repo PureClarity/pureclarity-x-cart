@@ -4,11 +4,11 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\User\Data;
+namespace XLite\Module\PureClarity\Personalization\Core\Feeds\User\Data;
 
 use XLite\Base\Singleton;
 use XLite\Model\Profile;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedRowDataInterface;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\FeedRowDataInterface;
 
 /**
  * class Row

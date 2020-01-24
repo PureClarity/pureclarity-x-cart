@@ -4,11 +4,11 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Model\Repo;
+namespace XLite\Module\PureClarity\Personalization\Model\Repo;
 
 use XLite\Core\Database;
 use XLite\Model\AEntity;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 
 /**
  * Class Product
@@ -39,7 +39,7 @@ abstract class Product extends \XLite\Model\Repo\Product implements \XLite\Base\
     {
         $pc = PureClarity::getInstance();
         if ($pc->isActive()) {
-            $repo = Database::getRepo('XLite\Module\PureClarity\Personalisation\Model\Product\Delta');
+            $repo = Database::getRepo('XLite\Module\PureClarity\Personalization\Model\Product\Delta');
             $row = $repo->findOneBy(['productId' => $product->getId()]);
 
             if (!empty($row)) {

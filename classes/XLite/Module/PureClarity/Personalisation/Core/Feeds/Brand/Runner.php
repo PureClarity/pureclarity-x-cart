@@ -4,14 +4,14 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand;
+namespace XLite\Module\PureClarity\Personalization\Core\Feeds\Brand;
 
 use XLite\Base\Singleton;
 use PureClarity\Api\Feed\Type\Brand as BrandFeed;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand\Data\Row;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Brand\Data\Feed;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Runner as FeedRunner;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Brand\Data\Row;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Brand\Data\Feed;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Runner as FeedRunner;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use PureClarity\Api\Feed\Feed as PureClarityFeed;
 
 /**

@@ -4,14 +4,14 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\Order;
+namespace XLite\Module\PureClarity\Personalization\Core\Feeds\Order;
 
 use XLite\Base\Singleton;
 use PureClarity\Api\Feed\Type\Order as OrderFeed;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Order\Data\Row;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Order\Data\Feed;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Runner as FeedRunner;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Order\Data\Row;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Order\Data\Feed;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Runner as FeedRunner;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use PureClarity\Api\Feed\Feed as PureClarityFeed;
 
 /**

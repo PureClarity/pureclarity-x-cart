@@ -4,12 +4,12 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Controller\Customer;
+namespace XLite\Module\PureClarity\Personalization\Controller\Customer;
 
 use Exception;
 use XLite\Core\Event;
 use XLite\Model\Order;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 
 /**
  * Class ACustomer

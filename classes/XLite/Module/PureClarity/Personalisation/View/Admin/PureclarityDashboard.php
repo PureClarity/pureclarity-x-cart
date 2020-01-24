@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Admin;
+namespace XLite\Module\PureClarity\Personalization\View\Admin;
 
 use XLite\View\AView;
 
@@ -33,7 +33,7 @@ class PureclarityDashboard extends AView
      */
     protected function getDir() : string
     {
-        return 'modules/PureClarity/Personalisation/admin/dashboard';
+        return 'modules/PureClarity/Personalization/admin/dashboard';
     }
 
     /**
@@ -56,6 +56,6 @@ class PureclarityDashboard extends AView
      */
     protected function getDefaultTemplate() : string
     {
-        return 'modules/PureClarity/Personalisation/admin/dashboard.twig';
+        return 'modules/PureClarity/Personalization/admin/dashboard.twig';
     }
 }

@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Model\DTO\Product;
+namespace XLite\Module\PureClarity\Personalization\Model\DTO\Product;
 
 use XLite\Core\Database;
 use XLite\Model\Product;
@@ -81,7 +81,7 @@ abstract class Info extends \XLite\Model\DTO\Product\Info implements \XLite\Base
      */
     public function processDelta($product)
     {
-        $repo = Database::getRepo('XLite\Module\PureClarity\Personalisation\Model\Product\Delta');
+        $repo = Database::getRepo('XLite\Module\PureClarity\Personalization\Model\Product\Delta');
         $row = $repo->findOneBy(['productId' => $product->getId()]);
 
         if (!empty($row)) {

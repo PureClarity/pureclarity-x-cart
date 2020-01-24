@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard;
+namespace XLite\Module\PureClarity\Personalization\View\Admin\Dashboard;
 
 use XLite\View\AView;
 
@@ -33,6 +33,6 @@ class NotConfigured extends AView
      */
     protected function getDefaultTemplate() : string
     {
-        return 'modules/PureClarity/Personalisation/admin/dashboard/notconfigured.twig';
+        return 'modules/PureClarity/Personalization/admin/dashboard/notconfigured.twig';
     }
 }

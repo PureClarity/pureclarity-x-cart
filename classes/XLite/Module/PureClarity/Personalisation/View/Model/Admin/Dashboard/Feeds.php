@@ -4,9 +4,9 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Model\Admin\Dashboard;
+namespace XLite\Module\PureClarity\Personalization\View\Model\Admin\Dashboard;
 
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use XLite\View\Button\AButton;
 use XLite\View\Button\Submit;
 use XLite\View\Model\AModel;
@@ -89,7 +89,7 @@ class Feeds extends AModel
      */
     protected function getFormClass() : string
     {
-        return 'XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard\Feeds';
+        return 'XLite\Module\PureClarity\Personalization\View\Form\Admin\Dashboard\Feeds';
     }
 
     /**

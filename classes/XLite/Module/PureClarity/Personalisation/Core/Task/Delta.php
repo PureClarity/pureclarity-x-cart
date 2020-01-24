@@ -4,10 +4,10 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Task;
+namespace XLite\Module\PureClarity\Personalization\Core\Task;
 
 use XLite\Core\Task\Base\Periodic;
-use XLite\Module\PureClarity\Personalisation\Core\Delta\Product as ProductDelta;
+use XLite\Module\PureClarity\Personalization\Core\Delta\Product as ProductDelta;
 
 /**
  * Scheduled task that checks for & sends deltas

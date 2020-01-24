@@ -1,7 +1,7 @@
 version: 5.4.0.1
 type: common
 authorName: 'PureClarity'
-moduleName: 'PureClarity Personalisation'
+moduleName: 'PureClarity Personalization'
 description: 'Integration with PureClarity AI-based eCommerce personalisation platform'
 minorRequiredCoreVersion: 0
 dependsOn: {  }

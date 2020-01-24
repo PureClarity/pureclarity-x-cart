@@ -79,7 +79,7 @@
                 <a class="regular-button pc-disabled" id="pc-feedpopupbutton" target="_blank" title="{{ t('Feeds In Progress') }}">{{ t('Feeds In Progress') }}</a>
             </div>
             <div id="pc-feeds-button-active" class="pc-feeds-button" {% if this.getAreFeedsInProgress() is same as (true) %}style="display:none"{% endif %}>
-                {{ widget('\\XLite\\Module\\PureClarity\\Personalisation\\View\\Admin\\Dashboard\\Button\\Feeds', label='Run Feeds Manually') }}
+                {{ widget('\\XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\Button\\Feeds', label='Run Feeds Manually') }}
             </div>
             <input id="pc-feeds-in-progress" type="hidden" value="{% if this.getAreFeedsInProgress() is same as (true) %}true{% else %}false{% endif %}" />
         </div>

@@ -4,11 +4,11 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
+namespace XLite\Module\PureClarity\Personalization\Controller\Admin;
 
 use XLite\Controller\Admin\AAdmin;
-use XLite\Module\PureClarity\Personalisation\Core\Signup\Process;
-use XLite\Module\PureClarity\Personalisation\Core\Signup\Status;
+use XLite\Module\PureClarity\Personalization\Core\Signup\Process;
+use XLite\Module\PureClarity\Personalization\Core\Signup\Status;
 
 /**
  * Class PureclaritySignupProgress

@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard;
+namespace XLite\Module\PureClarity\Personalization\View\Form\Admin\Dashboard;
 
 use XLite\View\Form\AForm;
 

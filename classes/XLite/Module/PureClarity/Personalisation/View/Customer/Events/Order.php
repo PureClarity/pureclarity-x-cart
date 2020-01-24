@@ -4,13 +4,13 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Customer\Events;
+namespace XLite\Module\PureClarity\Personalization\View\Customer\Events;
 
 use XLite\Core\Database;
 use XLite\Core\Request;
 use XLite\Model\Cart;
 use XLite\Model\OrderItem;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use XLite\View\AView;
 
 /**
@@ -41,7 +41,7 @@ class Order extends AView
      */
     protected function getDefaultTemplate() : string
     {
-        return 'modules/PureClarity/Personalisation/events/order.twig';
+        return 'modules/PureClarity/Personalization/events/order.twig';
     }
 
     /**

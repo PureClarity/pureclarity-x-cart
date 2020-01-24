@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
+namespace XLite\Module\PureClarity\Personalization\Controller\Admin;
 
 use DateTime;
 use Exception;
@@ -15,12 +15,12 @@ use XLite\Core\Converter;
 use XLite\Core\Request;
 use XLite\Core\Session;
 use XLite\Core\TopMessage;
-use XLite\Module\PureClarity\Personalisation\Core\Dashboard\State;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Status;
-use XLite\Module\PureClarity\Personalisation\Core\Signup\Process;
-use XLite\Module\PureClarity\Personalisation\Core\Signup\Request as SignupRequest;
-use XLite\Module\PureClarity\Personalisation\Main;
-use XLite\Module\PureClarity\Personalisation\Core\State as PureClarityState;
+use XLite\Module\PureClarity\Personalization\Core\Dashboard\State;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Status;
+use XLite\Module\PureClarity\Personalization\Core\Signup\Process;
+use XLite\Module\PureClarity\Personalization\Core\Signup\Request as SignupRequest;
+use XLite\Module\PureClarity\Personalization\Main;
+use XLite\Module\PureClarity\Personalization\Core\State as PureClarityState;
 
 /**
  * Class PureclarityDashboard

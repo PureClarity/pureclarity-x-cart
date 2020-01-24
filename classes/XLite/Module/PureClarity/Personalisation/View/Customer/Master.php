@@ -4,10 +4,10 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Customer;
+namespace XLite\Module\PureClarity\Personalization\View\Customer;
 
 use PureClarity\Api\Resource\Endpoints;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use XLite\View\AView;
 
 /**
@@ -25,7 +25,7 @@ class Master extends AView
      */
     protected function getDir() : string
     {
-        return 'modules/PureClarity/Personalisation/';
+        return 'modules/PureClarity/Personalization/';
     }
     /**
      * Return widget template
@@ -34,7 +34,7 @@ class Master extends AView
      */
     protected function getDefaultTemplate() : string
     {
-        return 'modules/PureClarity/Personalisation/events/master.twig';
+        return 'modules/PureClarity/Personalization/events/master.twig';
     }
 
     /**

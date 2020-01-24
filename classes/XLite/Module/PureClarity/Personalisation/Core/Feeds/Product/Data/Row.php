@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Data;
+namespace XLite\Module\PureClarity\Personalization\Core\Feeds\Product\Data;
 
 use XLite;
 use XLite\Base\Singleton;
@@ -18,8 +18,8 @@ use XLite\Model\AttributeValue\AttributeValueText;
 use XLite\Model\Category;
 use XLite\Model\Membership;
 use XLite\Model\Product;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\FeedRowDataInterface;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\FeedRowDataInterface;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use XLite\Module\XC\ProductVariants\Model\ProductVariant;
 
 /**

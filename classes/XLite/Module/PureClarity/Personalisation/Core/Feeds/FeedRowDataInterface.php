@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Feeds;
+namespace XLite\Module\PureClarity\Personalization\Core\Feeds;
 
 interface FeedRowDataInterface
 {

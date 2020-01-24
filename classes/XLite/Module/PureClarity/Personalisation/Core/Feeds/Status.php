@@ -4,12 +4,12 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Feeds;
+namespace XLite\Module\PureClarity\Personalization\Core\Feeds;
 
 use PureClarity\Api\Feed\Feed;
 use XLite\Base\Singleton;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
-use XLite\Module\PureClarity\Personalisation\Core\State;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\State;
 
 /**
  * Class FeedStatus

@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Model\Admin\Dashboard;
+namespace XLite\Module\PureClarity\Personalization\View\Model\Admin\Dashboard;
 
 use XLite\View\Button\AButton;
 use XLite\View\Button\Submit;
@@ -40,7 +40,7 @@ class Account extends AModel
             ],
         ],
         'region' => [
-            self::SCHEMA_CLASS      => 'XLite\Module\PureClarity\Personalisation\View\FormField\Region',
+            self::SCHEMA_CLASS      => 'XLite\Module\PureClarity\Personalization\View\FormField\Region',
             self::SCHEMA_LABEL      => 'Region',
             self::SCHEMA_REQUIRED   => true,
         ],
@@ -61,7 +61,7 @@ class Account extends AModel
      */
     protected function getFormClass() : string
     {
-        return 'XLite\Module\PureClarity\Personalisation\View\Form\Admin\Dashboard\Account';
+        return 'XLite\Module\PureClarity\Personalization\View\Form\Admin\Dashboard\Account';
     }
 
     /**

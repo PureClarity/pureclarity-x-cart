@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Model\Admin;
+namespace XLite\Module\PureClarity\Personalization\View\Model\Admin;
 
 /**
  * Class Category

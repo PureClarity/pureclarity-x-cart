@@ -4,9 +4,9 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Zones\Product;
+namespace XLite\Module\PureClarity\Personalization\View\Zones\Product;
 
-use XLite\Module\PureClarity\Personalisation\View\Zones\AZone;
+use XLite\Module\PureClarity\Personalization\View\Zones\AZone;
 
 /**
  * Zone Widget - PP-01

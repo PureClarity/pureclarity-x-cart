@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Admin;
+namespace XLite\Module\PureClarity\Personalization\View\Admin;
 
 use XLite\View\Dialog;
 
@@ -33,6 +33,6 @@ class PureclaritySettings extends Dialog
      */
     protected function getDir() : string
     {
-        return 'modules/PureClarity/Personalisation/admin';
+        return 'modules/PureClarity/Personalization/admin';
     }
 }

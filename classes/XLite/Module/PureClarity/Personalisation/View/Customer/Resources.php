@@ -5,7 +5,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Customer;
+namespace XLite\Module\PureClarity\Personalization\View\Customer;
 
 use XLite\View\AView;
 
@@ -48,7 +48,7 @@ class Resources extends AView
      */
     protected function getDir(): string
     {
-        return 'modules/PureClarity/Personalisation/';
+        return 'modules/PureClarity/Personalization/';
     }
 
     /**

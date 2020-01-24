@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Admin\Dashboard;
+namespace XLite\Module\PureClarity\Personalization\View\Admin\Dashboard;
 
 use XLite\View\SimpleDialog;
 
@@ -33,6 +33,6 @@ class Signup extends SimpleDialog
      */
     protected function getBody() : string
     {
-        return 'modules/PureClarity/Personalisation/admin/dashboard/signup.twig';
+        return 'modules/PureClarity/Personalization/admin/dashboard/signup.twig';
     }
 }

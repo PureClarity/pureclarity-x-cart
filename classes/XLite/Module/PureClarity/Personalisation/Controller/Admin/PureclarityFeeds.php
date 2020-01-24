@@ -4,13 +4,13 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
+namespace XLite\Module\PureClarity\Personalization\Controller\Admin;
 
 use PureClarity\Api\Feed\Feed;
 use XLite\Controller\Admin\AAdmin;
 use XLite\Core\Request;
 use XLite\Core\TopMessage;
-use XLite\Module\PureClarity\Personalisation\Core\State;
+use XLite\Module\PureClarity\Personalization\Core\State;
 
 /**
  * Class PureclarityFeeds

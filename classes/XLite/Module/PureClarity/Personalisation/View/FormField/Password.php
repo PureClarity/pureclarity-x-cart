@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\FormField;
+namespace XLite\Module\PureClarity\Personalization\View\FormField;
 
 use XLite\View\FormField\Input\Password as XcPassword;
 

@@ -8,13 +8,13 @@
 <div id="pc-dashboard">
     <input type="hidden" id="pc-current-state" value="{{ this.getDashboardState() }}"/>
     {% if this.getDashboardState() is same as ('not_configured') %}
-        {{ widget('XLite\\Module\\PureClarity\\Personalisation\\View\\Admin\\Dashboard\\NotConfigured') }}
+        {{ widget('XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\NotConfigured') }}
     {% endif %}
     {% if this.getDashboardState() is same as ('waiting') %}
-        {{ widget('XLite\\Module\\PureClarity\\Personalisation\\View\\Admin\\Dashboard\\Waiting') }}
+        {{ widget('XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\Waiting') }}
     {% endif %}
     {% if this.getDashboardState() is same as ('configured') %}
-        {{ widget('XLite\\Module\\PureClarity\\Personalisation\\View\\Admin\\Dashboard\\Configured') }}
+        {{ widget('XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\Configured') }}
     {% endif %}
     <div id="pc-clearfix"></div>
 </div>

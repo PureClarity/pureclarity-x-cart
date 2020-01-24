@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Model;
+namespace XLite\Module\PureClarity\Personalization\Model;
 
 use XLite\Model\AEntity;
 

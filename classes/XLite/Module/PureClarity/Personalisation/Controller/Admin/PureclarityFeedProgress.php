@@ -4,11 +4,11 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
+namespace XLite\Module\PureClarity\Personalization\Controller\Admin;
 
 use PureClarity\Api\Feed\Feed;
 use XLite\Controller\Admin\AAdmin;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Status;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Status;
 
 /**
  * Class PureclarityFeedProgress

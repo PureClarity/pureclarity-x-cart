@@ -4,10 +4,10 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Dashboard;
+namespace XLite\Module\PureClarity\Personalization\Core\Dashboard;
 
 use XLite\Base\Singleton;
-use XLite\Module\PureClarity\Personalisation\Core\State as CoreState;
+use XLite\Module\PureClarity\Personalization\Core\State as CoreState;
 
 /**
  * Class State

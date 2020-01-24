@@ -4,9 +4,9 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Zones;
+namespace XLite\Module\PureClarity\Personalization\View\Zones;
 
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use XLite\View\AView;
 
 /**
@@ -65,7 +65,7 @@ abstract class AZone extends AView
      */
     protected function getDefaultTemplate() : string
     {
-        return 'modules/PureClarity/Personalisation/zone.twig';
+        return 'modules/PureClarity/Personalization/zone.twig';
     }
 
     /**

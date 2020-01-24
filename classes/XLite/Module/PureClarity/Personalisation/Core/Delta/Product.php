@@ -4,16 +4,16 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Core\Delta;
+namespace XLite\Module\PureClarity\Personalization\Core\Delta;
 
 use Exception;
 use PureClarity\Api\Delta\Type\Product as ProductDelta;
 use XLite\Base\Singleton;
 use XLite\Core\Database;
-use XLite\Module\PureClarity\Personalisation\Core\Feeds\Product\Data\Row;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
-use XLite\Module\PureClarity\Personalisation\Core\State;
-use XLite\Module\PureClarity\Personalisation\Model\Product\Delta;
+use XLite\Module\PureClarity\Personalization\Core\Feeds\Product\Data\Row;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\State;
+use XLite\Module\PureClarity\Personalization\Model\Product\Delta;
 
 /**
  * class Product
@@ -37,7 +37,7 @@ class Product extends Singleton
             }
 
             $productData = Row::getInstance();
-            $deltaRepo = Database::getRepo('XLite\Module\PureClarity\Personalisation\Model\Product\Delta');
+            $deltaRepo = Database::getRepo('XLite\Module\PureClarity\Personalization\Model\Product\Delta');
             $deltas = $deltaRepo->findAll();
             $productRepo = Database::getRepo('XLite\Model\Product');
 

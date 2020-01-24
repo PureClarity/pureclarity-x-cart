@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Controller\Admin;
+namespace XLite\Module\PureClarity\Personalization\Controller\Admin;
 
 use XLite\Controller\Admin\AAdmin;
 

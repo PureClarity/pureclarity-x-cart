@@ -4,12 +4,12 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\Model;
+namespace XLite\Module\PureClarity\Personalization\Model;
 
 use XLite\Core\Event;
 use XLite\Core\Session;
 use XLite\Model\Profile;
-use XLite\Module\PureClarity\Personalisation\Core\PureClarity;
+use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 
 abstract class Cart extends \XLite\Model\Cart implements \XLite\Base\IDecorator
 {

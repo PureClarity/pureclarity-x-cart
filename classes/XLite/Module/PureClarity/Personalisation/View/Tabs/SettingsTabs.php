@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace XLite\Module\PureClarity\Personalisation\View\Tabs;
+namespace XLite\Module\PureClarity\Personalization\View\Tabs;
 
 use XLite\View\Tabs\ATabs;
 
@@ -39,7 +39,7 @@ class SettingsTabs extends ATabs
             'pureclarity_settings'   => [
                 'weight'   => 100,
                 'title'    => static::t('Settings'),
-                'widget' => 'XLite\Module\PureClarity\Personalisation\View\Admin\PureclaritySettings',
+                'widget' => 'XLite\Module\PureClarity\Personalization\View\Admin\PureclaritySettings',
             ]
         ];
     }
