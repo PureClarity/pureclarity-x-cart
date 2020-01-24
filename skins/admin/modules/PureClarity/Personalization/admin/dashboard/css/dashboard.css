@@ -271,7 +271,7 @@
   padding: 3px 8px;
 }
 
-#pc-dashboard #pc-existing-account .model-form-buttons {
+#pc-dashboard .pc-box .model-form-buttons {
   padding-top: 0;
   padding-bottom: 0;
 }

@@ -1,6 +1,6 @@
 {##
  # Copyright © PureClarity. All rights reserved.
- # See LICENSE.txt for license details.
+ # See LICENSE for license details.
  #
  # Dashboard - configured widget
  #}
@@ -20,7 +20,7 @@
     <div id="pc-step1" class="pc-box">
         <div class="pc-box-title-bar"><h3>{{ t('Step 1') }}</h3></div>
         <div class="pc-box-content">
-            <p>{{ t('Configure your Zones and style your templates using the Recommender Designer within the PureClarity Admin area') }}</p>
+            <p>{{ t('Style your templates using the Recommender Designer within the PureClarity Admin area') }}</p>
             <p class="pc-button">
                 <a class="regular-button" href="https://admin.pureclarity.com" target="_blank" title="{{ t('Go to PureClarity Admin') }}">{{ t('Go to PureClarity Admin') }}</a>
             </p>
@@ -29,9 +29,9 @@
     <div id="pc-step2" class="pc-box">
         <div class="pc-box-title-bar"><h3>{{ t('Step 2') }}</h3></div>
         <div class="pc-box-content">
-            <p>{{ t('Enable the Zones within your X-Cart site. A number of default Zones can be enabled.') }}</p>
+            <p>{{ t('By default, Zones are only shown to admin users on the frontend. When you are ready, press the "Go live" button to show Zones to all customers') }}</p>
             <p class="pc-button">
-                <a class="regular-button" href="{{ this.getConfigureUrl() }}" target="_blank" title="{{ t('Set up Zones') }}">{{ t('Set up Zones') }}</a>
+                {{ widget('\\XLite\\Module\\PureClarity\\Personalization\\View\\Model\\Admin\\Dashboard\\GoLive') }}
             </p>
         </div>
     </div>
@@ -91,6 +91,7 @@
             <p class="pc-button">
                 <a class="regular-button" href="{{ this.getConfigureUrl() }}" title="{{ t('Configure') }}">{{ t('Configure') }}</a>
             </p>
+            <p>{{ t('There are also extra options on products and categories to allow you to prevent them being included in data feeds or shown in recommenders. Navigate to Catalogue > Products (or Categories) and edit the relevant Product/Category to see the options available') }}</p>
         </div>
     </div>
     <div id="pc-help" class="pc-box">
@@ -107,4 +108,3 @@
         </div>
     </div>
 </div>
-

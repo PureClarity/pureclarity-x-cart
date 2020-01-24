@@ -12,9 +12,11 @@ use PureClarity\Api\Feed\Feed;
 use XLite;
 use XLite\Controller\Admin\AAdmin;
 use XLite\Core\Converter;
+use XLite\Core\Database;
 use XLite\Core\Request;
 use XLite\Core\Session;
 use XLite\Core\TopMessage;
+use XLite\Model\Config;
 use XLite\Module\PureClarity\Personalization\Core\Dashboard\State;
 use XLite\Module\PureClarity\Personalization\Core\Feeds\Status;
 use XLite\Module\PureClarity\Personalization\Core\Signup\Process;
@@ -296,5 +298,34 @@ class PureclarityDashboard extends AAdmin
         $this->setReturnURL(
             $this->buildURL('pureclarity_dashboard', '', array())
         );
+    }
+
+    /**
+     * "Go Live" - Disables Admin Mode
+     */
+    public function doActionGoLive() : void
+    {
+        $configRepo = Database::getRepo('XLite\Model\Config');
+
+        /** @var Config $config */
+        $config = $configRepo->findOneBy(
+            [
+                'name' => 'pc_admin_mode',
+                'category' => 'PureClarity\Personalization'
+            ]
+        );
+
+        if ($config->getValue()) {
+            $configRepo->update(
+                $config,
+                [
+                    'value' => 0
+                ]
+            );
+
+            TopMessage::getInstance()->add('PureClarity admin-only mode disabled.');
+        } else {
+            TopMessage::getInstance()->add('PureClarity admin-only mode already disabled.');
+        }
     }
 }
