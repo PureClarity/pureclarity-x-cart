@@ -202,7 +202,7 @@ XLite\Model\Config:
   - name: pc_zone_hp01
     category: PureClarity\Personalization
     type: XLite\View\FormField\Input\Checkbox\OnOff
-    value: false
+    value: true
     orderby: 1600
     translations:
       - code: en
