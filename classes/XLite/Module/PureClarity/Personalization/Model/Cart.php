@@ -31,8 +31,7 @@ abstract class Cart extends \XLite\Model\Cart implements \XLite\Base\IDecorator
                 [
                     'userid' => (string)$profile->getProfileId(),
                     'email' => $profile->getEmail(),
-                    'accid' => $profile->getMembershipId(),
-                    'groupid' => '',
+                    'groupid' => $profile->getMembershipId(),
                     'firstname' => $address ? $address->getFirstname() : '',
                     'lastname' => $address ? $address->getLastname() : '',
                 ]
