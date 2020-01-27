@@ -55,6 +55,6 @@ abstract class Main extends AModule
      */
     public static function getDescription()
     {
-        return 'Integration with PureClarity AI-based eCommerce personalization platform';
+        return 'PureClarity is a powerful artificial intelligence (AI) driven ecommerce personalization platform that allows businesses to give their online visitors a personalized and targeted online journey increasing online conversion, revenue and average order value.';
     }
 }
