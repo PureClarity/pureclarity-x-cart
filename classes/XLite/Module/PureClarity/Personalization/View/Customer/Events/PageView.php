@@ -68,7 +68,7 @@ class PageView extends AView
                 // If some then product listing page
                 $categoryId = Request::getInstance()->category_id;
                 $category = \XLite\Core\Database::getRepo('XLite\Model\Category')->find($categoryId);
-                if ($category->getProductsCount() === 0) {
+                if ($category && $category->getProductsCount() === 0) {
                     $pageType = 'category_listing_page';
                 } else {
                     $pageType = 'product_listing_page';
