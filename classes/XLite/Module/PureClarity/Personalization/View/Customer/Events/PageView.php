@@ -63,7 +63,16 @@ class PageView extends AView
                 $pageType = 'homepage';
                 break;
             case 'category':
-                $pageType = 'category_listing_page';
+                // If it's a category page, we need to work out if it's a category / product listing page
+                // In X-Cart this is determined by how many product it has. If none, then category page
+                // If some then product listing page
+                $categoryId = Request::getInstance()->category_id;
+                $category = \XLite\Core\Database::getRepo('XLite\Model\Category')->find($categoryId);
+                if ($category->getProductsCount() === 0) {
+                    $pageType = 'category_listing_page';
+                } else {
+                    $pageType = 'product_listing_page';
+                }
                 break;
             case 'product':
                 $pageType = 'product_page';
@@ -105,6 +114,7 @@ class PageView extends AView
 
         switch ($pageType) {
             case 'category_listing_page':
+            case 'product_listing_page':
                 $context['category_id'] = Request::getInstance()->category_id;
                 break;
             case 'product_page':
