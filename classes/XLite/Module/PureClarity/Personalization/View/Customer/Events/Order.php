@@ -84,8 +84,6 @@ class Order extends AView
                 foreach ($items as $item) {
                     /** @var OrderItem $item */
                     $orderItems[$item->getItemId()] = [
-                        'orderid' => $order->getOrderId(),
-                        'refid' => $item->getItemId(),
                         'id' => $item->getProductId(),
                         'qty' => $item->getAmount(),
                         'unitprice' => $item->getPrice(),
