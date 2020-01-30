@@ -283,3 +283,4 @@ XLite\Model\Config:
 XLite\Model\Task:
   - owner: XLite\Module\PureClarity\Personalization\Core\Task\Delta
   - owner: XLite\Module\PureClarity\Personalization\Core\Task\FeedRunner
+  - owner: XLite\Module\PureClarity\Personalization\Core\Task\Signup
