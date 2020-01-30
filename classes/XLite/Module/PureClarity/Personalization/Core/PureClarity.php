@@ -9,6 +9,7 @@ namespace XLite\Module\PureClarity\Personalization\Core;
 use XLite\Base\Singleton;
 use XLite\Core\Auth;
 use XLite\Core\Config;
+use XLite\Core\Request;
 
 /**
  * Pureclarity product sources class
@@ -101,7 +102,9 @@ class PureClarity extends Singleton
             $active = false;
         }
 
-        if ($active && $this->getConfigFlag(self::CONFIG_ADMIN_MODE) === true) {
+        $currentTarget = (string)Request::getInstance()->target;
+
+        if ($currentTarget !== 'cron' && $active && $this->getConfigFlag(self::CONFIG_ADMIN_MODE) === true) {
             $auth = Auth::getInstance();
             if ($auth->isLogged() === false || $auth->getProfile()->isAdmin() === false) {
                 $active = false;
