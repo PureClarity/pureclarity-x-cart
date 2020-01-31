@@ -7,6 +7,8 @@
 namespace XLite\Module\PureClarity\Personalization\Core\Feeds\Category\Data;
 
 use XLite\Base\Singleton;
+use XLite\Core\Config;
+use XLite\Core\ConfigParser;
 use XLite\Core\Converter;
 use XLite\Core\Layout;
 use XLite\Model\Category;
@@ -19,6 +21,15 @@ use XLite\Module\PureClarity\Personalization\Core\Feeds\FeedRowDataInterface;
  */
 class Row extends Singleton implements FeedRowDataInterface
 {
+    /** @var bool */
+    protected $isHttps;
+
+    /** @var string */
+    protected $httpsDomain;
+
+    /** @var string */
+    protected $httpDomain;
+
     /**
      * Processes the provided Category into an array in the format required for the PureClarity Category Feed
      *
@@ -27,6 +38,33 @@ class Row extends Singleton implements FeedRowDataInterface
      * @return mixed[]
      */
     public function getRowData($row) : array
+    {
+        $this->loadHttpConfig();
+
+        $data = [
+            'Id' => (string)$row->getId(),
+            'DisplayName' => $row->getName(),
+            'Image' => $this->getImageURL($row),
+            'Link' => $this->getFrontURL($row),
+            'ParentIds' => $this->getParents($row->getId(), $row->getPath()),
+            'Description' => $row->getDescription(),
+        ];
+
+        if ($row->getPureclarityExcludeFromRecommenders()) {
+            $data["ExcludeFromRecommenders"] = true;
+        }
+
+        return $data;
+    }
+
+    /**
+     * Gets an image url for the category
+     *
+     * @param object|Category $row
+     *
+     * @return string
+     */
+    protected function getImageURL($row) : string
     {
         $imageUrl = '';
         if ($row->getImage()) {
@@ -47,20 +85,43 @@ class Row extends Singleton implements FeedRowDataInterface
             }
         }
 
-        $data = [
-            'Id' => (string)$row->getId(),
-            'DisplayName' => $row->getName(),
-            'Image' => $imageUrl,
-            'Link' => html_entity_decode($row->getFrontURL()),
-            'ParentIds' => $this->getParents($row->getId(), $row->getPath()),
-            'Description' => $row->getDescription(),
-        ];
-
-        if ($row->getPureclarityExcludeFromRecommenders()) {
-            $data["ExcludeFromRecommenders"] = true;
+        if ($this->isHttps) {
+            $imageUrl = str_replace(['http://', $this->httpDomain], ['https://', $this->httpsDomain], $imageUrl);
         }
 
-        return $data;
+        return $imageUrl;
+    }
+
+    /**
+     * Gets the storefront url for the category
+     *
+     * @param object|Category $row
+     *
+     * @return string
+     */
+    protected function getFrontURL($row) : string
+    {
+        $url = $row->getFrontURL(true);
+
+        $this->loadHttpConfig();
+
+        if ($this->isHttps) {
+            $url = str_replace(['http://', $this->httpDomain], ['https://', $this->httpsDomain], $url);
+        }
+
+        return html_entity_decode($url);
+    }
+
+    /**
+     * Loads the config for https & domains
+     */
+    protected function loadHttpConfig()
+    {
+        if ($this->isHttps === null) {
+            $this->isHttps = Config::getInstance()->Security->customer_security;
+            $this->httpsDomain = ConfigParser::getOptions(['host_details', 'https_host']);
+            $this->httpDomain = ConfigParser::getOptions(['host_details', 'http_host']);
+        }
     }
 
     /**

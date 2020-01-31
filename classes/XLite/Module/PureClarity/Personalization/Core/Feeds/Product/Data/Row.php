@@ -8,6 +8,8 @@ namespace XLite\Module\PureClarity\Personalization\Core\Feeds\Product\Data;
 
 use XLite;
 use XLite\Base\Singleton;
+use XLite\Core\Config;
+use XLite\Core\ConfigParser;
 use XLite\Core\Converter;
 use XLite\Core\Database;
 use XLite\Core\Layout;
@@ -41,6 +43,15 @@ class Row extends Singleton implements FeedRowDataInterface
     /** @var Membership[] */
     protected $memberships;
 
+    /** @var bool */
+    protected $isHttps;
+
+    /** @var string */
+    protected $httpsDomain;
+
+    /** @var string */
+    protected $httpDomain;
+
     /**
      * Processes the provided Product into an array in the format required for the PureClarity Product Feed
      *
@@ -56,6 +67,7 @@ class Row extends Singleton implements FeedRowDataInterface
             return $this->rowData;
         }
 
+        $this->loadHttpConfig();
         $this->buildBaseData($row);
         $this->buildPriceData($row);
         $this->buildVariantData($row);
@@ -141,7 +153,7 @@ class Row extends Singleton implements FeedRowDataInterface
                 $row->getCommonDescription(),
                 $row->getProcessedBriefDescription()
             ],
-            'Link' => html_entity_decode($row->getFrontURL()),
+            'Link' => $this->getFrontURL($row),
             'Image' => $this->getProductImageURL($row),
             'Categories' => $categoryIds,
             'InStock' => $row->isOutOfStock() ? 'false' : 'true',
@@ -159,6 +171,36 @@ class Row extends Singleton implements FeedRowDataInterface
             if ($row->getPureClarityRecommenderEndDate()) {
                 $this->rowData['EndDate'] = date('Y-m-d H:i:s', $row->getPureClarityRecommenderEndDate());
             }
+        }
+    }
+
+    /**
+     * Gets the storefront url for the product
+     *
+     * @param object|Product $row
+     *
+     * @return string
+     */
+    protected function getFrontURL($row) : string
+    {
+        $url = $row->getFrontURL(false, true);
+
+        if ($this->isHttps) {
+            $url = str_replace(['http://', $this->httpDomain], ['https://', $this->httpsDomain], $url);
+        }
+
+        return html_entity_decode($url);
+    }
+
+    /**
+     * Loads the config for https & domains
+     */
+    protected function loadHttpConfig()
+    {
+        if ($this->isHttps === null) {
+            $this->isHttps = Config::getInstance()->Security->customer_security;
+            $this->httpsDomain = ConfigParser::getOptions(['host_details', 'https_host']);
+            $this->httpDomain = ConfigParser::getOptions(['host_details', 'http_host']);
         }
     }
 
@@ -189,6 +231,10 @@ class Row extends Singleton implements FeedRowDataInterface
                     'frontend'
                 );
             }
+        }
+
+        if ($this->isHttps) {
+            $imageUrl = str_replace(['http://', $this->httpDomain], ['https://', $this->httpsDomain], $imageUrl);
         }
 
         return $imageUrl;
