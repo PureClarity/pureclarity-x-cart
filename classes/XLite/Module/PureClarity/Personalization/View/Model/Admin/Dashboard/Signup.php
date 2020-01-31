@@ -9,6 +9,7 @@ namespace XLite\Module\PureClarity\Personalization\View\Model\Admin\Dashboard;
 use DateTime;
 use Exception;
 use XLite;
+use XLite\Core\Config;
 use XLite\Core\ConfigParser;
 use XLite\Core\Converter;
 use XLite\View\Button\AButton;
@@ -179,8 +180,14 @@ class Signup extends AModel
                     }
                     break;
                 case 'url':
-                    $domain = ConfigParser::getOptions(['host_details', 'http_host']);
-                    $value = 'http://' . $domain;
+                    $https = Config::getInstance()->Security->customer_security;
+                    if ($https) {
+                        $domain = ConfigParser::getOptions(['host_details', 'https_host']);
+                        $value = 'https://' . $domain;
+                    } else {
+                        $domain = ConfigParser::getOptions(['host_details', 'http_host']);
+                        $value = 'http://' . $domain;
+                    }
                     break;
                 default:
             }
