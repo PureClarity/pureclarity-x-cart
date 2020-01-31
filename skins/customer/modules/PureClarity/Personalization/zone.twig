@@ -1,0 +1,10 @@
+{##
+ # Copyright © PureClarity. All rights reserved.
+ # See LICENSE for license details.
+ #
+ # Zone Template - used for all Zones
+ #}
+
+<div data-pureclarity="{{ this.getBmzData() }}" class="{{ this.getClasses() }}" {% if this.showDebug() is same as (false) %}style="display:none"{% endif %}>
+    {% if this.showDebug() is same as (true) %}<div class="pc-debug-label">{{ this.getZoneId() }}</div>{% endif %}
+</div>

@@ -1,0 +1,26 @@
+{##
+ # Copyright © PureClarity. All rights reserved.
+ # See LICENSE for license details.
+ #
+ # Dashboard page
+ #}
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700" rel="stylesheet" type="text/css" media="not print" />
+<div id="pc-dashboard">
+    <input type="hidden" id="pc-current-state" value="{{ this.getDashboardState() }}"/>
+    {% if this.getDashboardState() is same as ('not_configured') %}
+        {{ widget('XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\NotConfigured') }}
+    {% endif %}
+    {% if this.getDashboardState() is same as ('waiting') %}
+        {{ widget('XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\Waiting') }}
+    {% endif %}
+    {% if this.getDashboardState() is same as ('configured') %}
+        {{ widget('XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\Configured') }}
+    {% endif %}
+    <div id="pc-clearfix"></div>
+</div>
+<div id="pc-version">
+    <div id="pc-logo"><span>{{ t('PureClarity') }}</span></div>
+    <div id="pc-version-number">
+        {{ t('Version') }}: {{ this.getVersion() }}
+    </div>
+</div>

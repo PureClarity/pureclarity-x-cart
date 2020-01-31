@@ -1,0 +1,11 @@
+version: 5.4.0.1
+type: common
+authorName: 'PureClarity'
+moduleName: 'PureClarity Personalization'
+description: 'PureClarity is a powerful artificial intelligence (AI) driven ecommerce personalization platform that allows businesses to give their online visitors a personalized and targeted online journey increasing online conversion, revenue and average order value.'
+minorRequiredCoreVersion: 0
+dependsOn: {  }
+incompatibleWith: {  }
+skins: {  }
+showSettingsForm: false
+canDisable: true

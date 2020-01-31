@@ -1,0 +1,286 @@
+# Copyright © PureClarity. All rights reserved.
+# See LICENSE for license details.
+
+XLite\Model\LanguageLabel:
+  - { name: "Dashboard", translations: [{ code: en, label: "Dashboard" }] }
+  - { name: "Settings", translations: [{ code: en, label: "Settings" }] }
+  - { name: "Search Tags", translations: [{ code: en, label: "Search Tags" }] }
+  - { name: "Exclude from Product Feed", translations: [{ code: en, label: "Exclude from Product Feed" }] }
+  - { name: "Exclude from Recommenders", translations: [{ code: en, label: "Exclude from Recommenders" }] }
+  - { name: "Show in recommenders for set time period", translations: [{ code: en, label: "Show in recommenders for set time period" }] }
+  - { name: "Show in Recommenders Start Date", translations: [{ code: en, label: "Show in Recommenders Start Date" }] }
+  - { name: "Show in Recommenders End Date", translations: [{ code: en, label: "Show in Recommenders End Date" }] }
+  - { name: "New Arrival", translations: [{ code: en, label: "New Arrival" }] }
+  - { name: "On Offer", translations: [{ code: en, label: "On Offer" }] }
+  - { name: "PureClarity", translations: [{ code: en, label: "PureClarity" }] }
+  - { name: "Exclude from PureClarity Category Feed", translations: [{ code: en, label: "Exclude from PureClarity Category Feed" }] }
+  - { name: "Exclude from PureClarity Recommenders", translations: [{ code: en, label: "Exclude from PureClarity Recommenders" }] }
+  - { name: "Not Sent", translations: [{ code: en, label: "Not Sent" }] }
+  - { name: "Not Enabled", translations: [{ code: en, label: "Not Enabled" }] }
+  - { name: "Error, please see logs for more information", translations: [{ code: en, label: "Error, please see logs for more information" }] }
+  - { name: "Waiting for feed run to start", translations: [{ code: en, label: "Waiting for feed run to start" }] }
+  - { name: "Waiting for other feeds to finish", translations: [{ code: en, label: "Waiting for other feeds to finish" }] }
+  - { name: "PureClarity Feeds", translations: [{ code: en, label: "PureClarity Feeds" }] }
+  - { name: "PureClarity Deltas", translations: [{ code: en, label: "PureClarity Deltas" }] }
+  - { name: "Send PureClarity Feeds", translations: [{ code: en, label: "Send PureClarity Feeds" }] }
+  - { name: "Please choose one or more feeds to send to PureClarity", translations: [{ code: en, label: "Please choose one or more feeds to send to PureClarity" }] }
+  - { name: "Account Setup", translations: [{ code: en, label: "Account Setup" }] }
+  - { name: "PureClarity Dashboard", translations: [{ code: en, label: "PureClarity Dashboard" }] }
+  - { name: "PureClarity Settings", translations: [{ code: en, label: "PureClarity Settings" }] }
+  - { name: "In progress: {{progress}}%", translations: [{ code: en, label: "In progress: {{progress}}%" }] }
+  - { name: "Last sent {{time}}", translations: [{ code: en, label: "Last sent {{time}}" }] }
+  - { name: "Exclude Products in this Category from the PureClarity Product Feed", translations: [{ code: en, label: "Exclude Products in this Category from the PureClarity Product Feed" }] }
+  - { name: "Version", translations: [{ code: en, label: "Version" }] }
+  - { name: "Full data feeds will be sent nightly. If you need to send a full feed sooner, please use the form below.", translations: [{ code: en, label: "Full data feeds will be sent nightly. If you need to send a full feed sooner, please use the form below." }] }
+  - { name: "Please select the data you would like to send to PureClarity:", translations: [{ code: en, label: "Please select the data you would like to send to PureClarity:" }] }
+  - { name: "Setting up account", translations: [{ code: en, label: "Setting up account" }] }
+  - { name: "We'll have you up and running", translations: [{ code: en, label: "We'll have you up and running" }] }
+  - { name: "before you can say increased revenue", translations: [{ code: en, label: "before you can say increased revenue" }] }
+  - { name: "Welcome to PureClarity", translations: [{ code: en, label: "Welcome to PureClarity" }] }
+  - { name: "PureClarity is the leading AI-based eCommerce personalization platform proven to:", translations: [{ code: en, label: "PureClarity is the leading AI-based eCommerce personalization platform proven to:" }] }
+  - { name: "Increase online revenue by 27%", translations: [{ code: en, label: "Increase online revenue by 27%" }] }
+  - { name: "Increase online conversion by 72%", translations: [{ code: en, label: "Increase online conversion by 72%" }] }
+  - { name: "Increase average order value by 16%", translations: [{ code: en, label: "Increase average order value by 16%" }] }
+  - { name: "Features include Personalized real-time AI Recommenders, Personalized Marketing Merchandising and Campaigns, Personalization within Email and Personalization within Search", translations: [{ code: en, label: "Features include Personalized real-time AI Recommenders, Personalized Marketing Merchandising and Campaigns, Personalization within Email and Personalization within Search" }] }
+  - { name: "Sign up for a free 14 day trial", translations: [{ code: en, label: "Sign up for a free 14 day trial" }] }
+  - { name: "Try for Free today and increase your online revenue by 27%", translations: [{ code: en, label: "Try for Free today and increase your online revenue by 27%" }] }
+  - { name: "Access to all PureClarity features", translations: [{ code: en, label: "Access to all PureClarity features" }] }
+  - { name: "Access to PureClarity Academy", translations: [{ code: en, label: "Access to PureClarity Academy" }] }
+  - { name: "Step by Step implementation guide", translations: [{ code: en, label: "Step by Step implementation guide" }] }
+  - { name: "Full support if needed", translations: [{ code: en, label: "Full support if needed" }] }
+  - { name: "No credit card required", translations: [{ code: en, label: "No credit card required" }] }
+  - { name: "Sign up", translations: [{ code: en, label: "Sign up" }] }
+  - { name: "Already have an account?", translations: [{ code: en, label: "Already have an account?" }] }
+  - { name: "Enter your account details to get started", translations: [{ code: en, label: "Enter your account details to get started" }] }
+  - { name: "Thank you for installing the PureClarity plugin for X-Cart.", translations: [{ code: en, label: "Thank you for installing the PureClarity plugin for X-Cart." }] }
+  - { name: "Please follow the 3 steps below to get up and running with PureClarity", translations: [{ code: en, label: "Please follow the 3 steps below to get up and running with PureClarity" }] }
+  - { name: "Note: Feeds are submitted using scheduled tasks. Please ensure these are enabled.", translations: [{ code: en, label: "Note: Feeds are submitted using scheduled tasks. Please ensure these are enabled." }] }
+  - { name: "See ", translations: [{ code: en, label: "See " }] }
+  - { name: "scheduled task documentation", translations: [{ code: en, label: "scheduled task documentation" }] }
+  - { name: "Step 1", translations: [{ code: en, label: "Step 1" }] }
+  - { name: "Configure your Zones and style your templates using the Recommender Designer within the PureClarity Admin area", translations: [{ code: en, label: "Configure your Zones and style your templates using the Recommender Designer within the PureClarity Admin area" }] }
+  - { name: "Go to PureClarity Admin", translations: [{ code: en, label: "Go to PureClarity Admin" }] }
+  - { name: "Step 2", translations: [{ code: en, label: "Step 2" }] }
+  - { name: "Enable the Zones within your X-Cart site. A number of default Zones can be enabled.", translations: [{ code: en, label: "Enable the Zones within your X-Cart site. A number of default Zones can be enabled." }] }
+  - { name: "Set up Zones", translations: [{ code: en, label: "Set up Zones" }] }
+  - { name: "Step 3", translations: [{ code: en, label: "Step 3" }] }
+  - { name: "Customize your Campaigns and Segments within the PureClarity Admin Area to optimize the performance of your Zones", translations: [{ code: en, label: "Customize your Campaigns and Segments within the PureClarity Admin Area to optimize the performance of your Zones" }] }
+  - { name: "Data Feeds", translations: [{ code: en, label: "Data Feeds" }] }
+  - { name: "Full data feeds are sent nightly to PureClarity to ensure data is up to date in our system, below is the status of each of the data feed types:", translations: [{ code: en, label: "Full data feeds are sent nightly to PureClarity to ensure data is up to date in our system, below is the status of each of the data feed types:" }] }
+  - { name: "Products", translations: [{ code: en, label: "Products" }] }
+  - { name: "Categories", translations: [{ code: en, label: "Categories" }] }
+  - { name: "Users", translations: [{ code: en, label: "Users" }] }
+  - { name: "Order History", translations: [{ code: en, label: "Order History" }] }
+  - { name: "Brands", translations: [{ code: en, label: "Brands" }] }
+  - { name: "Feeds In Progress", translations: [{ code: en, label: "Feeds In Progress" }] }
+  - { name: "Run Feeds Manually", translations: [{ code: en, label: "Run Feeds Manually" }] }
+  - { name: "Advanced Configuration", translations: [{ code: en, label: "Advanced Configuration" }] }
+  - { name: "You can enable brand feeds, enable admin only mode and more in the PureClarity plugin configuration", translations: [{ code: en, label: "You can enable brand feeds, enable admin only mode and more in the PureClarity plugin configuration" }] }
+  - { name: "Configure", translations: [{ code: en, label: "Configure" }] }
+  - { name: "Help", translations: [{ code: en, label: "Help" }] }
+  - { name: "We have comprehensive documentation available which will help with any questions you may have", translations: [{ code: en, label: "We have comprehensive documentation available which will help with any questions you may have" }] }
+  - { name: "Access Documentation", translations: [{ code: en, label: "Access Documentation" }] }
+  - { name: "If you have any issues please contact our Support Team at support@pureclarity.com", translations: [{ code: en, label: "If you have any issues please contact our Support Team at support@pureclarity.com" }] }
+  - { name: "Contact support", translations: [{ code: en, label: "Contact support" }] }
+  - { name: "Error Processing request", translations: [{ code: en, label: "Error Processing request" }] }
+  - { name: "Error Processing request: X", translations: [{ code: en, label: "Error Processing request: X" }] }
+
+XLite\Model\Config:
+  - name: pc_enabled
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 100
+    translations:
+      - code: en
+        option_name: 'Enable PureClarity Personalization'
+  - name: pc_access_key
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Text
+    orderby: 200
+    translations:
+      - code: en
+        option_name: 'Access Key'
+  - name: pc_secret_key
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\PasswordWithValue
+    orderby: 300
+    translations:
+      - code: en
+        option_name: 'Secret Key'
+  - name: pc_region
+    category: PureClarity\Personalization
+    type: XLite\Module\PureClarity\Personalization\View\FormField\Region
+    orderby: 400
+    translations:
+      - code: en
+        option_name: 'Region'
+  - name: pc_admin_mode
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 500
+    translations:
+      - code: en
+        option_name: 'Show to Admin users only'
+        option_comment: 'If set to Yes, PureClarity will only be shown on the storefront to users with Admin permissions'
+  - name: pc_header_feeds
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Separator\Regular
+    orderby: 600
+    translations:
+      - code: en
+        option_name: 'Feeds'
+  - name: pc_feeds_nightly
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 700
+    translations:
+      - code: en
+        option_name: 'Send Nightly Feeds'
+  - name: pc_feeds_deltas
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 800
+    translations:
+      - code: en
+        option_name: 'Send Deltas'
+  - name: pc_header_brand_feeds
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Separator\Regular
+    orderby: 900
+    translations:
+      - code: en
+        option_name: 'Brand Feed'
+  - name: pc_feeds_brands
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: false
+    orderby: 1000
+    translations:
+      - code: en
+        option_name: 'Enable Brand Feed'
+  - name: pc_feeds_brands_parent
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Select\Category
+    orderby: 1100
+    translations:
+      - code: en
+        option_name: 'Brand Feed Parent Category'
+  - name: pc_header_product_feeds
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Separator\Regular
+    orderby: 1200
+    translations:
+      - code: en
+        option_name: 'Product Feed'
+  - name: pc_feeds_product_oos_exclude
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: false
+    orderby: 1300
+    translations:
+      - code: en
+        option_name: 'Exclude out of stock Products'
+  - name: pc_header_zones
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Separator\Regular
+    orderby: 1400
+    translations:
+      - code: en
+        option_name: 'Zones'
+  - name: pc_zone_debug
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: false
+    orderby: 1500
+    translations:
+      - code: en
+        option_name: 'Enable Zone Debug'
+  - name: pc_zone_hp01
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1600
+    translations:
+      - code: en
+        option_name: 'Enable Zone HP-01'
+  - name: pc_zone_hp02
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1700
+    translations:
+      - code: en
+        option_name: 'Enable Zone HP-02'
+  - name: pc_zone_hp03
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1800
+    translations:
+      - code: en
+        option_name: 'Enable Zone HP-03'
+  - name: pc_zone_hp04
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 1900
+    translations:
+      - code: en
+        option_name: 'Enable Zone HP-04'
+  - name: pc_zone_pp01
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 2000
+    translations:
+      - code: en
+        option_name: 'Enable Zone PP-01'
+  - name: pc_zone_pp02
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 2100
+    translations:
+      - code: en
+        option_name: 'Enable Zone PP-02'
+  - name: pc_zone_bp01
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 2200
+    translations:
+      - code: en
+        option_name: 'Enable Zone BP-01'
+  - name: pc_zone_bp02
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 2300
+    translations:
+      - code: en
+        option_name: 'Enable Zone BP-02'
+  - name: pc_zone_oc01
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 2400
+    translations:
+      - code: en
+        option_name: 'Enable Zone OC-01'
+  - name: pc_zone_oc02
+    category: PureClarity\Personalization
+    type: XLite\View\FormField\Input\Checkbox\OnOff
+    value: true
+    orderby: 2500
+    translations:
+      - code: en
+        option_name: 'Enable Zone OC-02'
+
+XLite\Model\Task:
+  - owner: XLite\Module\PureClarity\Personalization\Core\Task\Delta
+  - owner: XLite\Module\PureClarity\Personalization\Core\Task\FeedRunner
+  - owner: XLite\Module\PureClarity\Personalization\Core\Task\Signup
