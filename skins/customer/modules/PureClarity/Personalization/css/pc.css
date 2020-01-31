@@ -1,0 +1,23 @@
+/**
+ * Copyright © PureClarity. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * PureClarity General CSS
+ */
+
+.pc-debug {
+    border: 1px dashed #4a4a4a;
+    padding:10px;
+    min-height:50px;
+    text-align: center;
+    background-color:#DCF1F6;
+    display:block;
+    position: relative;
+}
+
+.pc-debug .pc-debug-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: 500;
+}

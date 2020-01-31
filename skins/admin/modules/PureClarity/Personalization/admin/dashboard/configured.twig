@@ -1,0 +1,110 @@
+{##
+ # Copyright © PureClarity. All rights reserved.
+ # See LICENSE for license details.
+ #
+ # Dashboard - configured widget
+ #}
+
+<div id="pc-thanks">
+    <p>{{ t('Thank you for installing the PureClarity plugin for X-Cart.') }}</p>
+    <p>{{ t('Please follow the 3 steps below to get up and running with PureClarity') }}</p>
+    {% if this.getCronState() is not same as ('1') %}
+        <p class="pc-warning">
+            {{ t('Note: Feeds are submitted using scheduled tasks. Please ensure these are enabled.') }}
+            {{ t('See ') }}
+            <a href="https://kb.x-cart.com/general_setup/installation/server/cron_tasks.html" target="_blank">{{ t('scheduled task documentation') }}</a>
+        </p>
+    {% endif %}
+</div>
+<div id="pc-layer1">
+    <div id="pc-step1" class="pc-box">
+        <div class="pc-box-title-bar"><h3>{{ t('Step 1') }}</h3></div>
+        <div class="pc-box-content">
+            <p>{{ t('Style your templates using the Recommender Designer within the PureClarity Admin area') }}</p>
+            <p class="pc-button">
+                <a class="regular-button" href="https://admin.pureclarity.com" target="_blank" title="{{ t('Go to PureClarity Admin') }}">{{ t('Go to PureClarity Admin') }}</a>
+            </p>
+        </div>
+    </div>
+    <div id="pc-step2" class="pc-box">
+        <div class="pc-box-title-bar"><h3>{{ t('Step 2') }}</h3></div>
+        <div class="pc-box-content">
+            <p>{{ t('By default, Zones are only shown to admin users on the frontend. When you are ready, press the "Go live" button to show Zones to all customers') }}</p>
+            <p class="pc-button">
+                {{ widget('\\XLite\\Module\\PureClarity\\Personalization\\View\\Model\\Admin\\Dashboard\\GoLive') }}
+            </p>
+        </div>
+    </div>
+    <div id="pc-step3" class="pc-box">
+        <div class="pc-box-title-bar"><h3>{{ t('Step 3') }}</h3></div>
+        <div class="pc-box-content">
+            <p>{{ t('Customize your Campaigns and Segments within the PureClarity Admin Area to optimize the performance of your Zones') }}</p>
+            <p class="pc-button">
+                <a class="regular-button" href="https://admin.pureclarity.com" target="_blank" title="{{ t('Go to PureClarity Admin') }}">{{ t('Go to PureClarity Admin') }}</a>
+            </p>
+        </div>
+    </div>
+</div>
+<div id="pc-layer2">
+    <div id="pc-feeds" class="pc-box">
+        <div class="pc-box-title-bar"><h3>{{ t('Data Feeds') }}</h3></div>
+        <div class="pc-box-content">
+            <p>{{ t('Full data feeds are sent nightly to PureClarity to ensure data is up to date in our system, below is the status of each of the data feed types:') }}</p>
+            <p class="pc-feed">
+                <span class="pc-feedName">{{ t('Products') }}:</span>
+                <span id="pc-productFeedStatusClass" class="pc-feed-status-icon {{ this.getProductFeedStatusClass() }}"></span>
+                <span id="pc-productFeedStatusLabel" class="pc-feedStatus">{{ this.getProductFeedStatusLabel() }}</span>
+            </p>
+            <p class="pc-feed">
+                <span class="pc-feedName">{{ t('Categories') }}:</span>
+                <span id="pc-categoryFeedStatusClass" class="pc-feed-status-icon {{ this.getCategoryFeedStatusClass() }}"></span>
+                <span id="pc-categoryFeedStatusLabel" class="pc-feedStatus">{{ this.getCategoryFeedStatusLabel() }}</span>
+            </p>
+            <p class="pc-feed">
+                <span class="pc-feedName">{{ t('Users') }}:</span>
+                <span id="pc-userFeedStatusClass" class="pc-feed-status-icon {{ this.getUserFeedStatusClass() }}"></span>
+                <span id="pc-userFeedStatusLabel" class="pc-feedStatus">{{ this.getUserFeedStatusLabel() }}</span>
+            </p>
+            <p class="pc-feed">
+                <span class="pc-feedName">{{ t('Order History') }}:</span>
+                <span id="pc-ordersFeedStatusClass" class="pc-feed-status-icon {{ this.getOrdersFeedStatusClass() }}"></span>
+                <span id="pc-ordersFeedStatusLabel" class="pc-feedStatus">{{ this.getOrdersFeedStatusLabel() }}</span>
+            </p>
+            <p class="pc-feed">
+                <span class="pc-feedName">{{ t('Brands') }}:</span>
+                <span id="pc-brandFeedStatusClass" class="pc-feed-status-icon {{ this.getBrandFeedStatusClass() }}"></span>
+                <span id="pc-brandFeedStatusLabel" class="pc-feedStatus">{{ this.getBrandFeedStatusLabel() }}</span>
+            </p>
+            <div id="pc-feeds-button-disabled" class="pc-feeds-button" {% if this.getAreFeedsInProgress() is same as (false) %}style="display:none"{% endif %}>
+                <a class="regular-button pc-disabled" id="pc-feedpopupbutton" target="_blank" title="{{ t('Feeds In Progress') }}">{{ t('Feeds In Progress') }}</a>
+            </div>
+            <div id="pc-feeds-button-active" class="pc-feeds-button" {% if this.getAreFeedsInProgress() is same as (true) %}style="display:none"{% endif %}>
+                {{ widget('\\XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\Button\\Feeds', label='Run Feeds Manually') }}
+            </div>
+            <input id="pc-feeds-in-progress" type="hidden" value="{% if this.getAreFeedsInProgress() is same as (true) %}true{% else %}false{% endif %}" />
+        </div>
+    </div>
+    <div id="pc-configuration" class="pc-box">
+        <div class="pc-box-title-bar"><h3>{{ t('Advanced Configuration') }}</h3></div>
+        <div class="pc-box-content">
+            <p>{{ t('You can enable brand feeds, enable admin only mode and more in the PureClarity plugin configuration') }}</p>
+            <p class="pc-button">
+                <a class="regular-button" href="{{ this.getConfigureUrl() }}" title="{{ t('Configure') }}">{{ t('Configure') }}</a>
+            </p>
+            <p>{{ t('There are also extra options on products and categories to allow you to prevent them being included in data feeds or shown in recommenders. Navigate to Catalogue > Products (or Categories) and edit the relevant Product/Category to see the options available') }}</p>
+        </div>
+    </div>
+    <div id="pc-help" class="pc-box">
+        <div class="pc-box-title-bar"><h3>{{ t('Help') }}</h3></div>
+        <div class="pc-box-content">
+            <p>{{ t('We have comprehensive documentation available which will help with any questions you may have') }}</p>
+            <p class="pc-button">
+                <a class="regular-button" href="https://www.pureclarity.com/docs/x-cart/" target="_blank" title="{{ t('Access Documentation') }}">{{ t('Access Documentation') }}</a>
+            </p>
+            <p>{{ t('If you have any issues please contact our Support Team at support@pureclarity.com') }}</p>
+            <p class="pc-button">
+                <a class="regular-button" href="mailto:support@pureclarity.com?subject=X-Cart%202%20Support%20Issue&body=Plugin%20Version:%20{{ this.getVersion() }}%0D%0AX-Cart%20Version:%20{{ this.getXCartVersion() }}%0D%0AStore Name: [PLEASE ENTER]%0D%0A" title="{{ t('Contact support') }}">{{ t('Contact support') }}</a>
+            </p>
+        </div>
+    </div>
+</div>
