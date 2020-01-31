@@ -23,7 +23,7 @@ class Signup extends Periodic
      */
     public function getTitle() : string
     {
-        return static::t('PureClarity Sign up check');
+        return static::t('PureClarity signup check');
     }
 
     /**
