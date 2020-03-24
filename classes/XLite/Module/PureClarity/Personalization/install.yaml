@@ -42,7 +42,7 @@ XLite\Model\LanguageLabel:
   - { name: "Increase online conversion by 72%", translations: [{ code: en, label: "Increase online conversion by 72%" }] }
   - { name: "Increase average order value by 16%", translations: [{ code: en, label: "Increase average order value by 16%" }] }
   - { name: "Features include Personalized real-time AI Recommenders, Personalized Marketing Merchandising and Campaigns, Personalization within Email and Personalization within Search", translations: [{ code: en, label: "Features include Personalized real-time AI Recommenders, Personalized Marketing Merchandising and Campaigns, Personalization within Email and Personalization within Search" }] }
-  - { name: "Sign up for a free 14 day trial", translations: [{ code: en, label: "Sign up for a free 14 day trial" }] }
+  - { name: "Sign up for a free trial", translations: [{ code: en, label: "Sign up for a free trial" }] }
   - { name: "Try for Free today and increase your online revenue by 27%", translations: [{ code: en, label: "Try for Free today and increase your online revenue by 27%" }] }
   - { name: "Access to all PureClarity features", translations: [{ code: en, label: "Access to all PureClarity features" }] }
   - { name: "Access to PureClarity Academy", translations: [{ code: en, label: "Access to PureClarity Academy" }] }
