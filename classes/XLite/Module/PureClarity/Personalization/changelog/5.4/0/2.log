@@ -1,0 +1,4 @@
+Version 5.4.0.2
+
+Improvements (1)
+2020-04-17 - [Change] Corrected typing of product object in handler for when a product is deleted
