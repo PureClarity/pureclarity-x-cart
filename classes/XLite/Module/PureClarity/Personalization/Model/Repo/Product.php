@@ -33,9 +33,9 @@ abstract class Product extends \XLite\Model\Repo\Product implements \XLite\Base\
     }
 
     /**
-     * @param \XLite\Model\Repo\Product $product
+     * @param $product
      */
-    public function processDelta(\XLite\Model\Repo\Product $product) : void
+    public function processDelta($product) : void
     {
         $pc = PureClarity::getInstance();
         if ($pc->isActive()) {
