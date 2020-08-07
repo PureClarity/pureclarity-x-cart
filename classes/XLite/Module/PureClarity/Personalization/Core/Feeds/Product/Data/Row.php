@@ -210,14 +210,9 @@ class Row extends Singleton implements FeedRowDataInterface
     protected function getProductImageURL($row) : string
     {
         $imageUrl = '';
-
-        if ($row->getImage()) {
-            list(
-                $usedWidth,
-                $usedHeight,
-                $imageUrl,
-                $retinaResizedURL
-                ) = $row->getImage()->getResizedURL(262, 280);
+        $image = $row->getImage();
+        if ($image) {
+            $imageUrl = $image->getFrontURL();
         } else {
             $url = \XLite::getInstance()->getOptions(['images', 'default_image']);
             if (!Converter::isURL($url)) {
