@@ -80,7 +80,7 @@ class PureclarityDashboard extends AAdmin
      */
     public function getXCartVersion() : string
     {
-        return XLite::getVersion();
+        return \XLite::getInstance()->getVersion();
     }
 
     /**
