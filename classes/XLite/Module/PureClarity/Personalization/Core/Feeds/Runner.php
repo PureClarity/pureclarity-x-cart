@@ -9,6 +9,7 @@ namespace XLite\Module\PureClarity\Personalization\Core\Feeds;
 use Exception;
 use PureClarity\Api\Feed\Feed;
 use XLite\Base\Singleton;
+use XLite\Logger;
 use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use XLite\Module\PureClarity\Personalization\Core\State;
 
@@ -63,11 +64,10 @@ class Runner extends Singleton
                     $feedClass->start();
 
                     foreach ($data as $row) {
-                        $data = $rowDataClass->getRowData($row);
-                        if (!empty($data)) {
-                            $feedClass->append($data);
+                        $rowData = $rowDataClass->getRowData($row);
+                        if (!empty($rowData)) {
+                            $feedClass->append($rowData);
                         }
-
                         $currentRow++;
                         $this->flagProgress($feedType, $currentRow);
                     }
@@ -78,7 +78,8 @@ class Runner extends Singleton
                 $this->flagFeedEnd($feedType);
             }
         } catch (Exception $e) {
-            $this->flagFeedError($feedType, $e->getMessage());
+            Logger::logCustom('pureclarity', 'PC ' . $feedType . ' feed error :' . $e->getMessage(), true);
+            $this->flagFeedError($feedType, 'PCERROR:' . $e->getMessage());
         }
     }
 
