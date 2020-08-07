@@ -72,10 +72,13 @@ class FeedRunner extends Periodic
         $state = State::getInstance();
         // Run scheduled Feeds
         $feeds = $state->getStateValue('requested_feeds');
-        if (!empty($feeds)) {
+        $running = $state->getStateValue('requested_feeds_running');
+        if (!empty($feeds) && $running !== '1') {
+            $state->setStateValue('requested_feeds_running', '1');
             $feedTypes = json_decode($feeds);
             $this->sendFeeds($feedTypes);
             $state->setStateValue('requested_feeds', '');
+            $state->setStateValue('requested_feeds_running', '');
         }
     }
 
