@@ -1,0 +1,11 @@
+Version 5.4.0.3
+
+Improvements (8)
+2020-08-07 - [Change] Delta improvements: Added running flag to prevent double running, also added error logging to file to make log checking easier
+2020-08-07 - [Change] Feed Runner improvements: Tweaked data loop to prevent data corruption. Added error logging to make error checking easier.
+2020-08-07 - [Change] Feed Runner improvements: Fixes to nightly feed to prevent running for the whole feed hour, and preventing duplicate running if it takes longer than usual
+2020-08-07 - [Change] Feed Runner improvements: Added flag to requested feed running to prevent double-running if feed is long-running and the cron job tries to run again
+2020-08-07 - [Change] Product data fixes: Fix to product feed data so that it checks for the presence of the getVariants function before trying to run it (will only be present if the variants module is present)
+2020-08-07 - [Change] Product data fixes: Fix to image urls so it uses the getFrontUrl function to return correct image url
+2020-08-07 - [Change] Product data fixes: Fix to product data for sale prices to only include sale prices if the product is marked as on sale
+2020-08-07 - [Change] Other fixes: Changed usage of XLite > GetVersion as it's not a static function and is logging a minor error

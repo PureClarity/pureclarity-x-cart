@@ -149,10 +149,6 @@ class Row extends Singleton implements FeedRowDataInterface
             'Id' => $row->getId(),
             'Sku' => $row->getSku(),
             'Title' => $row->getName(),
-            'Description' => [
-                $row->getCommonDescription(),
-                $row->getProcessedBriefDescription()
-            ],
             'Link' => $this->getFrontURL($row),
             'Image' => $this->getProductImageURL($row),
             'Categories' => $categoryIds,
@@ -214,14 +210,9 @@ class Row extends Singleton implements FeedRowDataInterface
     protected function getProductImageURL($row) : string
     {
         $imageUrl = '';
-
-        if ($row->getImage()) {
-            list(
-                $usedWidth,
-                $usedHeight,
-                $imageUrl,
-                $retinaResizedURL
-                ) = $row->getImage()->getResizedURL(262, 280);
+        $image = $row->getImage();
+        if ($image) {
+            $imageUrl = $image->getFrontURL();
         } else {
             $url = \XLite::getInstance()->getOptions(['images', 'default_image']);
             if (!Converter::isURL($url)) {
@@ -252,7 +243,7 @@ class Row extends Singleton implements FeedRowDataInterface
         $currencyCode = $this->getCurrencyCode();
         $this->rowData['Prices'] = [$row->getPrice() . ' ' . $currencyCode];
 
-        if ($row->getSalePriceValue() && $row->getSalePriceValue() !== $row->getPrice()) {
+        if ($row->getParticipateSale() && $row->getSalePriceValue() && $row->getSalePriceValue() !== $row->getPrice()) {
             $this->rowData['SalePrices'] = [
                 $row->getSalePriceValue() . ' ' . $currencyCode
             ];
@@ -284,46 +275,50 @@ class Row extends Singleton implements FeedRowDataInterface
      */
     protected function buildVariantData($row) : void
     {
-        $variants = $row->getVariants();
-        if ($variants && $variants->count() > 0) {
-            $currencyCode = $this->getCurrencyCode();
-            $this->rowData['AssociatedSkus'] = [];
+        if (method_exists($row, 'getVariants')) {
+            $variants = $row->getVariants();
+            if ($variants && $variants->count() > 0) {
+                $currencyCode = $this->getCurrencyCode();
+                $this->rowData['AssociatedSkus'] = [];
 
-            $pc = PureClarity::getInstance();
-            $excludeOutOfStock = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_PRODUCT_OOS_EXCLUDE);
+                $pc = PureClarity::getInstance();
+                $excludeOutOfStock = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_PRODUCT_OOS_EXCLUDE);
 
-            foreach ($variants as $variant) {
-                /** @var ProductVariant $variant */
+                foreach ($variants as $variant) {
+                    /** @var ProductVariant $variant */
 
-                if ($excludeOutOfStock && $variant->isOutOfStock()) {
-                    continue;
-                }
+                    if ($excludeOutOfStock && $variant->isOutOfStock()) {
+                        continue;
+                    }
 
-                $this->rowData['AssociatedSkus'][] = $variant->getSku() ?: $variant->getVariantId();
-                $this->rowData['Prices'][] = $variant->getPrice() . ' ' . $currencyCode;
+                    $this->rowData['AssociatedSkus'][] = $variant->getSku() ?: $variant->getVariantId();
+                    $this->rowData['Prices'][] = $variant->getPrice() . ' ' . $currencyCode;
 
 
-                if ($variant->getSalePriceValue() && $variant->getSalePriceValue() !== $variant->getPrice()) {
-                    $this->rowData['SalePrices'] = [
-                        $this->rowData->getSalePriceValue() . ' ' . $currencyCode
-                    ];
-                }
+                    if ($variant->getParticipateSale() &&
+                        $variant->getSalePriceValue() &&
+                        $variant->getSalePriceValue() !== $variant->getPrice()) {
+                        $this->rowData['SalePrices'] = [
+                            $this->rowData->getSalePriceValue() . ' ' . $currencyCode
+                        ];
+                    }
 
-                if ($variant->getProduct()->isWholesalePricesEnabled()) {
-                    foreach ($this->getMemberships() as $membership) {
-                        $price = Database::getRepo(
-                            'XLite\Module\CDev\Wholesale\Model\ProductVariantWholesalePrice'
-                        )->getPrice(
-                            $variant,
-                            $variant->getProduct()->getWholesaleQuantity()
-                                ?: $variant->getProduct()->getMinQuantity($membership),
-                            $membership
-                        );
+                    if ($variant->getProduct()->isWholesalePricesEnabled()) {
+                        foreach ($this->getMemberships() as $membership) {
+                            $price = Database::getRepo(
+                                'XLite\Module\CDev\Wholesale\Model\ProductVariantWholesalePrice'
+                            )->getPrice(
+                                $variant,
+                                $variant->getProduct()->getWholesaleQuantity()
+                                    ?: $variant->getProduct()->getMinQuantity($membership),
+                                $membership
+                            );
 
-                        if ($price) {
-                            $this->rowData['GroupPrices'][$membership->getMembershipId()]['Prices'][] = $price
-                                                                                                      . ' '
-                                                                                                      . $currencyCode;
+                            if ($price) {
+                                $this->rowData['GroupPrices'][$membership->getMembershipId()]['Prices'][] = $price
+                                  . ' '
+                                  . $currencyCode;
+                            }
                         }
                     }
                 }
