@@ -243,7 +243,7 @@ class Row extends Singleton implements FeedRowDataInterface
         $currencyCode = $this->getCurrencyCode();
         $this->rowData['Prices'] = [$row->getPrice() . ' ' . $currencyCode];
 
-        if ($row->getSalePriceValue() && $row->getSalePriceValue() !== $row->getPrice()) {
+        if ($row->getParticipateSale() && $row->getSalePriceValue() && $row->getSalePriceValue() !== $row->getPrice()) {
             $this->rowData['SalePrices'] = [
                 $row->getSalePriceValue() . ' ' . $currencyCode
             ];
@@ -295,11 +295,13 @@ class Row extends Singleton implements FeedRowDataInterface
                     $this->rowData['Prices'][] = $variant->getPrice() . ' ' . $currencyCode;
 
 
-                if ($variant->getSalePriceValue() && $variant->getSalePriceValue() !== $variant->getPrice()) {
-                    $this->rowData['SalePrices'] = [
-                        $this->rowData->getSalePriceValue() . ' ' . $currencyCode
-                    ];
-                }
+                    if ($variant->getParticipateSale() &&
+                        $variant->getSalePriceValue() &&
+                        $variant->getSalePriceValue() !== $variant->getPrice()) {
+                        $this->rowData['SalePrices'] = [
+                            $this->rowData->getSalePriceValue() . ' ' . $currencyCode
+                        ];
+                    }
 
                     if ($variant->getProduct()->isWholesalePricesEnabled()) {
                         foreach ($this->getMemberships() as $membership) {
