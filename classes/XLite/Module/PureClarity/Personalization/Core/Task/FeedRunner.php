@@ -21,6 +21,9 @@ use XLite\Module\PureClarity\Personalization\Core\State;
  */
 class FeedRunner extends Periodic
 {
+    /** @var string - hour that the feed is due to run on, in date('H') format. */
+    public const FEED_HOUR = '03';
+
     /**
      * Returns the title of this task
      *
@@ -69,10 +72,13 @@ class FeedRunner extends Periodic
         $state = State::getInstance();
         // Run scheduled Feeds
         $feeds = $state->getStateValue('requested_feeds');
-        if (!empty($feeds)) {
+        $running = $state->getStateValue('requested_feeds_running');
+        if (!empty($feeds) && $running !== '1') {
+            $state->setStateValue('requested_feeds_running', '1');
             $feedTypes = json_decode($feeds);
             $this->sendFeeds($feedTypes);
             $state->setStateValue('requested_feeds', '');
+            $state->setStateValue('requested_feeds_running', '');
         }
     }
 
@@ -87,17 +93,16 @@ class FeedRunner extends Periodic
             $state = State::getInstance();
             $nightlyFeedRun = $state->getStateValue('nightly_feed_run');
             $hour = date('H');
-            if ($hour === '3' && empty($nightlyFeedRun)) {
-                // it's 3am, time to run the feeds
-                $feedTypes = [
+            if ($hour === self::FEED_HOUR && empty($nightlyFeedRun)) {
+                // set the feed run status early, so if this takes long we don't get multiple instances
+                $state->setStateValue('nightly_feed_run', '1');
+                $this->sendFeeds([
                     Feed::FEED_TYPE_PRODUCT,
                     Feed::FEED_TYPE_CATEGORY,
                     Feed::FEED_TYPE_BRAND,
                     Feed::FEED_TYPE_USER,
-                ];
-                $this->sendFeeds($feedTypes);
-                $state->setStateValue('nightly_feed_run', '1');
-            } elseif ($nightlyFeedRun === '1') {
+                ]);
+            } elseif ($hour !== self::FEED_HOUR && $nightlyFeedRun === '1') {
                 // Reset feed if not 3am, so that when 3am hits, it'll run
                 $state->setStateValue('nightly_feed_run', '');
             }
