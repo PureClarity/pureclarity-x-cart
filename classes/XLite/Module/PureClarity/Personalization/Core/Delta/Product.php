@@ -10,6 +10,7 @@ use Exception;
 use PureClarity\Api\Delta\Type\Product as ProductDelta;
 use XLite\Base\Singleton;
 use XLite\Core\Database;
+use XLite\Logger;
 use XLite\Module\PureClarity\Personalization\Core\Feeds\Product\Data\Row;
 use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use XLite\Module\PureClarity\Personalization\Core\State;
@@ -32,10 +33,14 @@ class Product extends Singleton
             $active = $pc->isActive();
             $deltasEnabled = $pc->getConfigFlag(PureClarity::CONFIG_FEEDS_DELTAS);
 
-            if ($deltasEnabled === false || $active === false) {
+            $state = State::getInstance();
+            $running = $state->getStateValue('product_delta_running');
+
+            if ($deltasEnabled === false || $active === false || $running === '1') {
                 return;
             }
 
+            $state->setStateValue('product_delta_running', '1');
             $productData = Row::getInstance();
             $deltaRepo = Database::getRepo('XLite\Module\PureClarity\Personalization\Model\Product\Delta');
             $deltas = $deltaRepo->findAll();
@@ -76,9 +81,12 @@ class Product extends Singleton
                 $deltaHandler->send();
                 $deltaRepo->deleteInBatch($deltas);
             }
+            $state->setStateValue('product_delta_running', '');
         } catch (Exception $e) {
+            Logger::logCustom('pureclarity', 'PC Delta ERROR:' . $e->getMessage(), true);
             $state = State::getInstance();
             $state->setStateValue('product_delta_error', $e->getMessage());
+            $state->setStateValue('product_delta_running', '');
         }
     }
 }
