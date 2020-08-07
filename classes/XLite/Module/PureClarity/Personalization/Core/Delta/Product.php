@@ -83,7 +83,7 @@ class Product extends Singleton
             }
             $state->setStateValue('product_delta_running', '');
         } catch (Exception $e) {
-            Logger::logCustom('pureclarity', 'PC Delta ERROR:' . $e->getMessage(), true);
+            Logger::logCustom('pureclarity', 'PC Delta ERROR:' . $e->getMessage(), false);
             $state = State::getInstance();
             $state->setStateValue('product_delta_error', $e->getMessage());
             $state->setStateValue('product_delta_running', '');

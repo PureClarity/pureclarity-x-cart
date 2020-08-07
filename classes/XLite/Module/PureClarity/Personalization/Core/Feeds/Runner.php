@@ -78,7 +78,7 @@ class Runner extends Singleton
                 $this->flagFeedEnd($feedType);
             }
         } catch (Exception $e) {
-            Logger::logCustom('pureclarity', 'PC ' . $feedType . ' feed error :' . $e->getMessage(), true);
+            Logger::logCustom('pureclarity', 'PC ' . $feedType . ' feed error :' . $e->getMessage(), false);
             $this->flagFeedError($feedType, 'PCERROR:' . $e->getMessage());
         }
     }
