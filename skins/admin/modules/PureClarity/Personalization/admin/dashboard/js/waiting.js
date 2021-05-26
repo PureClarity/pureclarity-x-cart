@@ -8,8 +8,7 @@ function checkStatus() {
         URLHandler.buildURL({
             target: 'pureclarity_signup_progress',
         })
-    ).done(function (data) {
-        var result = JSON.parse(data);
+    ).done(function (result) {
         if (result.complete) {
             location.reload();
         } else if (result.error !== '') {

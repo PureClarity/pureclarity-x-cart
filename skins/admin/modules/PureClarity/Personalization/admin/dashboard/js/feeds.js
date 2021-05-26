@@ -25,8 +25,7 @@ jQuery().ready(
           URLHandler.buildURL({
             target: 'pureclarity_feed_progress',
           })
-      ).done(function (data) {
-        var response = JSON.parse(data);
+      ).done(function (response) {
 
         $('#pc-productFeedStatusLabel').html(response.product.label);
         $('#pc-categoryFeedStatusLabel').html(response.category.label);
