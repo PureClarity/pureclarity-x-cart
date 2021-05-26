@@ -71,6 +71,8 @@ class PureclarityFeeds extends AAdmin
         }
 
         $state = State::getInstance();
+        $state->setStateValue('requested_feeds_running', '');
+        $state->setStateValue('running_feed', '');
         $state->setStateValue('requested_feeds', json_encode($feedTypes));
         foreach ($feedTypes as $feed) {
             $state->setStateValue($feed . '_feed_error', '');

@@ -49,5 +49,6 @@ class PureclarityFeedProgress extends AAdmin
         header('ETag: ' . md5($return));
 
         print ($return);
+        exit();
     }
 }
