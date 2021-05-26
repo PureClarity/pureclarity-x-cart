@@ -116,14 +116,17 @@ class FeedRunner extends Periodic
      */
     protected function sendFeeds(array $feedTypes)
     {
+
         if (in_array(Feed::FEED_TYPE_PRODUCT, $feedTypes)) {
             $productFeed = ProductFeedRunner::getInstance();
             $productFeed->runFeed();
+            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_PRODUCT);
         }
 
         if (in_array(Feed::FEED_TYPE_CATEGORY, $feedTypes)) {
             $categoryFeed = CategoryFeedRunner::getInstance();
             $categoryFeed->runFeed();
+            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_CATEGORY);
         }
 
         if (in_array(Feed::FEED_TYPE_BRAND, $feedTypes)) {
@@ -132,14 +135,34 @@ class FeedRunner extends Periodic
         }
 
         if (in_array(Feed::FEED_TYPE_USER, $feedTypes)) {
+            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_USER);
             $userFeed = UserFeedRunner::getInstance();
             $userFeed->runFeed();
+            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_BRAND);
         }
 
         if (in_array(Feed::FEED_TYPE_ORDER, $feedTypes)) {
             $orderFeed = OrderFeedRunner::getInstance();
             $orderFeed->runFeed();
+            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_ORDER);
         }
+    }
+
+    /**
+     * Removes the indicated feed from the feed types
+     *
+     * @param array $feedTypes
+     * @param string $feedType
+     * @return mixed
+     */
+    protected function removeFeedFromState(array $feedTypes, string $feedType) : array
+    {
+        $state = State::getInstance();
+        if (($key = array_search($feedType, $feedTypes)) !== false) {
+            unset($feedTypes[$key]);
+        }
+        $state->setStateValue('requested_feeds', json_encode(array_values($feedTypes)));
+        return $feedTypes;
     }
 
     /**
