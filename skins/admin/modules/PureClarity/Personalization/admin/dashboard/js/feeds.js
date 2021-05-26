@@ -40,9 +40,6 @@ jQuery().ready(
 
         if (response.in_progress === true) {
           setTimeout(checkFeedProgress, 2000);
-        } else {
-          $('#pc-feeds-button-disabled').hide();
-          $('#pc-feeds-button-active').show();
         }
       })
     }
