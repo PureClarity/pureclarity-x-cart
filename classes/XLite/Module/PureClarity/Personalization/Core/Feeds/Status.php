@@ -109,8 +109,8 @@ class Status extends Singleton
             }
 
             // check if it's been requested
-            $requested = $this->isFeedWaiting($type);
-            if ($requested) {
+            $waiting = $this->isFeedWaiting($type);
+            if ($requested && $waiting) {
                 $status['running'] = true;
                 $status['label'] = static::t('Waiting for other feeds to finish');
                 $status['class'] = 'pc-feed-waiting';

@@ -1,0 +1,7 @@
+Version 5.4.0.4
+
+Improvements (4)
+2021-05-26 - [Change] Improvements to feed & signup ajax requests
+2021-05-26 - [Change] Removed disabled feed button when feeds running, so that feeds can be re-run easily
+2021-05-26 - [Change] Added extra status resets to feed submission, so that feed status gets reset for stuck feeds
+2021-05-26 - [Change] Improvements to feed status display so that current running feed is shown correctly

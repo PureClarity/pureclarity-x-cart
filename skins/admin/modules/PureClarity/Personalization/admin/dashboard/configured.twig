@@ -75,10 +75,7 @@
                 <span id="pc-brandFeedStatusClass" class="pc-feed-status-icon {{ this.getBrandFeedStatusClass() }}"></span>
                 <span id="pc-brandFeedStatusLabel" class="pc-feedStatus">{{ this.getBrandFeedStatusLabel() }}</span>
             </p>
-            <div id="pc-feeds-button-disabled" class="pc-feeds-button" {% if this.getAreFeedsInProgress() is same as (false) %}style="display:none"{% endif %}>
-                <a class="regular-button pc-disabled" id="pc-feedpopupbutton" target="_blank" title="{{ t('Feeds In Progress') }}">{{ t('Feeds In Progress') }}</a>
-            </div>
-            <div id="pc-feeds-button-active" class="pc-feeds-button" {% if this.getAreFeedsInProgress() is same as (true) %}style="display:none"{% endif %}>
+            <div id="pc-feeds-button-active" class="pc-feeds-button">
                 {{ widget('\\XLite\\Module\\PureClarity\\Personalization\\View\\Admin\\Dashboard\\Button\\Feeds', label='Run Feeds Manually') }}
             </div>
             <input id="pc-feeds-in-progress" type="hidden" value="{% if this.getAreFeedsInProgress() is same as (true) %}true{% else %}false{% endif %}" />
