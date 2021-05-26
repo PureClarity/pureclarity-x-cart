@@ -132,19 +132,19 @@ class FeedRunner extends Periodic
         if (in_array(Feed::FEED_TYPE_BRAND, $feedTypes)) {
             $brandFeed = BrandFeedRunner::getInstance();
             $brandFeed->runFeed();
+            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_BRAND);
         }
 
         if (in_array(Feed::FEED_TYPE_USER, $feedTypes)) {
-            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_USER);
             $userFeed = UserFeedRunner::getInstance();
             $userFeed->runFeed();
-            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_BRAND);
+            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_USER);
         }
 
         if (in_array(Feed::FEED_TYPE_ORDER, $feedTypes)) {
             $orderFeed = OrderFeedRunner::getInstance();
             $orderFeed->runFeed();
-            $feedTypes = $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_ORDER);
+            $this->removeFeedFromState($feedTypes, Feed::FEED_TYPE_ORDER);
         }
     }
 
