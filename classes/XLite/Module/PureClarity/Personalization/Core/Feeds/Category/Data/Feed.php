@@ -27,7 +27,12 @@ class Feed extends Singleton implements FeedDataInterface
      */
     public function getFeedCount() : int
     {
-        return $this->getQuery()->count();
+        return Database::getRepo('XLite\Model\Category')->count(
+            [
+                'enabled' => '1',
+                'pureclarityExcludeFromFeed' => '0'
+            ]
+        );
     }
 
     /**
@@ -37,34 +42,22 @@ class Feed extends Singleton implements FeedDataInterface
      */
     public function getFeedData(int $page, int $pageSize) : array
     {
-        $query = $this->getQuery();
-        $query->setFirstResult(($page - 1) * $pageSize);
-        $query->setMaxResults($pageSize);
-        return $query->getResult();
+        return Database::getRepo('XLite\Model\Category')->findBy(
+            [
+                'enabled' => '1',
+                'pureclarityExcludeFromFeed' => '0'
+            ],
+            null,
+            $pageSize,
+            ($page - 1) * $pageSize
+        );
     }
 
     /**
      * Page cleanup
-     *
-     * Clears query entity manager's object cache.
      */
     public function cleanPage() : void
     {
-        $qb = $this->getQuery();
-        $qb->getQuery()->getEntityManager()->clear();
-    }
-
-    /**
-     * Returns a query for all completed orders in the last 12 months
-     *
-     * @return QueryBuilder|AQueryBuilder
-     */
-    public function getQuery()
-    {
-        return Database::getRepo('XLite\Model\Category')->createQueryBuilder('c')
-            ->andWhere('c.enabled >= :enabled')
-            ->setParameter('enabled', 1)
-            ->andWhere('c.pureclarityExcludeFromFeed = :pureclarityExcludeFromFeed')
-            ->setParameter('pureclarityExcludeFromFeed', 0);
+        // This query doesnt use direct queryies, so cleanup not possible
     }
 }
