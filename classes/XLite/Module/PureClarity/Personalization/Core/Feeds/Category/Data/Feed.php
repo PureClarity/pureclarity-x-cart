@@ -58,6 +58,6 @@ class Feed extends Singleton implements FeedDataInterface
      */
     public function cleanPage() : void
     {
-        // This query doesnt use direct queryies, so cleanup not possible
+        // This query doesnt use direct queries, so cleanup not possible
     }
 }
