@@ -7,7 +7,6 @@
 namespace XLite\Module\PureClarity\Personalization\Core\Feeds\User\Data;
 
 use XLite\Base\Singleton;
-use XLite\Model\Profile;
 use XLite\Module\PureClarity\Personalization\Core\Feeds\FeedRowDataInterface;
 
 /**
@@ -20,23 +19,25 @@ class Row extends Singleton implements FeedRowDataInterface
     /**
      * Processes the provided User into an array in the format required for the PureClarity User Feed
      *
-     * @param object|Profile $row
+     * Note - data format is odd due to Doctrine ORM:
+     * Left joined fields are directly in the array e.g. $row['city']
+     * But core fields are in a sub array $row[0]['profile_id']
      *
-     * @return mixed[]
+     * @param array $row
+     *
+     * @return array
      */
     public function getRowData($row) : array
     {
-        $address = $row->getBillingAddress();
-
         return [
-            'UserId' => (string)$row->getProfileId(),
-            'GroupId' => $row->getMembershipId(),
-            'Email' => $row->getEmail(),
-            'FirstName' => $address ? $address->getFirstname() : '',
-            'LastName' => $address ? $address->getLastname() : '',
-            'City' => $address ? $address->getCity() : '',
-            'State' => $address ? $address->getStateName() : '',
-            'Country' => $address ? $address->getCountryCode() : ''
+            'UserId' => (string)$row[0]['profile_id'],
+            'GroupId' => $row['membership_id'],
+            'Email' => $row[0]['login'],
+            'FirstName' => $row['firstname'],
+            'LastName' => $row['lastname'],
+            'City' => $row['city'],
+            'State' => $row['custom_state'] ?: $row['state_id'],
+            'Country' => $row['country_code']
         ];
     }
 }

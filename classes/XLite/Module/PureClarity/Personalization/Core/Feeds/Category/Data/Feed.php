@@ -9,6 +9,8 @@ namespace XLite\Module\PureClarity\Personalization\Core\Feeds\Category\Data;
 use XLite\Base\Singleton;
 use XLite\Core\Database;
 use XLite\Model\Category;
+use XLite\Model\QueryBuilder\AQueryBuilder;
+use Doctrine\ORM\QueryBuilder;
 use XLite\Module\PureClarity\Personalization\Core\Feeds\FeedDataInterface;
 
 /**
@@ -19,17 +21,43 @@ use XLite\Module\PureClarity\Personalization\Core\Feeds\FeedDataInterface;
 class Feed extends Singleton implements FeedDataInterface
 {
     /**
-     * Returns all enabled Categories and all categories that are not marked as excluded
+     * Returns all completed orders in the last 12 months
      *
-     * @return Category[]
+     * @return int
      */
-    public function getFeedData() : array
+    public function getFeedCount() : int
     {
-        return Database::getRepo('XLite\Model\Category')->findBy(
+        return Database::getRepo('XLite\Model\Category')->count(
             [
                 'enabled' => '1',
                 'pureclarityExcludeFromFeed' => '0'
             ]
         );
+    }
+
+    /**
+     * Returns all completed orders in the last 12 months
+     *
+     * @return Category[]
+     */
+    public function getFeedData(int $page, int $pageSize) : array
+    {
+        return Database::getRepo('XLite\Model\Category')->findBy(
+            [
+                'enabled' => '1',
+                'pureclarityExcludeFromFeed' => '0'
+            ],
+            null,
+            $pageSize,
+            ($page - 1) * $pageSize
+        );
+    }
+
+    /**
+     * Page cleanup
+     */
+    public function cleanPage() : void
+    {
+        // This query doesnt use direct queries, so cleanup not possible
     }
 }
