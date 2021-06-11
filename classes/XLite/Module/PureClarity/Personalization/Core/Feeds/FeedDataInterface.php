@@ -9,9 +9,23 @@ namespace XLite\Module\PureClarity\Personalization\Core\Feeds;
 interface FeedDataInterface
 {
     /**
-     * Should return an array of objects to be used in the feed generation process
+     * Should return a count of the data to be used in the feed generation process
      *
-     * @return object[]
+     * @return int
      */
-    public function getFeedData() : array;
+    public function getFeedCount() : int;
+
+    /**
+     * Should return an array of data to be used in the feed generation process
+     *
+     * @return array[]
+     */
+    public function getFeedData(int $page, int $pageSize) : array;
+
+    /**
+     * Does any memory management needed after a page of data is processed
+     *
+     * @return void
+     */
+    public function cleanPage() : void;
 }

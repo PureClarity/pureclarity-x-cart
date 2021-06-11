@@ -26,15 +26,6 @@ class Runner extends Singleton
     /** @var PureClarity */
     protected $pc;
 
-    /** @var int */
-    protected $progressChunk;
-
-    /** @var int */
-    protected $nextProgress;
-
-    /** @var int */
-    protected $totalRows;
-
     /**
      * Runs a standard PureClarity feed based on the given classes
      *
@@ -53,25 +44,23 @@ class Runner extends Singleton
             $pc = $this->getPureClarityClass();
             if ($pc->isActive()) {
                 $this->flagFeedStarted($feedType);
-                $data = $feedDataClass->getFeedData();
 
-                $this->totalRows = count($data);
-                if ($this->totalRows > 0) {
-                    $currentRow = 0;
-                    $this->progressChunk = round($this->totalRows / 10, 2);
-                    $this->nextProgress = $this->progressChunk;
+                $totalRows = $feedDataClass->getFeedCount();
 
+                if ($totalRows > 0) {
                     $feedClass->start();
-
-                    foreach ($data as $row) {
-                        $rowData = $rowDataClass->getRowData($row);
-                        if (!empty($rowData)) {
-                            $feedClass->append($rowData);
+                    $totalPages = ceil($totalRows / 50);
+                    for ($page = 1; $page <= $totalPages; $page++) {
+                        $data = $feedDataClass->getFeedData($page, 50);
+                        foreach ($data as $row) {
+                            $rowData = $rowDataClass->getRowData($row);
+                            if (!empty($rowData)) {
+                                $feedClass->append($rowData);
+                            }
                         }
-                        $currentRow++;
-                        $this->flagProgress($feedType, $currentRow);
+                        $feedDataClass->cleanPage();
+                        $this->flagProgress($feedType, $page, $totalPages);
                     }
-
                     $feedClass->end();
                 }
 
@@ -86,19 +75,15 @@ class Runner extends Singleton
     /**
      * Updates the progress of the given feed
      *
-     * Should only update at most every 10%
-     *
      * @param string $feedType
-     * @param int $currentRow
+     * @param int $page
+     * @param int $totalPages
      */
-    protected function flagProgress(string $feedType, int $currentRow) : void
+    protected function flagProgress(string $feedType, int $page, int $totalPages) : void
     {
-        if ($currentRow >= $this->nextProgress) {
-            $totalProgress = round(($currentRow / $this->totalRows) * 100, 2);
-            $state = $this->getStateClass();
-            $state->setStateValue($feedType . '_feed_progress', $totalProgress);
-            $this->nextProgress += $this->progressChunk;
-        }
+        $totalProgress = round(($page / $totalPages) * 100, 2);
+        $state = $this->getStateClass();
+        $state->setStateValue($feedType . '_feed_progress', $totalProgress);
     }
 
     /**
