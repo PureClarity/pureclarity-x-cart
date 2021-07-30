@@ -12,6 +12,7 @@ use XLite\Model\Cart;
 use XLite\Model\OrderItem;
 use XLite\Module\PureClarity\Personalization\Core\PureClarity;
 use XLite\View\AView;
+use XLite\Logger;
 
 /**
  * PureClarity Order event class
@@ -60,7 +61,11 @@ class Order extends AView
     protected function getOrderEventData() : string
     {
         $orderData = [];
-        $orderId = Request::getInstance()->order_number;
+        if (Request::getInstance()->order_id) {
+            $orderId = Request::getInstance()->order_id;
+        } elseif (Request::getInstance()->order_number) {
+            $orderId = Request::getInstance()->order_number;
+        }
 
         if ($orderId) {
             /** @var Cart $order */
@@ -102,6 +107,8 @@ class Order extends AView
 
                 $orderData['items'] = array_values($orderItems);
             }
+        } else {
+            Logger::logCustom('pureclarity', 'Order tracking error, no order id found', false);
         }
 
         return json_encode($orderData);
