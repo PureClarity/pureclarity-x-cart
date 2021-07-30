@@ -61,8 +61,6 @@ class Order extends AView
     protected function getOrderEventData() : string
     {
         $orderData = [];
-        $orderId = Request::getInstance()->order_number;
-
         if (Request::getInstance()->order_id) {
             $orderId = Request::getInstance()->order_id;
         } elseif (Request::getInstance()->order_number) {
